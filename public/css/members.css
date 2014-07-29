@@ -1,3 +1,8 @@
+#members {
+    background: #0835EE;
+    height: 500px;
+}
+
 #members-header{
 	border-bottom:20px solid pink !important;
 }

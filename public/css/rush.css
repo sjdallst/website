@@ -33,20 +33,7 @@
 
 #rush {
     text-align: center;
-}
-
-#rush h1 {
-    text-align: center;
-    font-weight: bold;
-    color: #0835EE;
-    font-size: 24px;
-    padding: .5em;
-}
-
-#rush h2 {
-    font-weight: bold;
-    color: #0835EE;
-    font-size: 16px;
+    font-family: 'roboto', sans-serif;
 }
 
 #picture-slideshow {
@@ -66,14 +53,13 @@
     padding-top: 2.5em;
     padding-left: 20px;
     background-color: #0835EE;
-    opacity: .9;
+    opacity: .7;
     width: 50%;
     height: 100%;
     float: left;
 }
 
 #rush_welcome {
-    text-align: center;
     background: white;
 	position: relative;
 	top: -10px;
@@ -86,7 +72,6 @@
     font-family: 'Roboto', sans-serif;
     color: #0835EE;
     width: 60%;
-    text-align: center;
     margin: 0 auto;
 }
 
@@ -103,16 +88,39 @@
     z-index: -1;
 }
 
+#rush_calendar h1 {
+    text-align: center;
+    font-weight: bold;
+    color: #0835EE;
+    font-size: 24px;
+    padding: .5em;
+}
+
+#rush_calendar h2 {
+    font-weight: bold;
+    color: #0835EE;
+    font-size: 16px;
+}
+
 #calendar_list {
     width: 50%;
     float: right;
 }
 
+#rush ul {
+    margin-left: 2em;
+}
+
 #rush li {
     display: list-item;
-    list-style: initial;
+    list-style: square;
     line-height: none;
     margin: 0;
+    text-indent: 15px;
+}
+
+#rush li span {
+    margin-left: -20px;
 }
 
 #rush p i {
@@ -129,9 +137,44 @@
 #rush_faq {
     height: 500px;
     position: relative;
+    background: #D8D8D8;
+    padding: 1em;
+}
+
+#rush_faq h1 {
+    text-align: center;
+    font-weight: bold;
+    color: #0835EE;
+    font-size: 24px;
+    padding: .5em;    
+}
+
+
+#questions {
+    background-color: #0835EE;
+    opacity: 0.9;
+    color: white;
+    font-size: 20px;
+    width: 50%;
+    text-align: left;
+    margin: auto;
+    padding: 0.5em;
+
+}
+
+#questions p {
+    background-color: white;
+    font-size: 16px;
+    color: black;
 }
 
 #rush_application {
-    height: 25px;
+    height: 75px;
+    background-color: #0835EE;
+    color: white;
+    font-size: 24px;
+    padding: .5em;  
+    font-weight: bold;
+    padding-top: 25px;
 }
 
