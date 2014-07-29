@@ -48,22 +48,6 @@ $(document).ready(function(){
 	});
 
 	//Adjust text and email field widths
-	// function resizeInput() {
-	//     $(this).attr('size', $(this).val().length);
-	// }
-
-	// $('input[type="text"]')
-	//     // event handler
-	//     .keyup(resizeInput)
-	//     // resize on page load
-	//     .each(resizeInput);
-
-	// $('input[type="email"]')
-	//     // event handler
-	//     .keyup(resizeInput)
-	//     // resize on page load
-	//     .each(resizeInput);
-
 	$('input[type="text"]').keypress(function(e) {
 	    if (e.which !== 0 && e.charCode !== 0) { // only characters
 	        var c = String.fromCharCode(e.keyCode|e.charCode);
@@ -82,6 +66,12 @@ $(document).ready(function(){
 	        $inputSize = $span.width() ; 
 	        $(this).css("width", $inputSize) ; // apply width of the span to the input
 	    }
+	});
+
+	$('input[type="submit"]').hover(function(){
+		    $(this).animate({ width: "200px" }, {queue: false});
+		}, function() {
+		    $(this).animate({ width: "100px" }, {queue: false});
 	});
 
 	});

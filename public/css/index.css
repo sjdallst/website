@@ -49,21 +49,22 @@ body {
 .nav-link {
     display: inline-block;
     background-color: rgba(0,0,0,0);
-    color: white;
+    color: #FFFFFF;
     padding: 1em 1.2em;
     font-size: 1.2em;
-    margin: 0em 0.5em;
+    margin: 0em 0.2em;
     cursor: pointer;
+    letter-spacing: 0.1em;
 }
 
 .nav-link:hover{
-    background-color: #0835EE;
+    background-color: #0669FB;
     color: #00F32A;
 }
 
 .nav-link:active {
-    background-color: #0835EE;
-    color: white;
+    background-color: #0669FB;
+    color: #FFFFFF;
 }
 
 /*

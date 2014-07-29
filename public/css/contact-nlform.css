@@ -1,7 +1,7 @@
 /* General Demo Style */
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
 
-@font-face {
+/*@font-face {
 	font-family: 'codropsicons';
 	src:url('../fonts/codropsicons/codropsicons.eot');
 	src:url('../fonts/codropsicons/codropsicons.eot?#iefix') format('embedded-opentype'),
@@ -10,7 +10,7 @@
 		url('../fonts/codropsicons/codropsicons.svg#codropsicons') format('svg');
 	font-weight: normal;
 	font-style: normal;
-}
+}*/
 
 *, *:after, *:before { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
 body, html { font-size: 100%; padding: 0; margin: 0;}
@@ -20,7 +20,7 @@ body, html { font-size: 100%; padding: 0; margin: 0;}
 .clearfix:after { clear: both; }
 
 #contact {
-	font-family: 'Lato', Arial, sans-serif;
+	font-family: 'Lato', sans-serif;
 	color: #99C2FE;
 	background: #458FFF;
 	font-weight: 300;
