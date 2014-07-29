@@ -12,10 +12,10 @@
 /* general style for the form */
 .nl-form {
 	width: 100%;
-	margin: 0.3em auto 0 auto;
-	font-size: 2.5em;
+	margin: 1em auto 0 auto;
+	font-size: 3em;
 	line-height: 1.2;
-	text-align: justify;
+	text-align: left;
 }
 
 .nl-form ul {
@@ -40,7 +40,11 @@
 	margin: 0;
 	-webkit-appearance: none;
 	-moz-appearance: none;
+    text-overflow: '';
+    cursor: pointer;
 }
+
+/*.nl-form input[type="text"] { width: 4em; }*/
 
 .nl-form input:focus {
 	outline: none;
@@ -62,60 +66,18 @@
 .nl-form select  {
 	line-height: inherit;
 	display: inline-block;
-	color: #FFC666;
+	color: #FFFFFF;
 	cursor: pointer;
-	border-bottom: 0.05em dashed #FFC666;
+	border-bottom: 0.05em dashed #FFFFFF;
+	background: #458FFF;
+	margin: 0;
+	padding: 0;
 }
 
-/* drop-down list / text element */
-.nl-field ul {
-	position: absolute;
-	visibility: hidden;
-	background: #BF954C;
-	left: -0.5em;
-	top: 50%;
-	font-size: 80%;
-	opacity: 0;
-	-webkit-transform: translateY(-40%) scale(0.9);
-	-moz-transform: translateY(-40%) scale(0.9);
-	transform: translateY(-40%) scale(0.9);
-	-webkit-transition: visibility 0s 0.3s, opacity 0.3s, -webkit-transform 0.3s;
-	-moz-transition: visibility 0s 0.3s, opacity 0.3s, -moz-transform 0.3s;
-	transition: visibility 0s 0.3s, opacity 0.3s, transform 0.3s;
-}
-
-.nl-field.nl-field-open ul {
-	visibility: visible;
-	opacity: 1;
-	-webkit-transform: translateY(-50%) scale(1);
-	-moz-transform: translateY(-50%) scale(1);
-	transform: translateY(-50%) scale(1);
-	-webkit-transition: visibility 0s 0s, opacity 0.3s, -webkit-transform 0.3s;
-	-moz-transition: visibility 0s 0s, opacity 0.3s, -moz-transform 0.3s;
-	transition: visibility 0s 0s, opacity 0.3s, transform 0.3s;
-}
-
-.nl-field ul li {
-	color: #fff;
-	position: relative;
-}
-
-.nl-dd ul li {
-	padding: 0 1.5em 0 0.5em;
-	cursor: pointer;
-	white-space: nowrap;
-}
-
-.nl-dd ul li.nl-dd-checked {
-	color: #FFC666;
-}
-
-.no-touch .nl-dd ul li:hover {
-	background: rgba(0,0,0,0.05);
-}
-
-.no-touch .nl-dd ul li:hover:active {
-	color: #FFC666;
+.nl-form option {
+	color: #FFFFFF;
+	background: #458FFF;
+	font-weight: normal;
 }
 
 /* icons for some elements */
@@ -172,63 +134,38 @@
 }
 
 /* custom placeholder color */
-input::-webkit-input-placeholder {
-	color: rgba(255,255,255,0.8);
-}
-
-input:active::-webkit-input-placeholder ,
+input::-webkit-input-placeholder,
+input:active::-webkit-input-placeholder,
 input:focus::-webkit-input-placeholder {
-	color: rgba(255,255,255,0.2);
+	color: #99C2FE;
 }
 
-input::-moz-placeholder {
-	color: rgba(255,255,255,0.8);
-}
-
+input::-moz-placeholder,
 input:active::-moz-placeholder,
 input:focus::-moz-placeholder {
-	color: rgba(255,255,255,0.2);
+	color: #99C2FE;
 }
 
-input:-ms-input-placeholder {  
-	color: rgba(255,255,255,0.8);
-}
-
-input:active::-ms-input-placeholder ,
+input:-ms-input-placeholder,
+input:active::-ms-input-placeholder,
 input:focus::-ms-input-placeholder {
-	color: rgba(255,255,255,0.2);
-}
-
-/* example field below text input */
-.nl-ti-text ul li.nl-ti-example {
-	font-size: 40%;
-	font-style: italic;
-	font-weight: 400;
-	padding: 0.4em 1em;
-	color: rgba(0,0,0,0.2);
-	border-top: 1px dashed rgba(255,255,255,0.7);
-}
-
-.nl-ti-text ul li.nl-ti-example em {
-	color: #fff
+	color: #99C2FE;
 }
 
 /* submit button */
 .nl-submit-wrap {
-	margin-top: 0.4em;
+	margin: 0.4em 0;
 }
 
 .nl-form .nl-submit {
-	line-height: 3;
-	text-transform: uppercase;
+	margin-top: 1.5em;
+	line-height: 2.4;
 	cursor: pointer;
 	position: relative;
-	background: #FFB433;
+	background: #0669FB;
 	color: #fff;
+	font-size: 0.6em;
 	padding: 0 1em 0 0;
-	font-size: 40%;
-	font-weight: bold;
-	letter-spacing: 0.1em;
 	font-family: 'Lato', Calibri, Arial, sans-serif;
 }
 
@@ -238,16 +175,16 @@ input:focus::-ms-input-placeholder {
 	float: left;
 	padding: 0 0.7em;
 	margin: 0 0.8em 0 0;
-	background: #FFC666;
+	background: #1976FF;
 }
 
 .no-touch .nl-form .nl-submit:hover,
 .no-touch .nl-form .nl-submit:active {
-	background: #FFC666;
+	background: #1976FF;
 }
 
 .no-touch .nl-form .nl-submit:hover:before {
-	background: #FFB433;
+	background: #0669FB;
 }
 
 /* overlay becomes visible when a field is opened */

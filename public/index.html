@@ -163,9 +163,9 @@
 
         <section id='contact' class='page'>
             <form id="nl-form" class="nl-form" method="" action="">
-                Hello!<br><br>
+                <span id="width_tmp"></span>
                 My name is
-                <input name="name" type="text" value="" placeholder="Inky Tentacles">
+                <input name="name" type="text" value="" placeholder="Jane Codesalot">
                 and I am a 
                 <select name="role">
                     <option value="" selected></option>
@@ -175,47 +175,49 @@
 
                 <div id="if_student">
                     of
-                    <select>
-                        <option value="1" selected>information</option>
-                        <option value="2">computer science</option>
-                        <option value="3">business</option>
-                        <option value="4">engineering</option>
-                        <option value="5">art &amp; design</option>
+                    <select name="major">
+                        <option value="information">information</option>
+                        <option value="computer science" selected>computer science</option>
+                        <option value="business">business</option>
+                        <option value="engineering">engineering</option>
+                        <option value="art-design">art &amp; design</option>
                     </select>
                     graduating in
-                    <select>
-                        <option value="1" selected>2018</option>
-                        <option value="2">2017</option>
-                        <option value="3">2016</option>
-                        <option value="4">2015</option>
+                    <select name="year">
+                        <option value="2018" selected>2018</option>
+                        <option value="2017">2017</option>
+                        <option value="2016">2016</option>
+                        <option value="2015">2015</option>
                     </select>.
                     I am interested in
-                    <select>
-                        <option value="1" selected>rushing</option>
-                        <option value="1">learning more about</option>
-                        <option value="2">partnering with</option>
+                    <select name="if_student_intent">
+                        <option value="rushing">rushing</option>
+                        <option value="learning more about" selected>learning more about</option>
+                        <option value="partnering with">partnering with</option>
                     </select>
                 </div>
 
                 <div id="if_representative">
                     for
-                    <input name="org" type="text" value="" placeholder="Awesome, Inc.">.
+                    <span style="display:none"></span>
+                    <input name="org" type="text" value="" placeholder="The Acme Company">.
                     I am interested in
-                    <select>
-                        <option value="1" selected>learning more about</option>
-                        <option value="1">sponsoring</option>
-                        <option value="2">partnering with</option>
+                    <select name="if_representative_intent">
+                        <option value="learning more about" selected>learning more about</option>
+                        <option value="sponsoring">sponsoring</option>
+                        <option value="partnering with">partnering with</option>
                     </select>
                 </div>
 
                 <div id="closing">
                     Kappa Theta Pi and can be reached at
-                    <input name="email" type="email" value="" placeholder="this email">
+                    <span style="display:none"></span>
+                    <input name="email" type="email" value="" placeholder="jane@codesalot.net">
                 </div>.
                 <br><br>
 
                 <div class="nl-submit-wrap">
-                    <button class="nl-submit" type="submit">Send</button>
+                    <button class="nl-submit" type="submit">Ship it!</button>
                 </div>
                 <div class="nl-overlay"></div>
             </form>
