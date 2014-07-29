@@ -3,18 +3,12 @@
 
 }
 
-#ExtraSpace{
-	background-color: #00F32A;
-	padding: .2em;
-	padding-top: 5.6em;
-	position: relative;
-}
-
 #AboutPic{
 	background: url(../img/members3.png);
+    background-size: cover;
+    background-position: center -50px;
 	width: 100%;
-	height: 500px;
-	opacity: .5;
+	height: 750px;
 	position: relative;
 	z-index: -1;
 }
@@ -22,13 +16,8 @@
 #AboutPic p{
 	font-size: 3.0em;
 	color: white;
+    padding-top: 550px;
 }
-
-/*#mission {
-	background-color: #00F32A;
-	padding: .6em;
-	height: 500px
-}*/
 
 
 #welcome {
