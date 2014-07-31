@@ -31,10 +31,14 @@
 	border-radius:0.3em;
 }
 
+
 #rush {
     text-align: center;
     font-family: 'roboto', sans-serif;
+    height: auto;
 }
+
+/*--------Picture Slideshow-----------*/
 
 #picture-slideshow {
     background: url('../img/chapter_2.jpg') no-repeat;
@@ -59,11 +63,15 @@
     float: left;
 }
 
+
+/*-----------opening paragraph------------*/
+
+
 #rush_welcome {
     background: white;
 	position: relative;
 	top: -10px;
-    padding: 2em;
+    padding: 1.8em;
     z-index: -2;
 }
 
@@ -75,11 +83,14 @@
     margin: 0 auto;
 }
 
+/*-----------Calendar--------------*/
+
 #rush_calendar {
     text-align: left;
     font-family: 'Roboto', sans-serif;
     color: white;
     padding: 1em;
+    padding-bottom: 1.2em;
     height: 750px;
     background: black;
     background: url('../img/binding_dark.png') repeat;
@@ -130,43 +141,66 @@
 #event_calendar {
     width: 50%;
     float: left;
-    padding-top: 15px;
+    padding-top: 25px;
     z-index: 0;
 }
 
+
+/*----------------FAQ-----------------*/
+
 #rush_faq {
-    height: 500px;
+    height: auto;
     position: relative;
     background: #D8D8D8;
-    padding: 1em;
+    align-content: center;
+    padding-bottom: 25px;
 }
 
 #rush_faq h1 {
     text-align: center;
     font-weight: bold;
     color: #0835EE;
-    font-size: 24px;
+    font-size: 20px;
     padding: .5em;    
 }
 
+.questions-container {
+    height: auto;
+    text-align: left;
+    margin: auto;
+    width: 60%;
+}
 
-#questions {
+.question_row {
+    float: inherit;
     background-color: #0835EE;
     opacity: 0.9;
     color: white;
     font-size: 20px;
-    width: 50%;
-    text-align: left;
-    margin: auto;
     padding: 0.5em;
-
+    border: 1.5px solid #000000;
 }
 
-#questions p {
-    background-color: white;
-    font-size: 16px;
-    color: black;
+.question i {
+    float: right;
+    color: #00F32A;
 }
+
+.answer_row {
+    display: none;
+}
+
+.answer_row p {
+    background-color: #ffffff;
+    font-size: 18px;
+    padding: 1em;
+    color: #000000;
+    line-height: 1.2em;
+}
+
+
+
+/*---------APPLICATION-------------*/
 
 #rush_application {
     height: 75px;
@@ -177,4 +211,8 @@
     font-weight: bold;
     padding-top: 25px;
 }
+
+
+
+
 

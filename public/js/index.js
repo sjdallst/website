@@ -61,3 +61,10 @@ $(function(){
         parallax();
     });
 })();
+
+$(document).ready(function () {
+    $('.question_row').click(function () {
+        $(this).siblings().slideToggle("slow");
+        $(this).find('i').toggleClass("fa-arrow-circle-down fa-arrow-circle-up");
+    })
+});
