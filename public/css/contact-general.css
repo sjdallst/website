@@ -44,8 +44,6 @@
     cursor: pointer;
 }
 
-/*.nl-form input[type="text"] { width: 4em; }*/
-
 .nl-form input:focus {
 	outline: none;
 }
