@@ -85,7 +85,7 @@ $(rotateTerm3);
 
 var tweeets = [];
 function updateTweets() {
-  $.get('/fetch-tweets', function (tweets) {
+  $.get('/api/fetch-tweets', function (tweets) {
       console.log(tweets);
       tweeets = tweets;
   });
