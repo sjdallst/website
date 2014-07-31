@@ -23,6 +23,7 @@ body, html { font-size: 100%; padding: 0; margin: 0;}
 	font-family: 'Lato', sans-serif;
 	color: #99C2FE;
 	background: #458FFF;
+	height: 100%;
 	font-weight: 300;
 	overflow-x: hidden;
 	padding: 10%;

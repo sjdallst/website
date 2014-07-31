@@ -55,16 +55,17 @@ body {
     margin: 0em 0.2em;
     cursor: pointer;
     letter-spacing: 0.1em;
+    border-bottom: 5px rgba(0,0,0,0) solid;
 }
 
 .nav-link:hover{
-    background-color: #0669FB;
-    color: #00F32A;
+    background-color: rgba(0,0,0,0.2);
+    border-bottom: 5px #FFFFFF solid;
 }
 
 .nav-link:active {
-    background-color: #0669FB;
-    color: #FFFFFF;
+    background-color: rgba(0,0,0,0.2);
+    border-bottom: 5px #FFFFFF solid;
 }
 
 /*
