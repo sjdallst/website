@@ -4,6 +4,7 @@ page('/',function(ctx) {
         $('.page').hide();
         $('#home').show();
         $('#home').css('opacity',1);
+        updateTweets();
     }
     else showPage('home');
 });
@@ -77,27 +78,26 @@ function rotateTerm3() {
 }
 $(rotateTerm3);
 
-//twitter
 
-  
+
+
 
 
 var tweeets = [];
 function updateTweets() {
-  $.getJSON('twitter.php', 
-      function(feeds) {                        
-      // console.log(JSON.stringify(feeds));
-      var count = (feeds.length > 5) ? 5 : feeds.length;
+  $.get('/fetch-tweets', function (tweets) {
+      console.log(" our tweets initial structure " + tweets); 
       var actualCount = 0;
-      for(var i=0; i<count; i++) {
-        while(feeds[actualCount].retweeted_status) {
+      for(var i=0; i<5; i++) {
+        while(tweets[actualCount].retweeted_status) {
           actualCount++;
         }
-        tweeets.push("\"" + feeds[actualCount].text + "\"");
-        console.log(feeds[actualCount].text);
+        tweeets.push("\"" + tweets[actualCount].text + "\"");
+        console.log(tweets[actualCount].text);
         actualCount++;
-      }                     
+      }
   });
+
   console.log("in update");
   console.log(tweeets);
 }
