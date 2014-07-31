@@ -86,20 +86,9 @@ $(rotateTerm3);
 var tweeets = [];
 function updateTweets() {
   $.get('/fetch-tweets', function (tweets) {
-      console.log(" our tweets initial structure " + tweets); 
-      var actualCount = 0;
-      for(var i=0; i<5; i++) {
-        while(tweets[actualCount].retweeted_status) {
-          actualCount++;
-        }
-        tweeets.push("\"" + tweets[actualCount].text + "\"");
-        console.log(tweets[actualCount].text);
-        actualCount++;
-      }
+      console.log(tweets);
+      tweeets = tweets;
   });
-
-  console.log("in update");
-  console.log(tweeets);
 }
 
 function rotateTweets() {

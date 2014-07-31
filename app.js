@@ -29,11 +29,9 @@ var twit = new require('twitter')({
     access_token_secret: 'JO7OZbGA363nJ19EGoNL5jrXqrh0lLIiAsBXDVrMrKMuJ'
 });
 
-app.get('/fetch-tweets', function (req,res) {
+app.get('/api/fetch-tweets', function (req,res) {
 	twit.get('/statuses/user_timeline.json', { count: 5 }, function (tweets) {
-		var arr = tweets.map(function (elt) {
-			return elt.text
-		})
+		var arr = tweets.map(function (elt) { return elt.text; });
 		res.send(arr)
 	});
 });
