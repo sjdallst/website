@@ -43,7 +43,10 @@ body {
     text-align: center;
     position: fixed;
     z-index: 10;
-    border-top: 0.5em solid #333333;
+/*    border-top: 0.5em solid #333333;*/
+    background: url('../img/binding_dark.png') repeat;
+    opacity: .95;
+
 }
 
 .nav-link {

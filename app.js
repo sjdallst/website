@@ -30,7 +30,7 @@ var twit = new require('twitter')({
 });
 
 app.get('/api/fetch-tweets', function (req,res) {
-	twit.get('/statuses/user_timeline.json', { count: 5 }, function (tweets) {
+	twit.get('/statuses/user_timeline.json?', { count: 5 }, function (tweets) {
 		var arr = tweets.map(function (elt) { return elt.text; });
 		res.send(arr)
 	});
