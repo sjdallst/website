@@ -63,8 +63,9 @@ $(function(){
 })();
 
 $(document).ready(function () {
-    $('.question_row').click(function () {
+    $('.question_row_odd').click(function () {
         $(this).siblings().slideToggle("slow");
-        $(this).find('i').toggleClass("fa-arrow-circle-down fa-arrow-circle-up");
+        $(this).find('i').toggleClass("fa-chevron-circle-down fa-chevron-circle-up");
     })
 });
+
