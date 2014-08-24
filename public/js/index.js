@@ -68,3 +68,15 @@ $(document).ready(function () {
         $(this).find('i').toggleClass("fa-arrow-circle-down fa-arrow-circle-up");
     })
 });
+
+
+// JSSOR slider https://github.com/jssor/jquery-slider
+jQuery(document).ready(function ($) {
+    var jssor_slider1 = new $JssorSlider$("picture-slideshow", {
+        $AutoPlay: true,
+        $DragOrientation: 3
+    });
+});
+
+
+

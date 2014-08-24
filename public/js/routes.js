@@ -49,7 +49,9 @@ function showPage(section) {
 // });
 
 
-
+// $('#link-to-contact').click( function () {
+//     showPage('contact')
+// })
 
 
 

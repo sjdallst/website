@@ -92,8 +92,15 @@
  -->
  
         <section id='rush' class='page'>
-            <div id="picture-slideshow">
-                <div id="rush_content_1">Get involved <br/> on Campus.</div>
+            <div id="picture-slideshow" style="position: relative; margin: 0 auto;
+        top: 0px; left: 0px; width: 1300px; height: 500px; overflow: hidden;">
+                <div u='slides' style="cursor: move; position: absolute; left: 0px; top: 0px; width: 1300px;
+            height: 500px; overflow: hidden;">
+                    <div><img u="image" src="/img/chapter_2.jpg" /></div>
+                    <div><img u="image" src="/img/ice_skating.jpg" /></div>
+                    <div><img u="image" src="/img/mhacks_9.jpg" /></div>
+                    <div><img u="image" src="/img/powderpuff_13.jpg" /></div>
+                </div>
             </div>
             <div id="rush_welcome">
                 <p class="wow fadeIn" data-wow-delay="2s">Kappa Theta Pi provides a wealth of opportunities to develop both professionally and personally. We offer exclusive recruiting events, résumé workshops, web and mobile development skills training, professional photography, leadership roles, study groups, networking, and social events. <i>With us, you can be at the forefront of creating a legacy.</i></p><br/>
@@ -358,13 +365,14 @@
 </body>
 <script src="lib/js/jquery.min.js" type="text/javascript"></script>
 <script src="lib/js/jquery-ui.min.js" type="text/javascript"></script>
+<script src="lib/js/jssor.slider.mini.js" type="text/javascript"></script>
 <script src="lib/js/page.min.js" type="text/javascript"></script>
 <script src="lib/js/wow.min.js"></script>
 <script src="lib/js/carousel.js"></script>
 <!-- <script src="lib/js/nlform.js"></script> -->
 <script src="js/contact.js"></script>
         <script>
-            var nlform = new NLForm( document.getElementById( 'nl-form' ) );
+            // var nlform = new NLForm( document.getElementById( 'nl-form' ) );
         </script>
 <script>
 new WOW().init();
