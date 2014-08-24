@@ -8,7 +8,7 @@
     background-size: cover;
     background-position: center -50px;
 	width: 100%;
-	height: 750px;
+	height: 500px;
 	position: relative;
 	z-index: -1;
 }
@@ -21,9 +21,10 @@
 
 
 #welcome {
-	background-color: #7F98FD;
+	background: url('../img/binding_dark.png') repeat;
 	position: relative;
 	top: -10px;
+    color: white;
 }
 
 #welcome h1{
