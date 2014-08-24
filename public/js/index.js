@@ -55,8 +55,8 @@ $(function(){
         var scrolled = $(window).scrollTop();
         $('#picture-slideshow').css('top', (scrolled * 0.4) + 'px');
         $('#rush_content_1').css('top', (scrolled * 0.2) + 'px');
+        $('#shadow').css('opacity', (scrolled * 0.8 / 400) + '%')
     }
-
     $(window).scroll(function (e) {
         parallax();
     });
@@ -69,6 +69,13 @@ $(document).ready(function () {
     })
 });
 
+$(document).ready(function () {
+    $('.question_row_even').click(function () {
+        $(this).siblings().slideToggle("slow");
+        $(this).find('i').toggleClass("fa-chevron-circle-down fa-chevron-circle-up");
+    })
+});
+
 // JSSOR slider https://github.com/jssor/jquery-slider
 jQuery(document).ready(function ($) {
     var jssor_slider1 = new $JssorSlider$("picture-slideshow", {
@@ -76,4 +83,7 @@ jQuery(document).ready(function ($) {
         $DragOrientation: 3
     });
 });
+
+
+
 

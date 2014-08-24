@@ -1,6 +1,5 @@
 #about{
 	text-align: center;
-
 }
 
 #AboutPic{
@@ -16,28 +15,56 @@
 #AboutPic p{
 	font-size: 3.0em;
 	color: white;
-    padding-top: 550px;
+    padding-top: 350px;
 }
 
+#shadow {
+    height: 500px;
+    background: black;
+    background: url('../img/fake_brick.png') repeat;
+    opacity: 0;    
+}
 
 #welcome {
-	background: url('../img/binding_dark.png') repeat;
+    background: #7F98FD;
 	position: relative;
-	top: -10px;
+    height: 600px;
+}
+
+#welcome_text {
+    float: left;
+    width: 60%;
     color: white;
-}
-
-#welcome h1{
-	font-size: 3.0em;
-	font-family: 'Roboto', sans-serif;
-	padding: .5em;
-}
-
-#welcome p{
 	padding: .5em;
 	font-size: 2em;
+    padding-left: 3em;
+    padding-top: 1em;
 }
 
+#welcome_pic{
+    float: right;
+    width: 40%;
+    padding: 20px;
+}
+
+#social_media_links {
+    height: 400px;
+    background: white;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.fa-custom {
+    font-size: 10em;
+    color: gray;
+}
+
+.fa-custom:hover {
+    color: #7F98FD;
+}
+
+
+/*
 #vision {
 	background: url(../img/wordCloud.png);
 	background-repeat: no-repeat;
@@ -46,11 +73,11 @@
 	width: 100%;
 	height: 625px;
 	padding: .5em;
-}
+}*/
 
 #funFacts{
-	background-color: #7F98FD;
-
+	/*background-color: #7F98FD;*/
+    background-color: white;
 }
 
 #aboutFinal{
