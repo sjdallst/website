@@ -22,7 +22,7 @@
     height: 500px;
     background: black;
     background: url('../img/fake_brick.png') repeat;
-    opacity: 0;    
+    opacity: 0.2;    
 }
 
 #welcome {

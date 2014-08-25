@@ -55,7 +55,7 @@ $(function(){
         var scrolled = $(window).scrollTop();
         $('#picture-slideshow').css('top', (scrolled * 0.4) + 'px');
         $('#rush_content_1').css('top', (scrolled * 0.2) + 'px');
-        $('#shadow').css('opacity', (scrolled * 0.8 / 400) + '%')
+        $('#shadow').css('opacity', ((scrolled/400)*1));
     }
     $(window).scroll(function (e) {
         parallax();
