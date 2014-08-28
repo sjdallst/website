@@ -15,14 +15,14 @@
 #AboutPic p{
 	font-size: 3.0em;
 	color: white;
-    padding-top: 350px;
+    padding-top: 325px;
 }
 
 #shadow {
     height: 500px;
     background: black;
     background: url('../img/fake_brick.png') repeat;
-    opacity: 0.2;    
+    opacity: 0;    
 }
 
 #welcome {
@@ -41,6 +41,11 @@
     padding-top: 1em;
 }
 
+#welcome_text span {
+    color: #0835EE;
+    font-weight: bold;
+}
+
 #welcome_pic{
     float: right;
     width: 40%;
@@ -48,10 +53,10 @@
 }
 
 #social_media_links {
-    height: 400px;
+    height: 200px;
     background: white;
-    padding-top: 1em;
-    padding-bottom: 1em;
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
 }
 
 .fa-custom {
@@ -75,19 +80,21 @@
 	padding: .5em;
 }*/
 
-#funFacts{
-	/*background-color: #7F98FD;*/
-    background-color: white;
-}
-
 #aboutFinal{
-	background-color: #00F32A;
-	height:300px;
+	background: url('../img/binding_dark.png') repeat;
+	height:400px;
+    padding-top: 2.5em;
+    padding-right: 20px;
+    padding-left: 20px;
 }
 
 #aboutFinal p{
-	color: black;
-	font-size: 3.0em;
-	padding-top: 2em;
+	color: white;
+	font-size: 20px;
+}
+
+#aboutFinal img {
+    width: 40px;
+    height: 40px;
 }
 
