@@ -49,6 +49,16 @@
     margin: 0 auto;
 }
 
+#slideshow {
+    cursor: move; 
+    position: absolute; 
+    left: 0; 
+    top: 0; 
+    width: 100%;
+    height: 500px; 
+    overflow: hidden;
+}
+
 #image_1 {
     float: left;
     color: white;
@@ -272,7 +282,6 @@
     font-weight: bold;
     padding-top: 25px;
 }
-
 
 
 

@@ -8,51 +8,11 @@ _gaq.push(['_trackPageview']);
 	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 })();
 
-
-//Navigation Menu, for Mobile
-/*
-$(function(){
-	var pull		= $('#pull');
-		menu        = $('nav');
-		menuHeight	= menu.height();
-		isPulled	= 0;
-
-	$(pull).on('click', function(e){
-		e.preventDefault();
-		menu.slideToggle();
-		isPulled = 1;
-	});
-
-	$('.nav-link').on('click', function(e){
-		if(isPulled == 1){
-			menu.slideToggle();
-			isPulled = 0;
-		}
-	});
-
-	$(window).resize(function(){
-		var w = $(window).width();
-		if(w > 320 && menu.is(':hidden')) {
-			menu.removeAttr('style');
-		}
-	});
-});
-*/
-(function(){
-	function parallax(){
-		var scrolled = $(window).scrollTop();
-		$('#AboutPic').css('top', (scrolled * 0.2) + 'px');
-		$('#ExtraSpace').css('top', (scrolled * 0.2) + 'px');
-	}
-
-	$(window).scroll(function(e){
-		parallax();
-	});
-})();
-
 (function () {
     function parallax() {
         var scrolled = $(window).scrollTop();
+		$('#AboutPic').css('top', (scrolled * 0.2) + 'px');
+		$('#ExtraSpace').css('top', (scrolled * 0.2) + 'px');
         $('#picture-slideshow').css('top', (scrolled * 0.4) + 'px');
         $('#rush_content_1').css('top', (scrolled * 0.2) + 'px');
         $('#shadow').css('opacity', ((scrolled/300)*1));
@@ -63,14 +23,7 @@ $(function(){
 })();
 
 $(document).ready(function () {
-    $('.question_row_odd').click(function () {
-        $(this).siblings().slideToggle("slow");
-        $(this).find('i').toggleClass("fa-chevron-circle-down fa-chevron-circle-up");
-    })
-});
-
-$(document).ready(function () {
-    $('.question_row_even').click(function () {
+    $('.question_row_odd,.question_row_even').click(function () {
         $(this).siblings().slideToggle("slow");
         $(this).find('i').toggleClass("fa-chevron-circle-down fa-chevron-circle-up");
     })
@@ -78,9 +31,10 @@ $(document).ready(function () {
 
 // JSSOR slider https://github.com/jssor/jquery-slider
 jQuery(document).ready(function ($) {
-    var jssor_slider1 = new $JssorSlider$("picture-slideshow", {
-        $AutoPlay: true,
-        $DragOrientation: 3
+    $('.slider').sss({
+        slideShow : true, 
+        speed : 3500, // Slideshow speed in milliseconds.
+        showNav : false // Set to false to hide navigation arrows.
     });
 });
 

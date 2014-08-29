@@ -71,6 +71,11 @@ body {
     border-bottom: 5px #FFFFFF solid;
 }
 
+.nav-link-selected {
+    background-color: rgba(0,0,0,0.2);
+    border-bottom: 5px #FFFFFF solid;
+}
+
 /*
 *
 * CSS for index.html, HOME
@@ -178,9 +183,14 @@ p.home_square {
 
 
 
+#githubLink {
+    text-decoration: none;
+    color: #19FF19;
+}
 
-
-
+#githubLink:hover {
+    border-bottom: 3px solid #458FFF;
+}
 
 
 

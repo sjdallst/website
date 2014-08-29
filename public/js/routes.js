@@ -23,15 +23,12 @@ $('.nav-link').click(function (evt) {
     var section = evt.target.textContent.toLowerCase();
     showPage(section.toLowerCase());
     if (section == 'home') {
-      section = '';
-      updateTweets();
-      console.log("hit home"); 
+      section = ''; 
     } 
       
     window.history.pushState(section,section,'/'+section);
     $('.nav-link').removeClass('nav-link-selected');
     $(this).addClass('nav-link-selected');
-    console.log(section);
 });
 
 function showPage(section) {
