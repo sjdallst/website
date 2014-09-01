@@ -53,7 +53,7 @@ var $el = $('.writer'),
     timeOut,
     char = 0;
 
-$el.text('|');  
+$el.text('|');    
 
 function typeIt() {   	
     var humanize = Math.round(Math.random() * (200 - 30)) + 30;

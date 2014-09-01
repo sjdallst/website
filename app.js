@@ -1,7 +1,7 @@
-var express  = require('express');
-var app      = express();
+var express = require('express');
+var app = express();
 
-app.use(require('body-parser')());
+app.use(require('body-parser').urlencoded({extended:true}));
 // require('./auth/init')(app); // uncomment for login (mongodb dependency)
 
 app.get('/constitution', function (req, res) {
@@ -11,7 +11,7 @@ app.get('/constitution', function (req, res) {
 app.post('/interest', function (req, res) {
     var data = req.body
     var str = ''
-    for(var field in data) {
+    for (var field in data) {
         str += field + ': ' + data[field] + '\t'
     }
     str += '\n'

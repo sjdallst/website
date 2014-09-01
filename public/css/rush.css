@@ -34,7 +34,7 @@
 
 #rush {
     text-align: center;
-    font-family: 'roboto', sans-serif;
+    font-family: 'Lato', sans-serif;
     height: auto;
 }
 
@@ -102,19 +102,19 @@
 
 
 #rush_welcome {
-    background: white;
+    background: #FFFFFF;
 	position: relative;
 	top: -10px;
     padding: 1.8em;
     z-index: -2;
     text-align: justify;
+    height: 300px;
 }
 
 #rush_welcome p {
     font-size: 24px;
-    font-family: 'Roboto', sans-serif;
-    color: #0835EE;
-    width: 60%;
+    color: #555555;
+    width: 70%;
     margin: 0 auto;
 }
 
@@ -122,11 +122,11 @@
 
 #rush_calendar {
     text-align: left;
-    font-family: 'Roboto', sans-serif;
     color: white;
     padding: 1em;
+    padding-top: 30px;
     padding-bottom: 1.2em;
-    height: 720px;
+    height: 770px;
     background: url('../img/binding_dark.png') repeat;
     opacity: .9;
     position: relative;
@@ -136,14 +136,14 @@
 #rush_calendar h1 {
     text-align: center;
     font-weight: bold;
-    color: #0835EE;
+    color: #458FFF;
     font-size: 24px;
     padding: .5em;
 }
 
 #rush_calendar h2 {
     font-weight: bold;
-    color: #0835EE;
+    color: #458FFF;
     font-size: 16px;
 }
 
@@ -187,13 +187,14 @@
     position: relative;
     background: #e5e5e5;
     align-content: center;
-    padding-bottom: 25px;
+    padding-top: 40px;
+    padding-bottom: 40px;
 }
 
 #rush_faq h1 {
     text-align: center;
     font-weight: bold;
-    color: #0835EE;
+    color: #458FFF;
     font-size: 24px;
     padding: .5em;    
 }
@@ -238,7 +239,7 @@
 
 .question i {
     float: left;
-    color: #0835EE; 
+    color: #458FFF; 
     /*#00F32A;*/
     padding: 3px;
 }
@@ -260,8 +261,8 @@
 /*---------APPLICATION-------------*/
 
 #rush_application {
-    height: 75px;
-    background-color: #0835EE;
+    height: 90px;
+    background-color: #458FFF;
     color: white;
     font-size: 24px;
     padding: .5em;  
