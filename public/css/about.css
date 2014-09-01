@@ -22,13 +22,18 @@
     height: 500px;
     background: black;
     background: url('../img/fake_brick.png') repeat;
-    opacity: 0;    
+    opacity: 0;   
 }
+    #shadow p {
+        width: 92%;
+        margin-left: 4%;
+        margin-right: 4%;
+    }
 
 #welcome {
-    background: #7F98FD;
+    background: #458FFF;
 	position: relative;
-    height: 650px;
+    height: 680px;
 }
 
 #welcome_text {
@@ -37,20 +42,23 @@
     color: white;
 	padding: .5em;
 	font-size: 2em;
-    padding-left: 3em;
-    padding-top: 1em;
+    padding: 1.5em 0em 0em 3em;
     text-align: justify;
 }
 
 #welcome_text span {
-    color: #0835EE;
+    color: #99C2FE;
     font-weight: bold;
 }
+
+    .monospaced {
+        font-family: monospace;
+    }
 
 #welcome_pic{
     float: right;
     width: 40%;
-    padding: 20px;
+    padding: 2em 20px;
 }
 
 #social_media_links {
@@ -88,17 +96,19 @@
     padding-top: 2.5em;
     padding-right: 50px;
     padding-left: 50px;
+    text-align: justify;
 }
 
 #aboutFinal p{
-	color: white;
+	color: #FFFFFF;
 	font-size: 20px;
 }
 
 #aboutFinal img {
     margin-top: 10px;
     margin-bottom: 10px;
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
 }
+    .centered { text-align: center; }
 
