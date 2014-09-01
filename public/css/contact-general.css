@@ -44,7 +44,7 @@
     cursor: pointer;
 }
 
-.nl-form input:focus {
+.nl-form input:focus, select:focus, button:focus {
 	outline: none;
 }
 
