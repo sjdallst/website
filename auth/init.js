@@ -7,7 +7,6 @@ module.exports = function (app) { // async
     app.set('views',__dirname+'/views'); // use jade templating engine 
     app.set('view engine','jade'); // we only template the authenticated section of the website
     app.use(require('cookie-parser')()); // sessions are persisted with the help of cookies 
-    app.use(require('body-parser').urlencoded({extended:true})); // allow urlencoded form input
     app.use(session({ 
         secret: 'justinLikesTenticles', // salt the cookies
         store: new store({              // place on 2'x2' baking sheet
