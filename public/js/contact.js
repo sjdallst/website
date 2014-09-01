@@ -74,4 +74,4 @@ $(document).ready(function(){
 		    $(this).animate({ width: "100px" }, {queue: false});
 	});
 
-	});
+});

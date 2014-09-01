@@ -59,6 +59,8 @@ body {
     cursor: pointer;
     letter-spacing: 0.1em;
     border-bottom: 5px rgba(0,0,0,0) solid;
+    -webkit-transition: 350ms;
+    transition: 350ms;
 }
 
 .nav-link:hover{
@@ -186,6 +188,8 @@ p.home_square {
 #githubLink {
     text-decoration: none;
     color: #19FF19;
+    -webkit-transition: 350ms;
+    transition: 350ms;
 }
 
 #githubLink:hover {

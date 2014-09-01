@@ -38,6 +38,11 @@ jQuery(document).ready(function ($) {
     });
 });
 
+$('#nl-form').submit( function (evt) {
+    evt.preventDefault();
+    $.post('/interest', $('#nl-form').serialize(), function (data) {
+    });
+});
 
 
 

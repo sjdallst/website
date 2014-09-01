@@ -63,6 +63,8 @@
 .fa-custom {
     font-size: 10em;
     color: gray;
+    -webkit-transition: 350ms;
+    transition: 350ms;
 }
 
 .fa-custom:hover {

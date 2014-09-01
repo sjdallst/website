@@ -1,6 +1,7 @@
 var express  = require('express');
 var app      = express();
 
+app.use(require('body-parser')());
 // require('./auth/init')(app); // uncomment for login (mongodb dependency)
 
 app.get('/constitution', function (req, res) {
@@ -8,8 +9,13 @@ app.get('/constitution', function (req, res) {
 });
 
 app.post('/interest', function (req, res) {
-	var str = 'name: ' + req.body.name + ' email: ' + req.body.email + ' year: ' + req.body.year + '\n';
-	require('fs').appendFile('data/interest.txt',str, function(err){
+    var data = req.body
+    var str = ''
+    for(var field in data) {
+        str += field + ': ' + data[field] + '\t'
+    }
+    str += '\n'
+	require('fs').appendFile('data/interest.txt', str, function(err){
 		res.send('Thanks!');
 	});
 });
