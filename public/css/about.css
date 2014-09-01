@@ -55,6 +55,25 @@
         font-family: monospace;
     }
 
+    @-webkit-keyframes blink {
+        from, to { border-color: transparent }
+        50% { border-color: #99C2FE; }
+    }
+
+    @-moz-keyframes blink {
+        from, to { border-color: transparent }
+        50% { border-color: #99C2FE; }
+    }
+
+    .monospacedCursor {
+        width:100px;
+        height:100px;
+        border-left: 8px solid #99C2FE;
+        font-family: monospace;
+        -webkit-animation: 1s blink step-end infinite;
+        -moz-animation: 1s blink step-end infinite;
+    }
+
 #welcome_pic{
     float: right;
     width: 40%;
@@ -76,7 +95,7 @@
 }
 
 .fa-custom:hover {
-    color: #7F98FD;
+    color: #458FFF;
 }
 
 

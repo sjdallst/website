@@ -108,6 +108,7 @@
     padding: 1.8em;
     z-index: -2;
     text-align: justify;
+    height: 300px;
 }
 
 #rush_welcome p {
