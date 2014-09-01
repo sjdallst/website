@@ -74,6 +74,10 @@
         -moz-animation: 1s blink step-end infinite;
     }
 
+div #welcome_text p .signedoff {
+    text-align: right;
+}
+
 #welcome_pic{
     float: right;
     width: 40%;
