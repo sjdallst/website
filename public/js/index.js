@@ -38,9 +38,29 @@ jQuery(document).ready(function ($) {
     });
 });
 
+// DOM's api
+function makeElt(e,t){var n=document.createElement(e);n.appendElt=function(e,t){return this.appendChild(makeElt(e,t))};if(t==undefined)return n;if(t.class!=undefined)n.className=t.class;if(t.text!=undefined)n.textContent=t.text;for(var r in t){n[r]=t[r]}return n}
+
 $('#nl-form').submit( function (evt) {
     evt.preventDefault();
     $.post('/interest', $('#nl-form').serialize(), function (data) {
+        $('#contact').animate({
+            opacity: 0
+        },500, function () {
+            var div = makeElt('div',{                
+                id:'contact',
+                class:'page'
+            })
+            div.appendElt('h1',{
+                class:'nl-form',
+                text:'Thanks! We\'ll be in touch!',
+                style:'position:absolute;top:30%;text-align:center;opacity:0;'
+            })
+            $('#contact').replaceWith(div)
+            $('#contact').animate({
+                opacity: 1
+            },1000)
+        })
     });
 });
 
