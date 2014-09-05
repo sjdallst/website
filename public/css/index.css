@@ -168,14 +168,19 @@ p.home_square {
     height: 500px;
 }
 
-#home_content_3 > p {
+#github_content > p {
     font-size: 2.5em;
     font-family: 'roboto', sans-serif;
     color: white;
-    padding-top: 5em;
-    padding-left: 2em;
-    padding-right: 2em; 
     line-height: 1.5em;   
+}
+
+#github_content {
+    padding: 2em;
+    padding-top: 10em;
+    margin-left: auto;
+    margin-right: auto;
+
 }
 
 .fa-twitter {
