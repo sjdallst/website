@@ -363,11 +363,12 @@
 @media only screen and (max-width : 500px) {
 
     #rush_welcome {
-        height: 310px;
+        height: 340px;
+        padding: 2.6em;
     }
 
     #rush_calendar {
-        height: 900px;
+        height: 1000px;
     }
 
     #calendar_list {
@@ -375,8 +376,21 @@
     }
 
     .image {
+        width: 100%;
         font-size: 2em;
-        padding-top: 8em!important;
+        padding-top: 4.5em!important;
+    }
+
+    #image_2 {
+        font-size: 1.9em;
+    }
+
+    #rush_welcome p {
+        font-size: 18px;
+    }
+
+    #picture-slideshow img {
+        height: 300px;
     }
 
 }

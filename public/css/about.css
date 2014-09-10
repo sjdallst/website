@@ -221,8 +221,35 @@ div #welcome_text p .signedoff {
 @media only screen and (max-width : 525px) {
 
     .social_niceSquare {
-        width: 10em;
+        width: 6em;
+        font-size: .3em;
     }
+
+    #welcome {
+        height: 720px;
+    }
+
+    #social_media_links {
+        height: 100px;
+    }
+
+    #welcome_text {
+        text-align: center;
+    }
+
+    #aboutLastParagraph {
+        display: none;
+    }
+
+    #shadow {
+        opacity: .5!important;
+    }
+
+    #AboutPic p {
+        padding-top: 215px;
+    }
+
+
 
 }
 
