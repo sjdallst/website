@@ -38,6 +38,10 @@
     height: auto;
 }
 
+#googleCalLink {
+    display: none;
+}
+
 /*--------Picture Slideshow-----------*/
 #picture-slideshow {
     position: relative;
@@ -58,7 +62,7 @@
 
 .image {
     color: white;
-    font-size: 100px;
+    font-size: 6em;
     font-family: 'roboto', sans-serif;
     width: 50%;
     height: 100%;
@@ -105,9 +109,8 @@
     background: #FFFFFF;
 	position: relative;
 	top: -10px;
-    padding: 1.8em;
+    padding: 3.8em;
     z-index: -2;
-    text-align: justify;
     height: 300px;
 }
 
@@ -150,6 +153,7 @@
 #calendar_list {
     width: 50%;
     float: right;
+    padding-bottom: 2em;
 }
 
 #rush ul {
@@ -269,6 +273,114 @@
     font-weight: bold;
     padding-top: 25px;
 }
+
+
+/* mobile css for da rush doe */
+
+/* JDUBS
+ * For now it's to clean it up, could be better for sure
+ *
+ */ 
+
+
+@media only screen and (max-width : 1280px) {
+    #event_calendar {
+        display: none;
+    }
+
+    #googleCalLink {
+        display: block;
+        color: rgb(162, 162, 241);
+        text-align: center;
+    }
+
+    #calendar_list {
+        width: 100%;
+        text-align: center;
+    }
+
+    #calendar_list > ul > li {
+        list-style-type: none;
+    }
+
+    .image {
+        font-size: 4em;
+        padding-top: 3em!important;
+    }
+
+    #image_4 {
+        padding-top: 2.5em;
+    }
+
+
+}
+
+@media only screen and (max-width : 900px) {
+    #rush_welcome {
+        padding: 3.8em;
+        height: 260px;
+    }
+    #rush_welcome p {
+        font-size: 20px;
+        width: 100%;
+    }
+
+    .question_row_odd {
+        font-size: 16px;
+    }
+
+    .question_row_even {
+        font-size: 16px;
+    }
+
+    .answer_row p {
+        font-size: 16px;
+    }
+
+
+}
+
+@media only screen and (max-width : 700px) {
+
+    #rush_welcome {
+        padding: 2.8em;
+    }
+
+
+}
+
+
+
+@media only screen and (max-width : 600px) {
+
+    #rush_calendar {
+        height: 870px;
+    }
+
+}
+
+
+@media only screen and (max-width : 500px) {
+
+    #rush_welcome {
+        height: 310px;
+    }
+
+    #rush_calendar {
+        height: 900px;
+    }
+
+    #calendar_list {
+        padding-bottom: .5em;
+    }
+
+    .image {
+        font-size: 2em;
+        padding-top: 8em!important;
+    }
+
+}
+
 
 
 

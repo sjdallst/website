@@ -222,3 +222,72 @@ p.home_square {
     background-color: yellow;
 }
 
+
+
+
+
+
+
+/* mobile css for da index doe */
+
+/* JDUBS
+ * For now it's to clean it up, could be better for sure
+ *
+ */ 
+
+
+/* Tablets...most (portrait and landscape) ----------- */
+@media only screen and (max-width : 1024px) {
+
+    /*--HOME CSS--*/
+
+    #home h1 {
+        font-size: 5.8em;
+        padding: 0.2em;
+        padding-top: 2.6em;
+    }
+    #home_content_3 > p {
+        padding-top: 4.5em;   
+    }
+
+}
+
+
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (max-width : 480px) {
+
+    #home h1 {
+        padding-top: 2.0em;
+    }
+
+}
+
+
+
+/* adjusting just for icons here...more height is all is needed */
+@media only screen and (max-width : 870px) {
+    #home_content_2 {
+        height: 540px;
+    }
+}
+@media only screen and (max-width : 579px) {
+    #home_content_2 {
+        height: 820px;
+    }
+}
+
+
+
+
+@media only screen and (max-width : 530px) {
+    #github_content {
+        padding-top: 8em;
+    }
+
+    .nav-link {
+        padding: 1em 0.3em;
+    } 
+}
+
+

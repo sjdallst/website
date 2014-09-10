@@ -48,6 +48,11 @@
 	outline: none;
 }
 
+.nl-form select:focus {
+	background-color: #00F32A;
+	opacity: .6;
+}
+
 /* custom field (drop-down, text element) styling  */
 .nl-field {
 	display: inline-block;

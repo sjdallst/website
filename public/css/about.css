@@ -135,3 +135,96 @@ div #welcome_text p .signedoff {
 }
     .centered { text-align: center; }
 
+
+.social_niceSquare {
+    display: inline-block;
+    height: 15em;
+    width: 15em;
+/*    border: 2px solid black;
+    background-color: gray;*/
+    margin-right: 1.5em;
+    margin-left: 1.5em;
+}
+
+
+
+
+
+/* mobile css for about doe */
+
+/* JDUBS
+ * For now it's to clean it up, could be better for sure
+ *
+ */ 
+
+
+/* Tablets...most (portrait and landscape) ----------- */
+@media only screen and (max-width : 1024px) {
+
+    /*--HOME CSS--*/
+
+    #home h1 {
+        font-size: 5.8em;
+        padding: 0.2em;
+        padding-top: 2.6em;
+    }
+    #home_content_3 > p {
+        padding-top: 4.5em;   
+    }
+
+}
+
+
+
+@media only screen and (max-width : 1175px) {
+
+    #welcome_text {
+        text-align: center;
+        width: 100%;
+        padding: .5em;
+    }
+    #welcome_pic {
+        display: none;
+    }
+
+    .social_niceSquare {
+        font-size: .6em;
+    }
+
+    #social_media_links {
+        height: 150px;
+    }
+
+}
+
+@media only screen and (max-width : 736px) {
+
+    #AboutPic {
+        background-position: center;
+    }
+
+    #AboutPic p {
+        font-size: 1.9em;
+    }
+
+}
+
+
+@media only screen and (max-width : 700px) {
+
+    #welcome_text {
+        font-size: 1.5em;
+    }
+
+}
+
+@media only screen and (max-width : 525px) {
+
+    .social_niceSquare {
+        width: 10em;
+    }
+
+}
+
+
+
