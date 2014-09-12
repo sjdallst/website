@@ -20,6 +20,40 @@ app.post('/interest', function (req, res) {
 	});
 });
 
+//////// application stuff //////////
+
+var formidable = require('formidable'),
+    fs = require('fs')
+
+app.get('/application', function (req,res) {
+    res.sendfile('public/application.html');
+});
+
+app.post('/application', function (req,res) {
+    var form = new formidable.IncomingForm();
+    form.parse(req, function(err, fields, files) {
+        fs.mkdir('./data/'+fields.uniqname, function (err) {
+            if(err && err.code !== 'EEXIST') throw err;
+            var application = ''
+            for(var field in fields) {
+                application += field + ':\r\n'
+                application += fields[field] + '\r\n'
+            }
+            fs.writeFile('./data/'+fields.uniqname+'/application.txt', application, function (err) {
+                if(err) throw err;
+            })
+            for(var file in files) {                
+                fs.rename(files[file].path,'./data/'+fields.uniqname+'/'+files[file].name, function (err) {
+                    if(err) throw err;
+                })
+            }
+        })
+    })
+    res.send('<html><body><center><br><h1>Thank you!</h1></center></body></html>');
+});
+
+////////// main page routing ////////////
+
 app.get('/:section', serveIndex);
 app.get('/', serveIndex);
 function serveIndex (req,res) {
@@ -48,3 +82,7 @@ app.use(express.static(__dirname+'/public'));
 app.listen(3000,function(){
 	console.log('KTP web server listening on port 3000!');
 });
+
+process.on('uncaughtException', function (err) {
+    console.log(err);
+})
