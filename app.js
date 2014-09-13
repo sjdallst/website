@@ -6,7 +6,7 @@ app.use(require('body-parser').urlencoded({extended:true}));
 
 app.get('/constitution', function (req, res) {
     res.sendfile('public/constitution/index.html');
-});
+})
 
 app.post('/interest', function (req, res) {
     var data = req.body
@@ -53,8 +53,9 @@ app.post('/application', function (req,res) {
 });
 
 ////////// main page routing ////////////
+app.use(express.static(__dirname+'/public'));
 
-app.get('/:section', serveIndex);
+app.get('/:section', serveIndex); // note, this is bugged, s.t. its confising to add normal routes
 app.get('/', serveIndex);
 function serveIndex (req,res) {
     res.sendfile('public/index.html');
@@ -76,8 +77,6 @@ function serveIndex (req,res) {
 // 	});
 // });
 
-
-app.use(express.static(__dirname+'/public'));
 
 app.listen(3000,function(){
 	console.log('KTP web server listening on port 3000!');

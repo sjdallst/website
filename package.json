@@ -21,7 +21,8 @@
     "passport": "0.2.0",
     "passport-local": "1.0.0",
     "serve-index": "1.1.4",
-    "twitter": "0.2.9"
+    "twitter": "0.2.9",
+    "directory": "latest"
   },
   "devDependencies": {
     "grunt": "~0.4.2",
