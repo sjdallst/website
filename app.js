@@ -26,7 +26,9 @@ var formidable = require('formidable'),
     fs = require('fs')
 
 app.get('/application', function (req,res) {
-    res.sendfile('public/application.html');
+    var end = new Date(2014, 8, 20)
+    if(Date.now() > end.getTime()) res.send('Application closed'); 
+    else res.sendfile('public/application.html');
 });
 
 app.post('/application', function (req,res) {
