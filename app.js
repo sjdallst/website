@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 
 app.use(require('body-parser').urlencoded({extended:true}));
-// require('./auth/init')(app); // uncomment for login (mongodb dependency)
+// require('./app/main')(app); // uncomment for login (mongodb dependency)
 
 app.get('/constitution', function (req, res) {
     res.sendfile('public/constitution/index.html');
@@ -80,10 +80,13 @@ function serveIndex (req,res) {
 // });
 
 
-app.listen(3000,function(){
-	console.log('KTP web server listening on port 3000!');
-});
-
-process.on('uncaughtException', function (err) {
-    console.log(err);
-})
+if (process.env.NODE_ENV !== 'serv') {
+    app.listen(3000)
+} else {
+    console.log('LIVE')
+    app.listen(80)
+    process.on('uncaughtException', function (err) {
+        console.dir(err)
+        console.trace(err)
+    })
+}
