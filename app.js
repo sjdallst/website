@@ -1,6 +1,8 @@
 var express = require('express');
 var app = express();
 
+//swag
+
 app.use(require('body-parser').urlencoded({extended:true}));
 // require('./auth/init')(app); // uncomment for login (mongodb dependency)
 
