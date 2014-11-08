@@ -1,0 +1,21 @@
+section
+    if message.length > 0
+        div= message
+    form(action='/app/login',method='post',style='position:absolute;top:40%;left:40%;')
+        div
+            input#e(type='text',name='email',required,placeholder='Email')
+        div
+            input#p(type='password',name='password',required,placeholder='Password')
+        button#b(type='submit',style='display:none;') Login
+    script.
+        var em = false
+        var pw = false
+        function hasInput (evt) {
+            if (evt.target.id == 'e') em = true
+            if (evt.target.id == 'p') pw = true
+            if(em && pw) {
+                document.getElementById('b').style.cssText = ''
+            }
+        }
+        document.getElementById('e').addEventListener('input', hasInput)
+        document.getElementById('p').addEventListener('input', hasInput)

@@ -1,39 +1,34 @@
 var express = require('express');
-var app = express();
+var server = express();
 
-//swag
+require('./app')(server); // uncomment for login (mongodb dependency)
 
-app.use(require('body-parser').urlencoded({extended:true}));
-// require('./app/main')(app); // uncomment for login (mongodb dependency)
+server.use(require('body-parser').urlencoded({extended:true}));
 
-app.get('/constitution', function (req, res) {
-    res.sendfile('public/constitution/index.html');
-})
-
-app.post('/interest', function (req, res) {
+server.post('/interest', function (req, res) {
     var data = req.body
     var str = ''
     for (var field in data) {
         str += field + ': ' + data[field] + '\t'
     }
     str += '\n'
-	require('fs').appendFile('data/interest.txt', str, function(err){
+	require('fs').appendFile('app/data/interest.txt', str, function(err){
 		res.send('Thanks!');
 	});
 });
 
-//////// application stuff //////////
+//////// rush application stuff //////////
 
 var formidable = require('formidable'),
     fs = require('fs')
 
-app.get('/application', function (req,res) {
+server.get('/application', function (req,res) {
     var end = new Date(2014, 8, 20)
     if(Date.now() > end.getTime()) res.send('Application closed'); 
     else res.sendfile('public/application.html');
 });
 
-app.post('/application', function (req,res) {
+server.post('/application', function (req,res) {
     var form = new formidable.IncomingForm();
     form.parse(req, function(err, fields, files) {
         fs.mkdir('./data/'+fields.uniqname, function (err) {
@@ -57,36 +52,17 @@ app.post('/application', function (req,res) {
 });
 
 ////////// main page routing ////////////
-app.use(express.static(__dirname+'/public'));
+server.get(['/','/home','/about','/rush','/contact'], function (req,res) {
+    return res.sendfile('public/index.html')
+})
 
-app.get('/:section', serveIndex); // note, this is bugged, s.t. its confising to add normal routes
-app.get('/', serveIndex);
-function serveIndex (req,res) {
-    res.sendfile('public/index.html');
-}
-
-// // initialize twitter on start of server, rather than on each /fetch-tweets request
-// // authenticating twitter account
-// var twit = new require('twitter')({
-//     consumer_key: '3xxHwU4Aj3PLFf0SG2C77pfeD',
-//     consumer_secret: '5tp9lYTn7KdWNb9GNi1yqrzBYWnwuDeT331NZdUfGohmfHkR6P',
-//     access_token_key: '1213699087-BvXlfRn4ijklwKU5S7pdVKsCf58uUr29Glf0r3Q',
-//     access_token_secret: 'JO7OZbGA363nJ19EGoNL5jrXqrh0lLIiAsBXDVrMrKMuJ'
-// });
-
-// app.get('/api/fetch-tweets', function (req,res) {
-// 	twit.get('/statuses/user_timeline.json?', { count: 5 }, function (tweets) {
-// 		var arr = tweets.map(function (elt) { return elt.text; });
-// 		res.send(arr)
-// 	});
-// });
-
+server.use(express.static(__dirname+'/public'));
 
 if (process.env.NODE_ENV !== 'serv') {
-    app.listen(3000)
+    server.listen(3000)
 } else {
     console.log('LIVE')
-    app.listen(80)
+    server.listen(80)
     process.on('uncaughtException', function (err) {
         console.dir(err)
         console.trace(err)

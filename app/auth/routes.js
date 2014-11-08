@@ -7,7 +7,7 @@ module.exports = function (app,passport) {
 
     app.post('/signup', passport.authenticate('local-signup', {
         successRedirect : '/app',
-        failureRedirect : '/signup',
+        failureRedirect : '/app/signup',
         failureFlash : true 
     }));
 
@@ -18,7 +18,7 @@ module.exports = function (app,passport) {
 
     app.post('/login', passport.authenticate('local-login', {
         successRedirect : '/app',
-        failureRedirect : '/login',
+        failureRedirect : '/app/login',
         failureFlash : true 
     }));
 
@@ -27,13 +27,9 @@ module.exports = function (app,passport) {
         res.redirect('/');
     });
 
-    app.get('/app', auth, function (req, res) {
-        res.render('app',{user:req.user});
-    });
-
 }
 
 function auth(req, res, next) { 
     if (req.isAuthenticated()) return next(); // if user is authenticated in the session, carry on
-    else return res.redirect('/login'); // if they aren't redirect them to the home page
+    else return res.redirect('/app/login'); // if they aren't redirect them to the home page
 }

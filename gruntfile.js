@@ -1,54 +1,67 @@
-module.exports = function(grunt) {
-  grunt.initConfig({
-    pkg: grunt.file.readJSON('package.json'),
-    jshint: {
-      src: ['*.js','public/js/*']
-    },
-    watch: {
-        views: {
-            files: ['public/**'],
+module.exports = function(grunt) { 
+    grunt.initConfig({
+        pkg: grunt.file.readJSON('package.json'),
+
+        CLIENT_DIR: 'app/client',
+        uglify: {
             options: {
-                livereload: true,
+                banner: '/*! Kappa Theta Pi - <%= grunt.template.today("mm-dd-yyyy") %> - ☮ & ♥ */\n'
             },
-        },
-        js: {
-            files: ['public/js/**'],
-            tasks: ['jshint'],
-            options: {
-                livereload: true,
-            },
-        },
-        css: {
-            files: ['public/css/**'],
-            options: {
-                livereload: true
+            compile: {
+                files: {
+                    'public/js/app.min.js': ['<%= browserify.compile.dest %>']
+                }
             }
-        }
-    },
-    nodemon: {
-      dev: {
-        options: {
-          file: 'app.js',
-          args: [],
-          ignoredFiles: ['node_modules/**', '.DS_Store'],
-          watchedExtensions: ['js'],
-          watchedFolders: ['.'],
-          debug: true,
-          delayTime: 1,
-          cwd: __dirname
-          }
-        }
-    },
-    concurrent: {
-        tasks: ['nodemon', 'watch'],
-        options: {
-            logConcurrentOutput: true
-        }
-    },
-  });
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-nodemon');
-  grunt.loadNpmTasks('grunt-concurrent');
-  grunt.registerTask('default', ['jshint', 'concurrent']);
+        },
+        browserify: {
+            compile: {
+                src: ['<%= CLIENT_DIR %>/app.js'],
+                dest: 'public/js/app.js'
+            }
+        },
+        stylus: {
+            compile: {
+                options: {
+                    compress: true
+                },
+                src: ['<%= CLIENT_DIR %>/app.styl'],
+                dest: 'public/css/app.min.css'
+            }
+        },
+        nodemon: {
+            dev: {
+                script: 'server.js'
+            }
+        },
+        watch: {
+            browserify: {
+                files: ['<%= CLIENT_DIR %>/**/*.js','<%= CLIENT_DIR %>/app.js'],
+                tasks: ['browserify:compile','uglify:compile']
+            },
+            stylus: {
+                files: ['<%= CLIENT_DIR %>/**/*.styl','<%= CLIENT_DIR %>/app.styl'],
+                tasks: ['stylus:compile']
+            },
+            src: {
+                files: ['app/model/*.js']
+            }
+        },
+        concurrent: {
+            tasks: ['watch','nodemon'],
+            options: {
+                logConcurrentOutput: true
+            }
+        },
+    });
+    
+    grunt.loadNpmTasks('grunt-browserify');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-jade');
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-stylus');
+    grunt.loadNpmTasks('grunt-nodemon');
+    grunt.loadNpmTasks('grunt-concurrent');
+    grunt.registerTask('prototype', ['jade:prototype','stylus:prototype','watch:prototype','concurrent']);
+    grunt.registerTask('compile', ['stylus:compile','browserify:compile','uglify:compile']);
+    grunt.registerTask('default', ['compile','concurrent']);
 };
