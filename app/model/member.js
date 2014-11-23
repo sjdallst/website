@@ -1,6 +1,8 @@
-var mongoose = require('mongoose');
+var restful = require('node-restful') // https://github.com/baugarten/node-restful
+var mongoose = restful.mongoose
 
-var memberSchema = mongoose.Schema({
+// create the model for accounts and expose it to our app & api
+var Member = restful.model('Member', mongoose.Schema({
 
     account: { type: mongoose.Schema.Types.ObjectId, ref: 'Account' },
     name: {
@@ -13,10 +15,8 @@ var memberSchema = mongoose.Schema({
     committees: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Committee' }],
     main_committee: { type: mongoose.Schema.Types.ObjectId, ref: 'Committee' }
 
-});
+})).methods(['get', 'put']); // expose all restful methods (members can be loaded and updated)
 
-// create the model for accounts and expose it to our app
-var Member = mongoose.model('Member', memberSchema);
 var newAccount = require(__dirname+'/../auth/account.js').newAccount
 
 Member.addMember = function (uniqname,password,first_name,last_name,service_hours,pro_dev_events,cb) {
