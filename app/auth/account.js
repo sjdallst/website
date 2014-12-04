@@ -6,7 +6,7 @@ var accountSchema = mongoose.Schema({
     email: String,
     password: String,
     type: String,
-    id: mongoose.Schema.Types.ObjectId
+    ref: mongoose.Schema.Types.ObjectId
 
 });
 

@@ -9,9 +9,10 @@ module.exports = function (passport) {
         done(null, account.id);
     });
     passport.deserializeUser(function(id, done) {
+        console.log(id)
         Account.findById(id, function (err, account) {
-            if(err) throw err;
-            else if(account.member) Member.findById(account.member, done);
+            if(err) done(err,null);
+            else if(account.type == 'member') Member.findById(account.ref, done);
             else done(null, account);
         });
     });
@@ -24,12 +25,11 @@ module.exports = function (passport) {
     },
     function(req, email, password, done) {
         process.nextTick(function() {
-            Account.findOne({ 'email' :  email }, function(err, account) {
+            Member.findOne({ 'email' :  email }, function(err, member) {
+                console.log(member)
                 if (err) return done(err);
-                if (account) {
-                    return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
-                } else {
-                    Account.newAccount(email,password,done);
+                if (member) {
+                    return done(null, member);
                 }
             });    
         });

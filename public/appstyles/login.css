@@ -1,0 +1,61 @@
+.login form {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.login input {
+    border: none;
+    width: 100%;
+    height: 50%;
+    left: 10%;
+    padding: 100px;
+    font-size: 200;
+    text-transform: uppercase;
+    color: rgba(25,255,25,0.5);
+}
+
+*:focus {
+    outline: 0;
+}
+
+button {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 40%;
+    height: 100%; 
+    border: none;
+    background-color: white;
+    color: #458fff;
+    font-size: 500;
+    transition: 1000ms;
+    border: 0px solid white; 
+}
+
+button:active {
+    transition: 100ms;
+    color: #19ff19; 
+}
+
+/*button:hover {
+    transition: 2000ms;
+    background-color: #19ff19;
+    color: white;
+}
+*/
+.first {
+    background-color: #19ff19;
+    color: #458fff;
+}
+
+.second {
+    background-color: #458fff;
+    color: #19ff19;
+}
+
+.third {
+    color: white;
+}

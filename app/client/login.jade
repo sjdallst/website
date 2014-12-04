@@ -1,12 +1,14 @@
-section
+link(rel='stylesheet', href='/appstyles/login.css')
+section.login
     if message.length > 0
         div= message
-    form(action='/app/login',method='post',style='position:absolute;top:40%;left:40%;')
+    form(action='/app/login',method='post')
         div
-            input#e(type='text',name='email',required,placeholder='Email')
+            input#e(type='text',name='email',required,placeholder='Email',autocomplete="off")
         div
-            input#p(type='password',name='password',required,placeholder='Password')
-        button#b(type='submit',style='display:none;') Login
+            input#p(type='password',name='password',required,placeholder='Password',autocomplete="off")
+        button#b(type='submit',style='opacity:0;color:#19ff19;') &#10171;
+    script(src='/lib/js/jquery.min.js')
     script.
         var em = false
         var pw = false
@@ -14,8 +16,18 @@ section
             if (evt.target.id == 'e') em = true
             if (evt.target.id == 'p') pw = true
             if(em && pw) {
-                document.getElementById('b').style.cssText = ''
+                document.getElementById('b').style.cssText = 'opacity:1;'
             }
         }
+        $('#b').hover(function() {
+            $('#b').addClass('first')
+            setTimeout(function() {
+                $('#b').addClass('second')
+            },1000)
+            setTimeout(function() {
+                $('#b').addClass('third')
+            },2000)
+        })
+       
         document.getElementById('e').addEventListener('input', hasInput)
         document.getElementById('p').addEventListener('input', hasInput)

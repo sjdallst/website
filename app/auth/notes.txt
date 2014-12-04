@@ -5,3 +5,8 @@ Make token with: https://github.com/hokaccha/node-jwt-simple
 Apparently, to integrate with passport: https://github.com/jaredhanson/passport-http-bearer
 
 Reference: http://stackoverflow.com/questions/13933980/make-a-secure-oauth-api-with-passport-js-and-express-js-node-js
+
+
+
+may be serializing user data into cookie.
+check cookies before and after login / signup by vivergy

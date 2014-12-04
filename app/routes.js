@@ -2,6 +2,8 @@ module.exports = function (app) {
 
     app.use(auth) // ensure that all app requests are authenticated
 
+    // app.get('/data',require('serve-index')(__dirname+'/data'))
+
     // kappathetapi.com/app/
     app.get('/', function (req, res) {
         return res.render('app',{member:req.user})
