@@ -1,7 +1,7 @@
 var express = require('express');
 var server = express();
 
-require('./app')(server); // uncomment for login (mongodb dependency)
+// require('./app')(server); // uncomment for login (mongodb dependency)
 
 server.use(require('body-parser').urlencoded({extended:true}));
 
@@ -23,7 +23,7 @@ var formidable = require('formidable'),
     fs = require('fs')
 
 server.get('/application', function (req,res) {
-    var end = new Date(2014, 8, 20)
+    var end = new Date(2015, 0, 24)
     if(Date.now() > end.getTime()) res.send('Application closed'); 
     else res.sendfile('public/application.html');
 });
