@@ -1,3 +1,9 @@
+Get started  
+===========  
+git clone https://github.com/ktp-dev/website.git  
+  
+turn up  
+  
 KTP WEBSITE FRAMEWORK  
 =====================  
   
@@ -22,11 +28,6 @@ public/
 package.json 		-file describing project and node dependencies  
 app.js 				-node.js express application  
 gruntfile.js 		-automated javascript
-
-:extras
-data/				-good ol' port:6969
-auth/				-code for login and routing the web-app
-
 
 HOW TO CONTRIBUTE  
 =================  

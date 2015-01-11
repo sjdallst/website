@@ -1,7 +1,7 @@
 var express = require('express');
 var server = express();
 
-require('./app')(server); // uncomment for login (mongodb dependency)
+require(__dirname+'/app')(server); // uncomment for login (mongodb dependency)
 
 server.use(require('body-parser').urlencoded({extended:true}));
 
