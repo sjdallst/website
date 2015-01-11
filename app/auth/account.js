@@ -1,5 +1,5 @@
-var mongoose = require('mongoose');
-var bcrypt   = require('bcrypt-nodejs');
+var mongoose = require('node-restful').mongoose
+var bcrypt   = require('bcrypt-nodejs')
 
 var accountSchema = mongoose.Schema({
 
@@ -8,12 +8,12 @@ var accountSchema = mongoose.Schema({
     type: String,
     ref: mongoose.Schema.Types.ObjectId
 
-});
+})
 
 // hash the password so our admin can't read them
 function generateHash (password, next){
     return bcrypt.hash(password, bcrypt.genSaltSync(8), null, next);
-};
+}
 
 // this allows us to validate a password in ciphertext
 accountSchema.methods.validPassword = function(password, next) {
@@ -29,8 +29,8 @@ Account.newAccount = function (email,password,cb) {
         var newAccount = new Account({email:email,password:hash});
         newAccount.save(function(err) {
             return cb(err, newAccount);
-        });
-    });
+        })
+    })
 }
 
 module.exports = Account;

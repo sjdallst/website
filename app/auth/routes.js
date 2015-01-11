@@ -28,8 +28,3 @@ module.exports = function (app,passport) {
     });
 
 }
-
-function auth(req, res, next) { 
-    if (req.isAuthenticated()) return next(); // if user is authenticated in the session, carry on
-    else return res.redirect('/app/login'); // if they aren't redirect them to the home page
-}
