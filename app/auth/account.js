@@ -1,5 +1,5 @@
 var mongoose = require('node-restful').mongoose
-var bcrypt   = require('bcrypt-nodejs')
+var bcrypt = require('bcrypt-nodejs')
 
 var accountSchema = mongoose.Schema({
 

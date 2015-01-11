@@ -15,7 +15,7 @@ var Member = restful.model('Member', mongoose.Schema({
     committees: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Committee' }],
     main_committee: { type: mongoose.Schema.Types.ObjectId, ref: 'Committee' }
 
-})).methods(['get', 'put']); // expose all restful methods (members can be loaded and updated)
+})).methods(['get', 'put']) // expose all restful methods (members can be loaded and updated)
 
 var newAccount = require(__dirname+'/../auth/account.js').newAccount
 
