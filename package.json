@@ -16,23 +16,25 @@
     "express-session": "1.5.1",
     "formidable": "1.0.15",
     "jade": "1.3.1",
+    "mongodb": "1.4.28",
     "mongoose": "3.8.12",
+    "node-restful": "0.1.17",
     "passport": "0.2.0",
     "passport-local": "1.0.0",
-    "twitter": "0.2.9",
     "serve-index": "1.6.0",
-    "node-restful": "0.1.17"
+    "twitter": "0.2.9"
   },
   "devDependencies": {
     "grunt": "latest",
-    "grunt-contrib-jade": "latest",
-    "grunt-contrib-watch": "latest",
-    "grunt-contrib-stylus": "latest",
-    "grunt-contrib-jshint": "latest",
-    "grunt-contrib-uglify": "latest",
-    "grunt-nodemon": "latest",
+    "grunt-browserify": "latest",
     "grunt-concurrent": "latest",
-    "grunt-browserify": "latest"
+    "grunt-contrib-jade": "latest",
+    "grunt-contrib-jshint": "latest",
+    "grunt-contrib-stylus": "latest",
+    "grunt-contrib-uglify": "latest",
+    "grunt-contrib-watch": "latest",
+    "grunt-nodemon": "latest",
+    "grunt-shell": "latest"
   },
   "scripts": {
     "start": "node server.js"

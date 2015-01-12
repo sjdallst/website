@@ -10,8 +10,12 @@ var Member = restful.model('Member', mongoose.Schema({
         last: String,
         uniqname: String
     },
-    service_hours: Number,
-    pro_dev_events: Number,
+    year: Number,
+    major: String,
+    pledge_class: String,
+    gender: String,
+    service_hours: { type: Number, default: 0 },
+    pro_dev_events: { type: Number, default: 0 },
     committees: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Committee' }],
     main_committee: { type: mongoose.Schema.Types.ObjectId, ref: 'Committee' }
 
@@ -19,12 +23,12 @@ var Member = restful.model('Member', mongoose.Schema({
 
 var newAccount = require(__dirname+'/../auth/account.js').newAccount
 
-Member.addMember = function (uniqname,password,first_name,last_name,service_hours,pro_dev_events,cb) {
+Member.addMember = function (uniqname,password,first_name,last_name,year,major,pledge_class,gender,cb) {
     var email = uniqname + '@umich.edu'
     var name = { first:first_name, last:last_name, uniqname:uniqname }
     newAccount(email,password,function (err,account) {
         if(err) throw err
-        var member = new Member({account:account._id,name:name,service_hours:service_hours,pro_dev_events:pro_dev_events})
+        var member = new Member({account:account._id,name:name,year:year,major:major,pledge_class:pledge_class,gender:gender})
         member.save(function (err) {
             if(err) throw err
             account.ref = member._id

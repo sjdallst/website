@@ -1,9 +1,9 @@
 var express = require('express');
 var server = express();
 
-require(__dirname+'/app')(server); // uncomment for login (mongodb dependency)
+if (process.env.NODE_ENV == 'dev' || process.env.NODE_ENV == 'serv') require(__dirname+'/app')(server) // uncomment for login (mongodb dependency)
 
-server.use(require('body-parser').urlencoded({extended:true}));
+server.use(require('body-parser').urlencoded({extended:true}))
 
 server.post('/interest', function (req, res) {
     var data = req.body

@@ -51,17 +51,24 @@ module.exports = function(grunt) {
             options: {
                 logConcurrentOutput: true
             }
-        },
-    });
+        },        
+        shell: {
+            reset: {
+                command: 'node app/data/init'
+            }
+        }
+    })
     
-    grunt.loadNpmTasks('grunt-browserify');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-jade');
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-stylus');
-    grunt.loadNpmTasks('grunt-nodemon');
-    grunt.loadNpmTasks('grunt-concurrent');
-    grunt.registerTask('prototype', ['jade:prototype','stylus:prototype','watch:prototype','concurrent']);
-    grunt.registerTask('compile', ['stylus:compile','browserify:compile','uglify:compile']);
-    grunt.registerTask('default', ['compile','concurrent']);
-};
+    grunt.loadNpmTasks('grunt-browserify')
+    grunt.loadNpmTasks('grunt-contrib-uglify')
+    grunt.loadNpmTasks('grunt-contrib-jade')
+    grunt.loadNpmTasks('grunt-contrib-watch')
+    grunt.loadNpmTasks('grunt-contrib-stylus')
+    grunt.loadNpmTasks('grunt-nodemon')
+    grunt.loadNpmTasks('grunt-concurrent')
+    grunt.loadNpmTasks('grunt-shell')
+    grunt.registerTask('reset', ['shell:reset'])
+    grunt.registerTask('prototype', ['jade:prototype','stylus:prototype','watch:prototype','concurrent'])
+    grunt.registerTask('compile', ['stylus:compile','browserify:compile','uglify:compile'])
+    grunt.registerTask('default', ['compile','concurrent'])
+}

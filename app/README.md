@@ -5,12 +5,22 @@ Node.js v0.10.29
 mongodb v2.6.1
 
 
+USING GRUNT  
+===========  
+To build for the browser client, from the top level (..), use:  
+grunt  
+  
+This will allow you to make changes to the jade, stylus, and js files within /client, and they will be automatically compiled into a usable, minified form. You need only refresh the page to see changes.  
+
+To initialize or reset the member database, use:  
+grunt reset  
+  
+  
 WEB APPLICATION  
 ===============  
 The ktp web app browser client is implemented in /client
 
-The web applications is accessible at kappathetapi.com/app
-
+The web applications is accessible at kappathetapi.com/app, or http://localhost:3000/app in development.  
 
 RESTFUL API  
 ===========  
