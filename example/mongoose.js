@@ -1,12 +1,13 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test');
+// mongoose.connect('mongodb://localhost/test');
 
 var Cat = mongoose.model('Cat', { name: String, furColor:String, legs:Number });
 
-var kitty = new Cat({ name: 'Blake', furColor:'blue' });
-kitty.legs = 4;
+var kitty = new Cat({ name: 'blazer', furColor:'blue' });
+kitty.legs = true
 
+console.log(kitty)
 kitty.save(function (err) {
-  if (err) throw err;
-  console.log('meow');
-});
+    if (err) throw err
+    console.log('meow')
+})

@@ -1,10 +1,10 @@
 
 DEPENDENCIES  
 ============  
-Node.js v0.10.29
-mongodb v2.6.1
-
-
+Node.js v0.10.29  
+mongodb v2.6.1  
+  
+  
 USING GRUNT  
 ===========  
 To build for the browser client, from the top level (..), use:  
