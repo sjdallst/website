@@ -10,4 +10,9 @@ module.exports = function (app) {
         return res.render('app',{member:req.user})
     })
 
+    // kappathetapi.com/app/
+    app.get('/interest', function (req, res) {
+        return res.sendfile(require('path').resolve(__dirname+'/../data/interest.txt'))
+    })
+
 }
