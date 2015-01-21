@@ -2,3 +2,4 @@
 node_modules
 .nodemonignore
 app/data/interest.txt
+data/
