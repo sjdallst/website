@@ -31,8 +31,8 @@ To interface with the restful api, each request needs to come with an authentica
   
 Currently the only route worth any value is:  
   
-GET /api/users  
-GET /api/users/:id  
-PUT /api/users/:id  
+GET /api/members  
+GET /api/members/:id  
+PUT /api/members/:id  
   
 For more information on the exact implementation of the API reference https://github.com/baugarten/node-restful  
