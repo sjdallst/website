@@ -5,19 +5,31 @@ var mongoose = restful.mongoose
 var Member = restful.model('Member', mongoose.Schema({
 
     account: { type: mongoose.Schema.Types.ObjectId, ref: 'Account' },
-    name: {
-        first: String,
-        last: String,
-        uniqname: String
-    },
+    
+    // personal info
+    first_name: String,
+    last_name: String,
+    uniqname: String,
     year: Number,
     major: String,
-    pledge_class: String,
     gender: String,
-    service_hours: { type: Number, default: 0 },
-    pro_dev_events: { type: Number, default: 0 },
+    hometown: String,
+    biography: String,
+
+    // contact info
+    email: String,
+    phone_number: String,
+
+    // fraternal info
+    pledge_class: String, // {alpha,beta,gamma,delta,zeta,eta}
+    membership_status: String, // {active,probation,alumni,inactive}
+    role: String, // ie Treasurer
+    main_committee: { type: mongoose.Schema.Types.ObjectId, ref: 'Committee' },
     committees: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Committee' }],
-    main_committee: { type: mongoose.Schema.Types.ObjectId, ref: 'Committee' }
+
+    // membership requirements
+    service_hours: { type: Number, default: 0 },
+    pro_dev_events: { type: Number, default: 0 }
 
 })).methods(['get', 'put']) // expose all restful methods (members can be loaded and updated)
 
@@ -25,10 +37,9 @@ var newAccount = require(__dirname+'/../auth/account.js').newAccount
 
 Member.addMember = function (uniqname,password,first_name,last_name,year,major,pledge_class,gender,cb) {
     var email = uniqname + '@umich.edu'
-    var name = { first:first_name, last:last_name, uniqname:uniqname }
     newAccount(email,password,function (err,account) {
         if(err) throw err
-        var member = new Member({account:account._id,name:name,year:year,major:major,pledge_class:pledge_class,gender:gender})
+        var member = new Member({account:account._id,first_name:first_name,last_name:last_name,uniqname:uniqname,email:email,year:year,major:major,pledge_class:pledge_class,gender:gender})
         member.save(function (err) {
             if(err) throw err
             account.ref = member._id
