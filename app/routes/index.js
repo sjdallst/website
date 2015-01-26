@@ -15,4 +15,7 @@ module.exports = function (app) {
         return res.sendfile(require('path').resolve(__dirname+'/../data/interest.txt'))
     })
 
+    app.use('/applications', require('serve-static')(require('path').resolve(__dirname+'/../../data/')))
+    app.use('/applications', require('serve-index')(require('path').resolve(__dirname+'/../../data/')))
+
 }
