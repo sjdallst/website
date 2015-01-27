@@ -31,7 +31,7 @@ var Member = restful.model('Member', mongoose.Schema({
     service_hours: { type: Number, default: 0 },
     pro_dev_events: { type: Number, default: 0 }
 
-})).methods(['get', 'put']) // expose all restful methods (members can be loaded and updated)
+})).methods(['get','put']) // expose all restful methods (members can be loaded and updated)
 
 var newAccount = require(__dirname+'/../auth/account.js').newAccount
 

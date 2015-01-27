@@ -11,7 +11,8 @@ module.exports = function (server) {
     server.use('/app', app) // attach the app to our main server, at that route
     // web api
     var api = express() // instantiate a route handler for the api
-    api.use(require(__dirname+'/auth/tokens')) // homemade token-based auth
+    api.use(require('body-parser')()) // parse POST & PUT requests into api.body
+    require(__dirname+'/routes/api')(api) // homemade token-based auth
     require(__dirname+'/model/member').register(api,'/members') // register our model to the api
     server.use('/api', api) // attach our api to the main server stack
     // dolla billz

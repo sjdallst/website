@@ -10,4 +10,10 @@ app.get('/', function (req, res) {
     res.send('hello\n')
 })
 
+app.get('/yolo', function (req, res) {
+    console.log('handling /yolo')
+    res.send('yolo\n')
+})
+
+
 app.listen(3000)
