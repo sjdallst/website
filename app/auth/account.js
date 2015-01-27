@@ -11,7 +11,7 @@ var accountSchema = mongoose.Schema({
 })
 
 // hash the password so our admin can't read them
-function generateHash (password, next){
+accountSchema.methods.generateHash = function (password, next){
     return bcrypt.hash(password, bcrypt.genSaltSync(8), null, next);
 }
 
@@ -24,7 +24,7 @@ accountSchema.methods.validPassword = function(password, next) {
 var Account = mongoose.model('Account', accountSchema);
 
 Account.newAccount = function (email,password,cb) {
-    generateHash(password, function(err, hash) {
+    accountSchema.methods.generateHash(password, function(err, hash) {
         if (err) throw err;
         var newAccount = new Account({email:email,password:hash});
         newAccount.save(function(err) {
