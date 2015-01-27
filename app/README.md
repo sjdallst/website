@@ -37,13 +37,19 @@ RESTFUL API
 ===========  
 Schemas in /model are exposed by a RESTful API, located at kappathetapi.com/api.  
   
-To interface with the restful api, each request needs to come with an authentication token  
-    t=5af9a24515589a73d0fa687e69cbaaa15918f833  
+To interface with the restful api, each request needs an 'x-access-token' header, with a value of 5af9a24515589a73d0fa687e69cbaaa15918f833  
   
 Currently the only route worth any value is:  
   
 GET /api/members  
 GET /api/members/:id  
 PUT /api/members/:id  
+  
+To authenticate users with the application, use:  
+  
+POST /api/login  
+  
+with post data of {account,password}, with the member accountId and password, respectively.  
+The server will return one of {'account not found','invalid password','success'}, where 'success' indicates a valid authentication.  
   
 For more information on the exact implementation of the API reference https://github.com/baugarten/node-restful  
