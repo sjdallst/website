@@ -1,10 +1,21 @@
 
 DEPENDENCIES  
 ============  
-Node.js v0.10.29  
-mongodb v2.6.1  
+Node.js v0.10.29+  
+http://nodejs.org/download/  
+mongodb v2.6.1+  
+http://docs.mongodb.org/manual/installation/  
   
   
+GET STARTED  
+===========  
+install dependencies  
+open terminal and navigate to this directory's parent, then:
+npm install -g grunt-cli  
+npm install  
+grunt reset  
+grunt  
+
 USING GRUNT  
 ===========  
 To build for the browser client, from the top level (..), use:  
