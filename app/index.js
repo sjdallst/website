@@ -14,6 +14,7 @@ module.exports = function (server) {
     api.use(require('body-parser')()) // parse POST & PUT requests into api.body
     require(__dirname+'/routes/api')(api) // homemade token-based auth
     require(__dirname+'/model/member').register(api,'/members') // register our model to the api
+    require(__dirname+'/model/pitch').register(api,'/pitches') // register our model to the api
     server.use('/api', api) // attach our api to the main server stack
     // dolla billz
 }
