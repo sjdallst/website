@@ -20,10 +20,16 @@ var Member = restful.model('Member', mongoose.Schema({
     email: String,
     phone_number: String,
 
+    // sites and links
+    twitter: String,
+    facebook: String,
+    linkedin: String,
+    personal_site: String,
+
     // fraternal info
     pledge_class: String, // {alpha,beta,gamma,delta,zeta,eta}
     membership_status: String, // {active,probation,alumni,inactive}
-    role: String, // ie Treasurer
+    role: String, // e.g. Treasurer
     main_committee: { type: mongoose.Schema.Types.ObjectId, ref: 'Committee' },
     committees: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Committee' }],
 
