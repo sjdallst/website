@@ -27,12 +27,16 @@ module.exports = function (api) {
             if (err) throw err
             else if (!account) return res.send('account not found\n')
             else if (req.body.newPassword != req.body.confirmPassword) return res.send('passwords dont match\n')
-            else account.generateHash(req.body.newPassword, function (err, hash) {
+            else account.validPassword(req.body.oldPassword, function (err, valid) {
                 if (err) throw err
-                account.password = hash
-                account.save(function (err) {
+                else if (!valid) return res.send('invalid password\n')
+                else account.generateHash(req.body.newPassword, function (err, hash) {
                     if (err) throw err
-                    else return res.send('password changed\n')
+                    account.password = hash
+                    account.save(function (err) {
+                        if (err) throw err
+                        else return res.send('password changed\n')
+                    })
                 })
             })
         })
