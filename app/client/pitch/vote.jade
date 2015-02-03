@@ -1,0 +1,45 @@
+extends main
+block content
+    h2= 'By: ' + member.first_name + ' ' + member.last_name
+    h2= 'Title: ' + pitch.title
+    h2= 'Description:' + pitch.description
+    form(action='/pitch/'+pitch._id+'/vote',method='POST',id='voteForm')
+        input(type='hidden',name='member')= member._id
+        h2 Innovation:
+        input(type='text',name='innovationScore')
+        select(name='innovationScore',form='voteForm')
+            option(value='1')
+            option(value='2')
+            option(value='3')
+            option(value='4')
+            option(value='5')
+            option(value='6')
+            option(value='7')
+            option(value='8')
+            option(value='9')
+            option(value='10')
+        h2 Usefulness:
+        select(name='usefulnessScore',form='voteForm')
+            option(value='1')
+            option(value='2')
+            option(value='3')
+            option(value='4')
+            option(value='5')
+            option(value='6')
+            option(value='7')
+            option(value='8')
+            option(value='9')
+            option(value='10')
+        h2 Coolness:
+        select(name='coolnessScore',form='voteForm')
+            option(value='1')
+            option(value='2')
+            option(value='3')
+            option(value='4')
+            option(value='5')
+            option(value='6')
+            option(value='7')
+            option(value='8')
+            option(value='9')
+            option(value='10')
+        h2= 'By: ' + member.first_name + ' ' + member.last_name

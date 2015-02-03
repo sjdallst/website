@@ -1,3 +1,4 @@
+var Pitch = require(__dirname+'/../model/pitch')
 module.exports = function (app) { // handling requests sent to kappathetapi.com/app
 
     app.use(function auth (req, res, next) {
@@ -19,8 +20,6 @@ module.exports = function (app) { // handling requests sent to kappathetapi.com/
     app.use('/applications', require('serve-static')(require('path').resolve(__dirname+'/../../data/')))
     app.use('/applications', require('serve-index')(require('path').resolve(__dirname+'/../../data/')))
 
-    app.get('/pitch', function (req, res) {
-        return res.redirect('https://docs.google.com/a/umich.edu/document/d/11SaehysI5rf6Xmx6Z0OdD1lkhkLkByjvSE3WZP3MxHY')
-    })
+    require(__dirname+'/pitch.js')(app)
 
 }

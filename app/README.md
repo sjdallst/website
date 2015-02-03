@@ -10,7 +10,7 @@ http://docs.mongodb.org/manual/installation/
 GET STARTED  
 ===========  
 install dependencies  
-open terminal and navigate to this directory's parent, then:
+open terminal and navigate to this directory's parent, then:  
 npm install -g grunt-cli  
 npm install  
 grunt reset  
