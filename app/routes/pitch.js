@@ -19,6 +19,7 @@ module.exports = function (app) {
         var pitch = new Pitch(req.body)
         pitch.save(function (err) {
             if (err) throw err
+            pitch.member = req.user
             return res.render('pitch/view',{member:req.user,pitch:pitch,votes:{innovation:0,usefulness:0,coolness:0}})
         })
     })
@@ -32,7 +33,7 @@ module.exports = function (app) {
 
     app.post('/pitch/:id/vote', function (req, res) {
         Pitch.findOne(req.params.id,function (err, pitch) {
-            pitch.populate('votes', function (err, pitch) {
+            pitch.populate('votes member', function (err, pitch) {
                 if (err) throw err
                 var userHasSeen = false
                 for (var i in pitch.votes) {
@@ -52,7 +53,7 @@ module.exports = function (app) {
 
     app.get('/pitch/:id', function (req, res) {
         Pitch.findOne(req.params.id, function (err, pitch) {
-            pitch.populate('votes', function (err, pitch) {
+            pitch.populate('votes member', function (err, pitch) {
                 if (err) throw err
                 var votes = pitch.votes.reduce(function (prev,cur) {
                     prev.innovation += cur.innovationScore
