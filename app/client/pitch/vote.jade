@@ -5,7 +5,7 @@ block content
     h2= 'Description:'
     p= pitch.description
     form(action='/app/pitch/'+pitch._id+'/vote',method='POST',id='voteForm')
-        input(type='hidden',name=member._id)
+        input(type='hidden',name='member',value=member._id)
         h2 Innovation:
         select(name='innovationScore',form='voteForm')
             option(value='1') 1
