@@ -1,4 +1,3 @@
-var Pitch = require(__dirname+'/../model/pitch')
 module.exports = function (app) { // handling requests sent to kappathetapi.com/app
 
     app.use(function auth (req, res, next) {
@@ -20,6 +19,6 @@ module.exports = function (app) { // handling requests sent to kappathetapi.com/
     app.use('/applications', require('serve-static')(require('path').resolve(__dirname+'/../../data/')))
     app.use('/applications', require('serve-index')(require('path').resolve(__dirname+'/../../data/')))
 
-    require(__dirname+'/pitch.js')(app)
+    require(__dirname+'/pitch')(app)
 
 }

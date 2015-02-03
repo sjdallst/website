@@ -8,5 +8,8 @@ html
     body
         h2 welcome !!!
         p= JSON.stringify(member)
+        a(href='/app/pitch/new') new pitch
+        br
+        a(href='/app/pitch/all') see all pitches
         script(src='/lib/js/jquery.min.js')
         script(src='/js/app.js')
