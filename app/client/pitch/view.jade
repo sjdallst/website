@@ -1,0 +1,12 @@
+extends main
+block content
+    h2= 'By: ' + member.first_name + ' ' + member.last_name
+    h2= 'Title: ' + pitch.title
+    h2= 'Description: '
+    p= pitch.description
+    h2 Votes:
+    p= 'Innovation: ' + votes.innovation
+    p= 'Usefulness: ' + votes.usefulness
+    p= 'Coolness: ' + votes.coolness
+    if !userHasSeen
+        a(href='/app/pitch/'+pitch._id+'/vote') vote!

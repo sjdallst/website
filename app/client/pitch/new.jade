@@ -1,0 +1,11 @@
+extends main
+block content
+    form(action='/app/pitch/new',method='POST')
+        input(type='hidden',name=member._id)
+        h2= 'By: ' + member.first_name + ' ' + member.last_name
+        h2 Title:
+        input(type='text',name='title')
+        h2 Description:
+        input(type='text',name='description')
+        br
+        input(type='submit',value='Send')

@@ -6,7 +6,15 @@ html
         link(rel='stylesheet', href='/css/app.min.css')
         link(rel='stylesheet', href='/appstyles/login.css')
     body
-        h2 welcome !!!
-        p= JSON.stringify(member)
+        .accountWrapper
+            h2 My Account
+            h1= "Name: " + member.first_name + " " + member.last_name
+            p= "uniqname: " + member.uniqname
+            p= "year: " + member.year
+            p= "major: " + member.major
+            p= "pledge class: " + member.pledge_class
+        a(href='/app/pitch/new') new pitch
+        br
+        a(href='/app/pitch/all') see all pitches
         script(src='/lib/js/jquery.min.js')
         script(src='/js/app.js')
