@@ -1,8 +1,6 @@
 var Account = require(__dirname+'/../auth/account')
 var token = '5af9a24515589a73d0fa687e69cbaaa15918f833' // sha1 of $dollabillz$
 
-var Pitch = require(__dirname+'/../model/pitch')
-
 module.exports = function (api) {
 
     api.use(function (req, res, next) {
@@ -44,24 +42,6 @@ module.exports = function (api) {
             })
         })
     })
-
-    // adding a vote to a pitch
-    // send request body as {member, innovationScore, usefulnessScore, coolnessScore}
-    api.post('/pitch/:id/vote', function (req, res) {
-        Pitch.findOne(req.params.id, function (err, pitch) {
-            if (err) throw err
-            pitch.populate('votes', function (err, pitch) {
-                if (err) throw err
-                pitch.votes.push(req.body)
-                pitch.markModified('votes')
-                pitch.save( function (err) {
-                    if (err) throw err
-                    return res.send(pitch)
-                })
-            })
-        })
-    })
-
 }
 /*
 curl -i -X PUT -H 'Content-Type: application/json' -H 'x-access-token:5af9a24515589a73d0fa687e69cbaaa15918f833' -d '{"service_hours",3}' http://localhost:3000/api/members/54c5accde21b4c3317a85d58
