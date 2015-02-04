@@ -1,4 +1,5 @@
 var Pitch = require(__dirname+'/../model/pitch')
+var mongoose = require('mongoose')
 module.exports = function (app) { 
 
     app.get('/pitch', function (req, res) {
@@ -38,11 +39,21 @@ module.exports = function (app) {
                 var userHasSeen = false
                 for (var i in pitch.votes) {
                     if (pitch.votes[i].member == req.user._id) {
-                        pitch.votes[i] = req.body /// this is broken!! mongodb doesn't like updating the array
+                        pitch.votes[i] = {                    
+                            member:req.body.member,
+                            innovationScore:Number(req.body.innovationScore),
+                            usefulnessScore:Number(req.body.usefulnessScore),
+                            coolnessScore:Number(req.body.coolnessScore)
+                        } /// this is broken!! mongodb doesn't like updating the array
                         userHasSeen = true
                     }
                 }
-                if (!userHasSeen) pitch.votes.push(req.body) // /// this is broken!!
+                if (!userHasSeen) pitch.votes.push({
+                    member:req.body.member,
+                    innovationScore:Number(req.body.innovationScore),
+                    usefulnessScore:Number(req.body.usefulnessScore),
+                    coolnessScore:Number(req.body.coolnessScore)
+                }) // /// this is broken!!
                 pitch.markModified('votes')
                 pitch.save( function (err) {
                     if (err) throw err
