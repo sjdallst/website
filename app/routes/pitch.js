@@ -38,11 +38,11 @@ module.exports = function (app) {
                 var userHasSeen = false
                 for (var i in pitch.votes) {
                     if (pitch.votes[i].member == req.user._id) {
-                        pitch.votes[i] = req.body
+                        pitch.votes[i] = req.body /// this is broken!! mongodb doesn't like updating the array
                         userHasSeen = true
                     }
                 }
-                if (!userHasSeen) pitch.votes.push(req.body)
+                if (!userHasSeen) pitch.votes.push(req.body) // /// this is broken!!
                 pitch.save( function (err) {
                     if (err) throw err
                     return res.render('pitch/view',{member:req.user,pitch:pitch,votes:{innovation:0,usefulness:0,coolness:0}})
