@@ -1,5 +1,8 @@
 var Account = require(__dirname+'/../auth/account')
 var token = '5af9a24515589a73d0fa687e69cbaaa15918f833' // sha1 of $dollabillz$
+
+var Pitch = require(__dirname+'/../model/pitch')
+
 module.exports = function (api) {
 
     api.use(function (req, res, next) {
@@ -37,6 +40,23 @@ module.exports = function (api) {
                         if (err) throw err
                         else return res.send('password changed\n')
                     })
+                })
+            })
+        })
+    })
+
+    // adding a vote to a pitch
+    // send request body as {member, innovationScore, usefulnessScore, coolnessScore}
+    api.post('/pitches/:id/vote', function (req, res) {
+        Pitch.findOne(req.params.id, function (err, pitch) {
+            if (err) throw err
+            pitch.populate('votes', function (err, pitch) {
+                if (err) throw err
+                pitch.votes.push(req.body)
+                pitch.markModified('votes')
+                pitch.save( function (err) {
+                    if (err) throw err
+                    return res.send(pitch)
                 })
             })
         })
