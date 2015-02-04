@@ -47,7 +47,7 @@ module.exports = function (api) {
 
     // adding a vote to a pitch
     // send request body as {member, innovationScore, usefulnessScore, coolnessScore}
-    api.post('/pitches/:id/vote', function (req, res) {
+    api.post('/pitch/:id/vote', function (req, res) {
         Pitch.findOne(req.params.id, function (err, pitch) {
             if (err) throw err
             pitch.populate('votes', function (err, pitch) {
