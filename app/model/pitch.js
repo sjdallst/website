@@ -6,12 +6,7 @@ var Pitch = restful.model('Pitch', mongoose.Schema({
     member: { type: mongoose.Schema.Types.ObjectId, ref: 'Member' },
     title: String,
     description: String,
-    votes: [{
-        member: { type: mongoose.Schema.Types.ObjectId, ref: 'Member' },
-        innovationScore: Number,
-        usefulnessScore: Number,
-        coolnessScore: Number
-    }]
+    votes: [{}]
 
 })).methods(['get','post','put','delete']) // expose all restful methods (members can be loaded and updated)
 
