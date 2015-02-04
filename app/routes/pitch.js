@@ -25,14 +25,14 @@ module.exports = function (app) {
     })
 
     app.get('/pitch/:id/vote', function (req, res) {
-        Pitch.findOne(req.params.id,function (err, pitch) {
+        Pitch.findOne({_id:req.params.id},function (err, pitch) {
             if (err) throw err
             return res.render('pitch/vote',{member:req.user,pitch:pitch})
         })
     })
 
     app.post('/pitch/:id/vote', function (req, res) {
-        Pitch.findOne(req.params.id,function (err, pitch) {
+        Pitch.findOne({_id:req.params.id},function (err, pitch) {
             pitch.populate('votes member', function (err, pitch) {
                 if (err) throw err
                 var userHasSeen = false
@@ -52,7 +52,7 @@ module.exports = function (app) {
     })
 
     app.get('/pitch/:id', function (req, res) {
-        Pitch.findOne(req.params.id, function (err, pitch) {
+        Pitch.findOne({_id:req.params.id}, function (err, pitch) {
             pitch.populate('votes member', function (err, pitch) {
                 if (err) throw err
                 var votes = pitch.votes.reduce(function (prev,cur) {
