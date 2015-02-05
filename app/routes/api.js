@@ -1,5 +1,6 @@
 var Account = require(__dirname+'/../auth/account')
 var token = '5af9a24515589a73d0fa687e69cbaaa15918f833' // sha1 of $dollabillz$
+
 module.exports = function (api) {
 
     api.use(function (req, res, next) {
@@ -41,9 +42,9 @@ module.exports = function (api) {
             })
         })
     })
-
 }
 /*
+curl -i -X PUT -H 'Content-Type: application/json' -H 'x-access-token:5af9a24515589a73d0fa687e69cbaaa15918f833' -d '{"service_hours",3}' http://localhost:3000/api/members/54c5accde21b4c3317a85d58
 // testing:
 curl -i -X POST -H 'Content-Type: application/json' -H 'x-access-token:5af9a24515589a73d0fa687e69cbaaa15918f833' -d '{"account":"54c7315aea4ea80000d81dd7","password":"dollabills"}' http://localhost:3000/api/login
 'invalid password'
