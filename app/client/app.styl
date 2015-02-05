@@ -1,6 +1,94 @@
-body 
+@css {
+
+	* {
+	    text-align: center;
+	    margin: 0;
+	    padding: 0;
+	}
+
+}
+
+html,body 
     text-align center
-    .accountWrapper
-    	width 40%
-    	margin-left 30%
-    	margin-right 30%
+    height 100%
+    margin 0
+    .header
+    	height 20%
+    	background-color #3F3F3F
+    	text-align left
+    	img
+    		height 5em
+    		width 5em
+    		display inline-block
+    		margin-left 5em
+    		margin-top 2em
+    		border-radius 50%
+    	.name
+    		display inline-block
+    		margin-left 10em
+    		h1
+    			font-size 7em
+    .content
+    	height auto
+    	background: url('/img/husk.png') repeat;
+    	.firstWrapper
+    		height 28em
+	    	.personal
+	    		float left
+	    		width 40%
+	    		height 20em
+	    		margin 5%
+	    		border-radius: 15px;
+	    		background-color #27637C
+	    	.fraternity
+	    		float right
+	    		width 40%
+	    		height 20em
+	    		margin 5%
+	    		border-radius: 15px;
+	    		background-color #B4DCED
+    	.bio
+    		width 100%
+    		height 10em
+    		background-color rgba(181, 181, 181, 0.74)
+
+// background: url('../img/binding_dark.png') repeat;
+
+// styling using regular css
+
+@css {
+
+	.boxEffect
+	{
+	  	position:relative;       
+	    -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+	       -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+	            box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+	}
+	.boxEffect:before, .effect8:after
+	{
+		content:"";
+	    position:absolute; 
+	    z-index:-1;
+	    -webkit-box-shadow:0 0 20px rgba(0,0,0,0.8);
+	    -moz-box-shadow:0 0 20px rgba(0,0,0,0.8);
+	    box-shadow:0 0 20px rgba(0,0,0,0.8);
+	    top:10px;
+	    bottom:10px;
+	    left:0;
+	    right:0;
+	    -moz-border-radius:100px / 10px;
+	    border-radius:100px / 10px;
+	} 
+	.boxEffect:after
+	{
+		right:10px; 
+	    left:auto;
+	    -webkit-transform:skew(8deg) rotate(3deg); 
+	       -moz-transform:skew(8deg) rotate(3deg);     
+	        -ms-transform:skew(8deg) rotate(3deg);     
+	         -o-transform:skew(8deg) rotate(3deg); 
+	            transform:skew(8deg) rotate(3deg);
+	}  
+	
+}

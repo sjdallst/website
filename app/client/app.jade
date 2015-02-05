@@ -6,12 +6,29 @@ html
         link(rel='stylesheet', href='/css/app.min.css')
         link(rel='stylesheet', href='/appstyles/login.css')
     body
-        .accountWrapper
-            h2 My Account
-            h1= "Name: " + member.first_name + " " + member.last_name
-            p= "uniqname: " + member.uniqname
-            p= "year: " + member.year
-            p= "major: " + member.major
-            p= "pledge class: " + member.pledge_class
+        .header
+            img(src="")
+            .name
+                h1= member.first_name + " " + member.last_name
+        .content
+            .firstWrapper
+                .personal.boxEffect
+                    h2 Personal
+                    p= "Uniqname: " + member.uniqname
+                    p= "Year: " + member.year
+                    p= "Major: " + member.major
+                    p= "Gender: " + member.gender
+                    p= "Hometown: " + member.hometown
+                .fraternity.boxEffect
+                    h2 Fraternity
+                    p= "Pledge Class: " + member.pledge_class
+                    p= "Status: " + member.membership_status
+                    p= "Role: " + member.role
+                    p= "Main Committee: " + member.main_committee
+            .bio
+                if(member.biography)
+                    p= member.biography
+                else
+                    p Biography will go here
         script(src='/lib/js/jquery.min.js')
         script(src='/js/app.js')
