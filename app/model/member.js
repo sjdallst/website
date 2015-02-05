@@ -28,14 +28,17 @@ var Member = restful.model('Member', mongoose.Schema({
 
     // fraternal info
     pledge_class: String, // {alpha,beta,gamma,delta,zeta,eta}
-    membership_status: String, // {active,probation,alumni,inactive}
+    membership_status: String, // {active,probation,alumni,inactive,eboard,pledge}
     role: String, // e.g. Treasurer
     main_committee: { type: mongoose.Schema.Types.ObjectId, ref: 'Committee' },
     committees: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Committee' }],
 
     // membership requirements
     service_hours: { type: Number, default: 0 },
-    pro_dev_events: { type: Number, default: 0 }
+    pro_dev_events: { type: Number, default: 0 },
+
+    // empty for actives
+    meetings: [{ type: mongoose.Schema.Types.ObjectId, ref: 'PledgeMeeting' }]
 
 })).methods(['get','put']) // expose all restful methods (members can be loaded and updated)
 
