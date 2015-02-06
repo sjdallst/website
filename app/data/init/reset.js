@@ -1,7 +1,5 @@
 var remove = function (model,cb) {
-
     require('mongodb').MongoClient.connect('mongodb://localhost:27017/ktpweb', function (err, db) {
-
         db.collection(model).remove({}, function (err) {
             if (err) throw err
             else {
@@ -9,9 +7,7 @@ var remove = function (model,cb) {
                 if (cb) return cb()
             }
         })
-
     })
-
 }
 
 module.exports = function (cb) {

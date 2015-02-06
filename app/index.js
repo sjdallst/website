@@ -17,6 +17,7 @@ module.exports = function (server) {
     require(__dirname+'/model/pitch').register(api,'/pitches')                  // register our model to the api
     require(__dirname+'/model/pledgeMeeting').register(api,'/pledgeMeetings')   // register our model to the api
     require(__dirname+'/model/pledgeTask').register(api,'/pledgeTasks')         // register our model to the api
+    require(__dirname+'/model/committee').register(api,'/committees')           // register our model to the api
     server.use('/api', api) // attach our api to the main server stack
     // dolla billz
 }
