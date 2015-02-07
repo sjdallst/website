@@ -10,7 +10,7 @@ var PledgeTask = restful.model('PledgeTask', mongoose.Schema({
 	points_earned: Number,
 	minimum_pledges: Number,
 	repeatable: Boolean,
-	pledges: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Pledge' }]	// pledges involved
+	pledges: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Member' }]	// pledges involved
 
 }, {collection: 'pledgeTasks'})).methods(['get','put','post','delete'])
 
