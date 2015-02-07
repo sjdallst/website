@@ -1,8 +1,6 @@
 module.exports = function (cb) {
-	// var db = require('mongoose')
-	// db.connect('mongodb://localhost:27017/ktpweb')
 	var Member = require(__dirname+'/../../model/member')
-	var memberLines = require('fs').readFileSync(__dirname+'/pledges.csv',{encoding:'ascii'}).split('\n')
+	var memberLines = require('fs').readFileSync(__dirname+'/pledges.csv',{encoding:'utf8'}).split('\n')
 
 	var numLines = memberLines.length
 	memberLines.forEach(function (memberLine) {
@@ -20,11 +18,7 @@ module.exports = function (cb) {
 		}
 		Member.addMember(member, function (member) {
 			if (--numLines == 0) {
-				// db.disconnect(function () {
-					// if (err) throw err
-					if (cb) return cb()
-				// })
-				// return cb()
+				if (cb) return cb()
 			}
 		})
 	})

@@ -1,5 +1,5 @@
 var Member = require(__dirname+'/../../model/member')
-var memberLines = require('fs').readFileSync(__dirname+'/members.csv',{encoding:'ascii'}).split('\n')
+var memberLines = require('fs').readFileSync(__dirname+'/members.csv',{encoding:'utf8'}).split('\n')
 
 module.exports = function (cb) {
     var numLines = memberLines.length

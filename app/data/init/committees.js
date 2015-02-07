@@ -1,7 +1,4 @@
-
-
 module.exports = function(cb) {
-	// var db = require('mongoose').connect('mongodb://localhost:27017/ktpweb')
 	var Committee = require(__dirname+'/../../model/committee')
 	var committees = [
 		{
