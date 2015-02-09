@@ -36,7 +36,7 @@ var Member = restful.model('Member', mongoose.Schema({
     service_hours: { type: Number, default: 0 },
     pro_dev_events: { type: Number, default: 0 },
 
-    // pledge/active meetings, empty for actives
+    // pledge/active meetings
     meetings: [{ type: mongoose.Schema.Types.ObjectId, ref: 'PledgeMeeting' }]
 
 })).methods(['get','put']) // expose all restful methods (members can be loaded and updated)
