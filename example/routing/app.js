@@ -1,4 +1,5 @@
-var app = require('express')()
+var express = require('express')
+var app = express()
 
 app.use( function (req, res, next) {
     console.log(req.ip)
