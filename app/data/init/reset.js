@@ -1,18 +1,4 @@
-var remove = function (model,cb) {
-
-    require('mongodb').MongoClient.connect('mongodb://localhost:27017/ktpweb', function (err, db) {
-
-        db.collection(model).remove({}, function (err) {
-            if (err) throw err
-            else {
-                db.close()
-                if (cb) return cb()
-            }
-        })
-
-    })
-
-}
+var remove = require(__dirname+'/removeModel.js')
 
 module.exports = function (cb) {
     remove('sessions', function () {
@@ -21,7 +7,9 @@ module.exports = function (cb) {
                 remove('eboards', function () {
                     remove('committees', function () {
                         remove('pledges', function () {
-                            if(cb) return cb();
+                            remove('pledgeTasks', function () {
+                                if(cb) return cb();
+                            })
                         })
                     })
                 })
@@ -29,5 +17,3 @@ module.exports = function (cb) {
         })
     })
 }
-
-exports.remove = remove;

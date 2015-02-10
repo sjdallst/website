@@ -8,7 +8,24 @@ var Pitch = restful.model('Pitch', mongoose.Schema({
     description: String,
     votes: [{}]
 
-})).methods(['get','post','put','delete']) // expose all restful methods (members can be loaded and updated)
+})).methods(['get','post','put','delete']) // expose all restful methods (pitches can be loaded and updated)
+
+// /pitches/:id/vote
+// send request as {member, innovationScore, usefulnessScore, coolnessScore}
+Pitch.route('vote',['put'], {
+    detail: true,
+    handler: function (req, res) {
+        Pitch.findById(req.params.id, function(err, pitch) {
+            if (err) throw err
+            pitch.votes.push(req.body)
+            pitch.markModified('votes')
+            pitch.save( function(err) {
+                if (err) throw err
+                return res.send(pitch)
+            })
+        })
+    }
+})
 
 // /pitches/:id/result
 // returns set of avg scores {innovation,usefulness,coolness}

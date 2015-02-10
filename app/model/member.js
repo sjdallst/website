@@ -10,48 +10,65 @@ var Member = restful.model('Member', mongoose.Schema({
     first_name: String,
     last_name: String,
     uniqname: String,
-    year: Number,
+    year: Number,           // graduation year
     major: String,
-    gender: String,
+    gender: String,         // {M,F}
     hometown: String,
     biography: String,
 
     // contact info
-    email: String,
+    email: String,          // default is umich email
     phone_number: String,
 
     // sites and links
-    twitter: String,
-    facebook: String,
-    linkedin: String,
-    personal_site: String,
+    twitter: String,        // username
+    facebook: String,       // username
+    linkedin: String,       // username
+    personal_site: String,  // full link
 
-    // fraternal info
-    pledge_class: String, // {alpha,beta,gamma,delta,zeta,eta}
-    membership_status: String, // {active,probation,alumni,inactive}
-    role: String, // e.g. Treasurer
-    main_committee: { type: mongoose.Schema.Types.ObjectId, ref: 'Committee' },
+    // fraternity info
+    pledge_class: String,       // {Alpha,Beta,Gamma,Delta,Epsilon,Zeta,Eta}
+    membership_status: String,  // {Active,Probation,Inactive,Eboard,Pledge}
+    role: String,               // {Member,Pledge,President,Secretary,Director of Membership, ...}
     committees: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Committee' }],
 
     // membership requirements
     service_hours: { type: Number, default: 0 },
-    pro_dev_events: { type: Number, default: 0 }
+    pro_dev_events: { type: Number, default: 0 },
+
+    // pledge/active meetings
+    meetings: [{ type: mongoose.Schema.Types.ObjectId, ref: 'PledgeMeeting' }]
 
 })).methods(['get','put']) // expose all restful methods (members can be loaded and updated)
 
 var newAccount = require(__dirname+'/../auth/account.js').newAccount
 
-Member.addMember = function (uniqname,password,first_name,last_name,year,major,pledge_class,gender,cb) {
-    var email = uniqname + '@umich.edu'
-    newAccount(email,password,function (err,account) {
-        if(err) throw err
-        var member = new Member({account:account._id,first_name:first_name,last_name:last_name,uniqname:uniqname,email:email,year:year,major:major,pledge_class:pledge_class,gender:gender})
-        member.save(function (err) {
-            if(err) throw err
-            account.ref = member._id
-            account.type = 'member'
-            account.save(function (err) { if(err) throw err; })
-            if(cb) return cb(member)
+// member is an object in which at least a uniqname must be provided
+Member.addMember = function (member, cb) {
+    if (!member.uniqname) throw Error('The member must have a uniqname')
+
+    Member.findOne({uniqname:member.uniqname}, function (err, found) {
+        if (err) throw err
+        if (found) {
+            if (cb) return cb(found) 
+            return
+        }
+
+        var email = member.uniqname + '@umich.edu'
+        newAccount(email, 'dollabillz', function (err, account) {
+            if (err) throw err
+            member.account = account._id
+            member.email = email
+            var newMember = new Member(member)
+            newMember.save(function (err) {
+                if (err) throw err
+                account.ref = newMember._id
+                account.type = 'member'
+                account.save(function (err) {
+                    if (err) throw err
+                })
+                if (cb) return cb(member)
+            })
         })
     })
 }

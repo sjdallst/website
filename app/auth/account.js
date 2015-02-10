@@ -25,10 +25,14 @@ var Account = mongoose.model('Account', accountSchema);
 
 Account.newAccount = function (email,password,cb) {
     accountSchema.methods.generateHash(password, function(err, hash) {
-        if (err) throw err;
-        var newAccount = new Account({email:email,password:hash});
-        newAccount.save(function(err) {
-            return cb(err, newAccount);
+        if (err) throw err
+        Account.findOne({email:email}, function (err, found) {
+            if (found) throw Error('account already exists')
+
+            var newAccount = new Account({email:email,password:hash});
+            newAccount.save(function(err) {
+                return cb(err, newAccount)
+            })
         })
     })
 }
