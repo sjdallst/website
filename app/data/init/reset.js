@@ -8,7 +8,9 @@ module.exports = function (cb) {
                     remove('committees', function () {
                         remove('pledges', function () {
                             remove('pledgeTasks', function () {
-                                if(cb) return cb();
+                                remove('pledgeMeetings', function() {
+                                    if(cb) return cb();
+                                })
                             })
                         })
                     })

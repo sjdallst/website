@@ -7,6 +7,7 @@ if (process.env.NODE_ENV == 'dev') {
 	var addPledges = require(__dirname+'/pledges.js')
 	var addCommittees = require(__dirname+'/committees.js')
 	var addPledgeTasks = require(__dirname+'/pledgeTasks.js')
+	var addPledgeMeetings = require(__dirname+'/pledgeMeetings.js')
 
 	reset(function () {
 		console.log('db reset')
@@ -18,7 +19,10 @@ if (process.env.NODE_ENV == 'dev') {
 					console.log('committees added')
 					addPledgeTasks(function () {
 						console.log('pledge tasks added')
-						process.exit(0)
+						addPledgeMeetings(function () {
+							console.log('pledge meetings added')
+							process.exit(0)
+						})
 					})
 				})
 			})

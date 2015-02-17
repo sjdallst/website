@@ -7,6 +7,6 @@ var PledgeMeeting = restful.model('PledgeMeeting', mongoose.Schema({
 		active: { type: mongoose.Schema.Types.ObjectId, ref: 'Member' },
 		complete: Boolean
 
-})).methods(['get','put','post','delete'])
+}, {collection: 'pledgeMeetings'})).methods(['get','put','post','delete'])
 
 module.exports = PledgeMeeting
