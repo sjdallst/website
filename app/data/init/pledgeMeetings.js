@@ -16,6 +16,8 @@ module.exports = function (cb) {
 			}
 		}
 
+		var numMeetings = actives.length * pledges.length
+
 		var meetingsWereCreated = function () {
 			var i = members.length
 			members.forEach(function (member) {
@@ -30,33 +32,39 @@ module.exports = function (cb) {
 			})
 		}
 
-		var numMeetings = actives.length * pledges.length
-		for (a in actives) {
-			for (p in pledges) {
-				actives[a].populate('meetings', function (err, active) {
-					if (err) throw err
-					pledges[p].populate('meetings', function (err, pledge) {
-						if (err) throw err
+		var createPledgeMeeting = function (active, pledge, complete) {
+			var pledgeMeeting = new PledgeMeeting({
+				active: active._id,
+				pledge: pledge._id,
+				complete: false
+			})
+			pledgeMeeting.save(function (err) {
+				if (err) throw err
+				active.meetings.push(pledgeMeeting._id)
+				pledge.meetings.push(pledgeMeeting._id)
+				if (--numMeetings == 0) {
+					meetingsWereCreated()
+				}
+			})
+		}
 
-						var pledgeMeeting = new PledgeMeeting({
-							active: active._id,
-							pledge: pledge._id,
-							complete: false
-						})
+		members.forEach(function (member) {
 
-						pledgeMeeting.save(function (err) {
-							if (err) throw err
-
-							active.meetings.push(pledgeMeeting._id)
-							pledge.meetings.push(pledgeMeeting._id)
-
-							if (--numMeetings == 0) {
-								meetingsWereCreated()
-							}
-						})
-					})
-				})
+			if (member.membership_status != 'Active' &&
+				member.membership_status != 'Pledge' &&
+				member.membership_status != 'Eboard') {
+				// member is neither pledge nor active/eboard, don't add
+				return;
 			}
-		}		
+
+			for (m in members) {
+				if (members[m].membership_status == 'Pledge' && 
+					(member.membership_status == 'Active' || 
+					 member.membership_status == 'Eboard')) {
+					// member is active, member[m] is pledge
+					createPledgeMeeting(member, members[m], false)
+				}
+			}
+		})	
 	})
 }
