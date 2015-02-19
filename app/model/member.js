@@ -1,5 +1,6 @@
 var restful = require('node-restful') // https://github.com/baugarten/node-restful
 var mongoose = restful.mongoose
+var fs = require('fs')
 
 // create the model for accounts and expose it to our app & api
 var Member = restful.model('Member', mongoose.Schema({
@@ -15,6 +16,7 @@ var Member = restful.model('Member', mongoose.Schema({
     gender: String,         // {M,F}
     hometown: String,
     biography: String,
+    prof_pic_url: String,
 
     // contact info
     email: String,          // default is umich email
@@ -72,5 +74,24 @@ Member.addMember = function (member, cb) {
         })
     })
 }
+
+// /members/:id/upload_pic
+// {extension:png, data:binary}
+Member.route('upload_pic', ['post'], {
+    detail: true,
+    handler: function (req, res) {
+        Member.findById(req.params.id, function(err, member) {
+            if(err) res.send(err)
+            var url = '/img/prof_pics/'+member.uniqname+'.'+req.body.extension
+            fs.writeFile(__dirname+'/../../public/'+url,req.body.data, function (err) {
+                member.prof_pic_url = url
+                member.save(function (err) {
+                    if(err) res.send(err)
+                    else return res.send(url)
+                })
+            })
+        })
+    }
+})
 
 module.exports = Member
