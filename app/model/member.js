@@ -81,17 +81,27 @@ Member.route('upload_pic', ['post'], {
     detail: true,
     handler: function (req, res) {
         Member.findById(req.params.id, function(err, member) {
-            if(err) res.send(err)
-            var url = '/img/prof_pics/'+member.uniqname+'.'+req.body.extension
-            fs.writeFile(__dirname+'/../../public/'+url,req.body.data, function (err) {
-                member.prof_pic_url = url
-                member.save(function (err) {
-                    if(err) res.send(err)
-                    else return res.send(url)
-                })
+            if(err) res.send(400,err)
+            var ctype = req.get('content-type')
+            var ext = ctype.substr(ctype.indexOf('/')+1)
+            var url = '/img/prof_pics/'+member.uniqname+'.'+ext
+            var filePath = __dirname+'/../../public/'+url
+            var writable = fs.createWriteStream(filePath)
+            req.pipe(writable)
+            req.on('end', function (){
+                res.send(201,{'url':url})
+            })               
+            writable.on('error', function(err) {
+                res.send(500, err)
+            })
+            member.prof_pic_url = url
+            member.save(function (err) {
+                if(err) throw err
             })
         })
     }
 })
+
+
 
 module.exports = Member
