@@ -76,7 +76,6 @@ Member.addMember = function (member, cb) {
 }
 
 // /members/:id/upload_pic
-// {extension:png, data:binary}
 Member.route('upload_pic', ['post'], {
     detail: true,
     handler: function (req, res) {
