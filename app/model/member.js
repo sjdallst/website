@@ -41,7 +41,7 @@ var Member = restful.model('Member', mongoose.Schema({
     // pledge/active meetings
     meetings: [{ type: mongoose.Schema.Types.ObjectId, ref: 'PledgeMeeting' }]
 
-})).methods(['get','put']) // expose all restful methods (members can be loaded and updated)
+})).methods(['get','put', 'delete', 'post']) // expose all restful methods
 
 var newAccount = require(__dirname+'/../auth/account.js').newAccount
 
