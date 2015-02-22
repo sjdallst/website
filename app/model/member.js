@@ -2,8 +2,8 @@ var restful = require('node-restful') // https://github.com/baugarten/node-restf
 var mongoose = restful.mongoose
 
 // create the model for accounts and expose it to our app & api
-var Member = restful.model('Member', mongoose.Schema({
-
+var memberSchema = mongoose.Schema({
+    
     account: { type: mongoose.Schema.Types.ObjectId, ref: 'Account' },
     
     // personal info
@@ -37,7 +37,22 @@ var Member = restful.model('Member', mongoose.Schema({
     service_hours: { type: Number, default: 0 },
     pro_dev_events: { type: Number, default: 0 }
 
-})).methods(['get','put']) // expose all restful methods (members can be loaded and updated)
+})
+
+// function to update preferences to profile
+memberSchema.methods.updatePreferences = function (prefs, cb) {
+    var user = this;
+    for (var pref in prefs) {
+        if (prefs[pref] == '') delete prefs[pref]
+        else {
+                user[pref] = prefs[pref]
+        }
+    }
+     
+}
+
+
+var Member = restful.model('Member', memberSchema).methods(['get','put']) // expose all restful methods (members can be loaded and updated)
 
 var newAccount = require(__dirname+'/../auth/account.js').newAccount
 

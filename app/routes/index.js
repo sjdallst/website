@@ -20,5 +20,6 @@ module.exports = function (app) { // handling requests sent to kappathetapi.com/
     app.use('/applications', require('serve-index')(require('path').resolve(__dirname+'/../../data/')))
 
     require(__dirname+'/pitch')(app)
+    require(__dirname+'/profile')(app)
 
 }
