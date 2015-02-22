@@ -12,7 +12,8 @@ module.exports = function (app) {
 
     app.post('/profile/update', function (req, res) {
     	console.log("making post")
-        member.updatePreferences(req.body, function () {
+        member.updatePreferences(req.body, function (err) {
+        	if (err) throw err
             return res.send({});
         })
     })
