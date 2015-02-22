@@ -17,6 +17,16 @@ server.post('/interest', function (req, res) {
 	});
 });
 
+////////
+
+server.get('/wob', function (req,res) {
+    return res.redirect('https://www.facebook.com/events/862475787150706/')
+})
+
+server.get('/constitution', function (req,res) {
+    return res.sendfile('public/Constitution.pdf')
+})
+
 //////// rush application stuff //////////
 
 var formidable = require('formidable'),

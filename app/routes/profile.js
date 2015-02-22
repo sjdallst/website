@@ -1,4 +1,4 @@
-// var Pitch = require(__dirname+'/../model/pitch')
+var member = require(__dirname+'/../model/member')
 // var mongoose = require('mongoose')
 module.exports = function (app) { 
 
@@ -12,7 +12,7 @@ module.exports = function (app) {
 
     app.post('/profile/update', function (req, res) {
     	console.log("making post")
-        req.user.updatePreferences(req.body, function () {
+        member.updatePreferences(req.body, function () {
             return res.send({});
         })
     })

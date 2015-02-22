@@ -19,6 +19,10 @@ module.exports = function (app) { // handling requests sent to kappathetapi.com/
     app.use('/applications', require('serve-static')(require('path').resolve(__dirname+'/../../data/')))
     app.use('/applications', require('serve-index')(require('path').resolve(__dirname+'/../../data/')))
 
+    app.get('/ios', function (req, res) {
+        return res.redirect('https://docs.google.com/a/umich.edu/forms/d/1JMNvPZce1XOV0uHgb_PbS4qBRo_2OnrmFV5AbTQX408/viewform?usp=send_form')
+    })
+
     require(__dirname+'/pitch')(app)
     require(__dirname+'/profile')(app)
 
