@@ -56,8 +56,7 @@ var memberSchema = mongoose.Schema({
 // }
 
 
-var Member = restful.model('Member', memberSchema).methods(['get','put']) // expose all restful methods (members can be loaded and updated)
-// })).methods(['get','put', 'delete', 'post']) // expose all restful methods
+var Member = restful.model('Member', memberSchema).methods(['get','put','post','delete']) // expose all restful methods
 
 var newAccount = require(__dirname+'/../auth/account.js').newAccount
 
