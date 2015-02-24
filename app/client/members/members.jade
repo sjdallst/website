@@ -1,0 +1,10 @@
+extends ../main
+block content
+	.members
+		each member in members
+			.memberBox(data-click=member._id)
+				.memberBoxFirst
+					p= member.first_name + " " + member.last_name
+				.memberBoxMore(data-toggle=member._id)
+					p= member.uniqname
+					p= member.year
