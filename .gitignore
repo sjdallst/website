@@ -3,3 +3,5 @@ node_modules
 .nodemonignore
 app/data/interest.txt
 npm-debug.log
+public/css/app.min.css
+public/js/app.min.js

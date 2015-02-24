@@ -1,12 +1,12 @@
 extends ../main
 block content
     .header
-        img(src="")
+        img(src=member.prof_pic_url)
         .name
             h1= member.first_name + " " + member.last_name
     .content_edit
         h2 Edit your Profile Data
-        form.info.describe(id="profileEdit",method="post",action="/app/profile/update")
+        form.info.describe(id="profileEdit",action="/app/profile/update",method="post")
             .data
                 p Uniqname
                 input(type="text",name="uniqname",value=member.uniqname)

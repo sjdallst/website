@@ -52,7 +52,10 @@ memberSchema.methods.updatePreferences = function (prefs, cb) {
             user[pref] = prefs[pref]
         }
     }
-    if (cb) return cb(user)
+    user.save(function (err) {
+        if (err) throw err
+        if (cb) return cb(user)
+    })
 }
 
 
