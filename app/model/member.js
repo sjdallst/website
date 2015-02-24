@@ -44,16 +44,16 @@ var memberSchema = mongoose.Schema({
 })
 
 // function to update preferences to profile
-// memberSchema.methods.updatePreferences = function (prefs, cb) {
-//     var user = this;
-//     for (var pref in prefs) {
-//         if (prefs[pref] == '') delete prefs[pref]
-//         else {
-//                 user[pref] = prefs[pref]
-//         }
-//     }
-     
-// }
+memberSchema.methods.updatePreferences = function (prefs, cb) {
+    var user = this;
+    for (var pref in prefs) {
+        if (prefs[pref] == '') delete prefs[pref]
+        else {
+            user[pref] = prefs[pref]
+        }
+    }
+    if (cb) return cb(user)
+}
 
 
 var Member = restful.model('Member', memberSchema).methods(['get','put','post','delete']) // expose all restful methods
@@ -90,19 +90,7 @@ Member.addMember = function (member, cb) {
     })
 }
 
-Member.updatePreferences = function (prefs, cb) {
-    var user = this;
-    for (var pref in prefs) {
-        if (prefs[pref] == '') delete prefs[pref]
-        else {
-                user[pref] = prefs[pref]
-        }
-    }
-     
-}
-
-
-
+////////// API Layer /////////
 
 // /members/:id/upload_pic
 Member.route('upload_pic', ['post'], {

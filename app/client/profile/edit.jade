@@ -6,7 +6,7 @@ block content
             h1= member.first_name + " " + member.last_name
     .content_edit
         h2 Edit your Profile Data
-        form(id="profileEdit",class="info describe")
+        form.info.describe(id="profileEdit",method="post",action="/app/profile/update")
             .data
                 p Uniqname
                 input(type="text",name="uniqname",value=member.uniqname)
@@ -37,4 +37,4 @@ block content
             .data
                 p Biography
                 input(type="text",name="biography",value=member.biography)
-        button(type="submit",id="submitProfile") Save
+            input(type="submit",id="submitProfile",value="Save")
