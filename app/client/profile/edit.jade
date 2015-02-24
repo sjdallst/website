@@ -8,7 +8,7 @@ block content
         h2 Edit your Profile Data
         form.info.describe(id="profileEdit",action="/app/profile/update",method="post")
             .data
-                p Uniqname
+                p(class="uniqname") Uniqname
                 input(type="text",name="uniqname",value=member.uniqname)
             .data
                 p Year
@@ -36,5 +36,5 @@ block content
                 input(type="text",name="main_committee",value=member.main_committee)
             .data
                 p Biography
-                input(type="text",name="biography",value=member.biography)
+                textarea(name="biography",value=member.biography)
             input(type="submit",id="submitProfile",value="Save")
