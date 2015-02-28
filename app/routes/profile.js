@@ -16,4 +16,13 @@ module.exports = function (app) {
         })
     })
 
+    // should be in member route? , for now its here
+
+    app.get('/members', function (req, res) {
+        member.allMembers(function (members) {
+            return res.render('members/members', {members:members})
+        })
+    })
+
+
 }

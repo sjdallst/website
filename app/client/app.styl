@@ -19,70 +19,15 @@ html,body
     	img
     		height 4em
     		width 4em
-    		display inline-block
+    		float left
     		margin-left 3em
     		border-radius 50%
     	.name
-    		display inline-block
-    		margin-left 10em
+    		float right
+    		margin-right 2em
+            margin-top 1.1em
     		h1
     			font-size 2em
-    .content
-    	height auto
-    	background: url('/img/husk.png') repeat;
-    	.firstWrapper
-    		height 28em
-    		.rectangleInfo
-	    		width 40%
-	    		height 20em
-	    		margin 5%
-	    		border-radius: 15px;
-	    		h2
-	    			margin-top .5em
-	    			margin-bottom .5em
-	    			font-size 2em
-	    		.info
-	    			width 40%
-	    			margin 0% 5% 5% 5%
-	    			float left
-	    			p
-	    				margin-bottom 1em
-	    				font-size 1.3em
-	    				text-align left
-	    		.data
-	    			p
-	    				text-align center
-	    	.personal
-	    		float left
-	    		background-color #27637C
-	    		color #CDCDCD
-	    	.fraternity
-	    		float right
-	    		background-color #B4DCED
-    	.bio
-    		width 100%
-    		height 10em
-    		background-color rgba(181, 181, 181, 0.74)
-    .content_edit // for edit page
-    	height auto
-    	width 80%
-    	margin-left auto
-    	margin-right auto
-    	background: url('/img/husk.png') repeat;
-    	.info
-    		width 100%
-    	.describe
-    		p
-    			display inline-block
-    			text-align left
-    			width 8em
-    		input
-    			display inline-block
-    		.data
-    			display block
-    	button
-    		font-size 1em
-    		
 
 .boxEffect {
   	position:relative;       
@@ -117,3 +62,4 @@ html,body
 
 @require 'profile/edit'
 @require 'profile/profile'
+@require 'members/members'

@@ -35,6 +35,21 @@ block content
                 p Main Committee
                 input(type="text",name="main_committee",value=member.main_committee)
             .data
+                p Phone Number
+                input(type="text",name="phone_number",value=member.phone_number) 
+            .data
+                p Twitter
+                input(type="text",name="twitter",value=member.twitter)
+            .data
+                p Facebook
+                input(type="text",name="facebook",value=member.facebook)
+            .data
+                p LinkedIn
+                input(type="text",name="linkedin",value=member.linkedin)
+            .data
+                p Personal Site
+                input(type="text",name="personal_site",value=member.personal_site) 
+            .data
                 p Biography
                 textarea(name="biography",value=member.biography)
             input(type="submit",id="submitProfile",value="Save")
