@@ -60,11 +60,11 @@ memberSchema.methods.updatePreferences = function (prefs, cb) {
 
 
 memberSchema.statics.allMembers = function (cb) {
-
+    var user = this;
     this.find({}, function (err, members) { 
         if (err) throw err
         if (members) {
-            if (cb) return cb(members)
+            if (cb) return cb(members, user)
         }
     })
     

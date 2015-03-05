@@ -20,7 +20,7 @@ module.exports = function (app) {
 
     app.get('/members', function (req, res) {
         member.allMembers(function (members) {
-            return res.render('members/members', {members:members})
+            return res.render('members/members', {members:members, member:req.user})
         })
     })
 

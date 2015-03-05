@@ -1,9 +1,5 @@
 extends ../main
 block content
-    .header
-        img(src=member.prof_pic_url)
-        .name
-            h1= member.first_name + " " + member.last_name
     .content_edit
         h2 Edit your Profile Data
         form.info.describe(id="profileEdit",action="/app/profile/update",method="post")

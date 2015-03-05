@@ -5,6 +5,24 @@ html
         link(rel='shortcut icon',type='image/ico',href='/img/favicon.ico')
         link(rel='stylesheet', href='/css/app.min.css')
     body
+        .header
+            a(href="/app")
+                .home
+                    img(src="/img/KTP.png")
+            .name
+                .profileButton(data-click="profileDropdown")
+                    img(src=member.prof_pic_url)
+                    h1= member.first_name + " " + member.last_name
+                .profileDropdown(data-toggle="profileDropdown")
+                    a(href="/app/profile")
+                        .dropdown
+                            img(src="/img/Profile.svg")
+                            h1 Profile
+                    a(href="/app/profile/edit")
+                        .dropdown
+                            img(src="/img/ProfileEdit.svg")
+                            h1 Edit Profile
+
         block content
         script(src='/lib/js/jquery.min.js')
         script(src='/js/app.js')
