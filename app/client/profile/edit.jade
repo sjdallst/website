@@ -47,5 +47,5 @@ block content
                 input(type="text",name="personal_site",value=member.personal_site) 
             .data
                 p Biography
-                textarea(name="biography",value=member.biography)
+                textarea(name="biography")=member.biography
             input(type="submit",id="submitProfile",value="Save", class = "designButton")
