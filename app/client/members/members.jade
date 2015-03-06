@@ -6,5 +6,22 @@ block content
 				.memberBoxFirst
 					p= member.first_name + " " + member.last_name
 				.memberBoxMore(data-toggle=member._id)
-					p= member.uniqname
-					p= member.year
+					.member-one-third.member-frat-info
+						p= member.role
+						p= member.pledge_class + ' Class'
+						p= member.major + ', ' + member.year
+						p= 'Hails from ' + member.hometown
+					.member-one-third.member-contact-info
+						p
+							a(href='http://facebook.com/' + member.facebook)= 'Facebook'
+						p
+							a(href='http://twitter.com/' + member.twitter)= 'Twitter'
+						p
+							a(href='http://linkedin.com/in/' + member.linkedin)= 'LinkedIn'
+						p
+							a(href='http://' + member.personal_site)= 'Website'
+						p
+							a(href='mailto:' + member.uniqname + '@umich.edu')= member.uniqname + '@umich.edu'
+					.member-one-third.member-bio
+						p= member.biography
+					
