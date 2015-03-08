@@ -59,9 +59,24 @@ memberSchema.methods.updatePreferences = function (prefs, cb) {
 }
 
 
+memberSchema.statics.allMembers = function (cb) {
+    var user = this;
+    this.find({}, function (err, members) { 
+        if (err) throw err
+        if (members) {
+            if (cb) return cb(members, user)
+        }
+    })
+    
+}
+
+
 var Member = restful.model('Member', memberSchema).methods(['get','put','post','delete']) // expose all restful methods
 
 var newAccount = require(__dirname+'/../auth/account.js').newAccount
+
+// function to return all members
+
 
 // member is an object in which at least a uniqname must be provided
 Member.addMember = function (member, cb) {

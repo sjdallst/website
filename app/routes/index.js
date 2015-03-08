@@ -23,6 +23,10 @@ module.exports = function (app) { // handling requests sent to kappathetapi.com/
         return res.redirect('https://docs.google.com/a/umich.edu/forms/d/1JMNvPZce1XOV0uHgb_PbS4qBRo_2OnrmFV5AbTQX408/viewform?usp=send_form')
     })
 
+    app.get('/android', function (req, res) {
+        return res.redirect('https://www.dropbox.com/s/c6okltxj4myonf1/app-debug.apk?dl=0')
+    })
+
     require(__dirname+'/pitch')(app)
     require(__dirname+'/profile')(app)
 

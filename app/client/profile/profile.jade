@@ -1,9 +1,5 @@
 extends ../main
 block content
-    .header
-        img(src="")
-        .name
-            h1= member.first_name + " " + member.last_name
     .content
         .firstWrapper
             .rectangleInfo.personal.boxEffect
@@ -20,7 +16,6 @@ block content
                     p= member.major
                     p= member.gender
                     p= member.hometown
-                    p= member.uniqname
             .rectangleInfo.fraternity.boxEffect
                 h2 Fraternity
                 .info.describe

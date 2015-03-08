@@ -1,10 +1,10 @@
 @css {
 
-	* {
-	    text-align: center;
-	    margin: 0;
-	    padding: 0;
-	}
+    * {
+        // text-align: center;
+        margin: 0;
+        padding: 0;
+    }
 
 }
 
@@ -12,86 +12,73 @@ html,body
     text-align center
     height 100%
     margin 0
+    font-family 'Lato', sans-serif
     .header
-    	height 10%
-    	background-color #3F3F3F
-    	text-align left
-    	img
-    		height 4em
-    		width 4em
-    		display inline-block
-    		margin-left 3em
-    		border-radius 50%
-    	.name
-    		display inline-block
-    		margin-left 10em
-    		h1
-    			font-size 2em
-    .content
-    	height auto
-    	background: url('/img/husk.png') repeat;
-    	.firstWrapper
-    		height 28em
-    		.rectangleInfo
-	    		width 40%
-	    		height 20em
-	    		margin 5%
-	    		border-radius: 15px;
-	    		h2
-	    			margin-top .5em
-	    			margin-bottom .5em
-	    			font-size 2em
-	    		.info
-	    			width 40%
-	    			margin 0% 5% 5% 5%
-	    			float left
-	    			p
-	    				margin-bottom 1em
-	    				font-size 1.3em
-	    				text-align left
-	    		.data
-	    			p
-	    				text-align center
-	    	.personal
-	    		float left
-	    		background-color #27637C
-	    		color #CDCDCD
-	    	.fraternity
-	    		float right
-	    		background-color #B4DCED
-    	.bio
-    		width 100%
-    		height 10em
-    		background-color rgba(181, 181, 181, 0.74)
-    .content_edit // for edit page
-    	height auto
-    	width 80%
-    	margin-left auto
-    	margin-right auto
-    	background: url('/img/husk.png') repeat;
-    	.info
-    		width 100%
-    	.describe
-    		p
-    			display inline-block
-    			text-align left
-    			width 8em
-    		input
-    			display inline-block
-    		.data
-    			display block
-    	button
-    		font-size 1em
-    		
+        height 10%
+        background-color #3F3F3F
+        text-align left
+        box-shadow 5px 5px 5px rgba(0,0,0,0.5)
+        img
+            height 3em
+            width 3em
+            margin-right 1em
+            display inline-block
+            vertical-align middle
+            border-radius 50%
+        .home
+            float left
+            margin-left 1em
+            margin-top .5em
+            cursor pointer
+            img
+                // height auto
+                width 10em
+                border-radius 5px
+        .name
+            float right
+            margin-right 2em
+            margin-top 0.5em
+            .profileButton
+                background-color rgba(103, 103, 103,.9)
+                border-radius 5px
+                padding .3em
+                cursor pointer
+                h1
+                    color white
+                    font-size 2em
+                    vertical-align middle
+                    display inline-block
+            .profileDropdown
+                position absolute
+                z-index 2
+                width 280px
+                display none
+                background-color rgba(103, 103, 103,.9)
+                padding .5em
+                cursor pointer
+                .dropdown
+                    height 3em
+                    &:hover
+                        opacity .4
+                    h1
+                        color white
+                        font-size 1.5em
+                        vertical-align middle
+                        display inline-block
+                        margin-top .3em
+                    img
+                        float left
+                        height 2.5em
+                        width 2.5em
 
 .boxEffect {
-  	position:relative;       
+    position:relative;       
     -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
        -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
             box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 }
 .boxEffect:before, .effect8:after {
-	content:"";
+    content:"";
     position:absolute; 
     z-index:-1;
     -webkit-box-shadow:0 0 20px rgba(0,0,0,0.8);
@@ -105,7 +92,7 @@ html,body
     border-radius:100px / 10px;
 } 
 .boxEffect:after {
-	right:10px; 
+    right:10px; 
     left:auto;
     -webkit-transform:skew(8deg) rotate(3deg); 
        -moz-transform:skew(8deg) rotate(3deg);     
@@ -117,3 +104,4 @@ html,body
 
 @require 'profile/edit'
 @require 'profile/profile'
+@require 'members/members'

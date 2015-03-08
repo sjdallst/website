@@ -1,4 +1,8 @@
+require('./members')
 
 
+// for header
 
-// for profile submit on edit
+$('[data-click="profileDropdown"]').click(function() {
+	$('[data-toggle="profileDropdown"]').toggle()
+});
