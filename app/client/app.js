@@ -1,4 +1,5 @@
 require('./members')
+require('./pledges')
 
 
 // for header
