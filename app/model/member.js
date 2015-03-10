@@ -58,6 +58,28 @@ memberSchema.methods.updatePreferences = function (prefs, cb) {
     })
 }
 
+var multer  = require('multer')
+memberSchema.methods.uploadPic = function (req,res) {
+    
+    var member = this
+    var ctype = req.get('content-type')
+    var ext = ctype.substr(ctype.indexOf('/')+1)
+    var url = '/img/prof_pics/'+member.uniqname+'.'+ext
+    console.log(url)
+    var filePath = __dirname+'/../../public/'+url
+    var writable = fs.createWriteStream(filePath)
+    req.pipe(writable)
+    req.on('end', function (){
+        res.send(201,{'url':url})
+    })               
+    writable.on('error', function(err) {
+        res.send(500, err)
+    })
+    member.prof_pic_url = url
+    member.save(function (err) {
+        if(err) throw err
+    }) 
+}
 
 memberSchema.statics.allMembers = function (cb) {
     var user = this;
