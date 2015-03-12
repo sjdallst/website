@@ -1,7 +1,7 @@
 var restful = require('node-restful') // https://github.com/baugarten/node-restful
 var mongoose = restful.mongoose
 
-var PledgeTask = restful.model('PledgeTask', mongoose.Schema({
+var pledgeTaskSchema = mongoose.Schema({
 
 	title: String,			// e.g. Serenade GSI Vidal
 	description: String,	// e.g. Serenade must be 3 minutes long.
@@ -12,7 +12,21 @@ var PledgeTask = restful.model('PledgeTask', mongoose.Schema({
 	repeatable: Boolean,
 	pledges: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Member' }]	// pledges involved
 
-}, {collection: 'pledgeTasks'})).methods(['get','put','post','delete'])
+},{collection: 'pledgeTasks'})
+
+
+pledgeTaskSchema.statics.allTasks = function (cb) {
+	console.log(this)
+    this.find({}, function (err, tasks) { 
+        if (err) throw err
+        if (tasks) {
+            if (cb) return cb(tasks)
+        }
+    })  
+}
+
+
+var PledgeTask = restful.model('PledgeTask', pledgeTaskSchema).methods(['get','put','post','delete'])
 
 // /pledgeTasks/:id/addPledge
 // send request as {pledge: member_id}
@@ -29,5 +43,7 @@ PledgeTask.route('addPledge', ['put'], {
 		})
 	}
 })
+
+
 
 module.exports = PledgeTask

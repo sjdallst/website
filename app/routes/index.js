@@ -29,6 +29,7 @@ module.exports = function (app) { // handling requests sent to kappathetapi.com/
 
     require(__dirname+'/pitch')(app)
     require(__dirname+'/profile')(app)
+    require(__dirname+'/pledges')(app)
     require(__dirname+'/post')(app)
 
 }
