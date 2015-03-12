@@ -7,8 +7,7 @@ var projectSchema = restful.model('Project', mongoose.Schema({
     topic: String,
     timeline: String,
     description: String,
-    contact_info: String,
-    post: { type: mongoose.Schema.Types.ObjectId, ref: 'Post' }
+    contact_info: String
 
 }, {collection: 'projects'})
 

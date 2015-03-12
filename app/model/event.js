@@ -9,8 +9,7 @@ var eventSchema = mongoose.Schema({
     cost: String,
     location: String,
     description: String,
-    url: String,
-    post: { type: mongoose.Schema.Types.ObjectId, ref: 'Post' }
+    url: String
 
 },{collection: 'events'})
 
