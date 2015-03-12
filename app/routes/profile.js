@@ -1,6 +1,4 @@
 var member = require(__dirname+'/../model/member')
-var formidable = require('formidable')
-// var mongoose = require('mongoose')
 module.exports = function (app) { 
 
     app.get('/profile', function (req, res) {
@@ -17,8 +15,11 @@ module.exports = function (app) {
         })
     })
 
+
     app.post('/profile/uploadPic', function (req, res) {
-        req.user.uploadPic(req,res)
+        req.user.uploadPic(req, function (user) {
+            return res.render('profile/profile', {member:user})
+        })
     })
 
     // should be in member route? , for now its here

@@ -48,7 +48,9 @@ block content
             .data
                 p Biography
                 textarea(name="biography")=member.biography
-            input(type="submit",id="submitProfile",value="Save", class = "designButton")
-        form(id='fileupload',action='/app/profile/uploadPic',method='post',type='multipart/form-data')
-            input(type='file',name='pic',accept='image/*')
-            input(type='submit')
+            input.designButton(type="submit",id="submitProfile",value="Save")
+        form(id='fileupload',action='/app/profile/uploadPic',method='post',enctype='multipart/form-data')
+            .data
+                p Upload Profile Pic
+                input(type='file',name='pic',accept='image/*')
+            input.designButton(type='submit',value='Upload')

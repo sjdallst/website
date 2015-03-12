@@ -58,27 +58,23 @@ memberSchema.methods.updatePreferences = function (prefs, cb) {
     })
 }
 
-var multer  = require('multer')
-memberSchema.methods.uploadPic = function (req,res) {
-    
+var formidable = require('formidable')
+memberSchema.methods.uploadPic = function (req,cb) {
     var member = this
-    var ctype = req.get('content-type')
-    var ext = ctype.substr(ctype.indexOf('/')+1)
-    var url = '/img/prof_pics/'+member.uniqname+'.'+ext
-    console.log(url)
-    var filePath = __dirname+'/../../public/'+url
-    var writable = fs.createWriteStream(filePath)
-    req.pipe(writable)
-    req.on('end', function (){
-        res.send(201,{'url':url})
-    })               
-    writable.on('error', function(err) {
-        res.send(500, err)
+    var form = new formidable.IncomingForm()
+    form.parse(req, function(err, fields, files) {
+        if (err) throw err
+        prof_pic = files['pic']
+        var ext = prof_pic.type.substr(prof_pic.type.indexOf('/')+1)
+        var url = '/img/prof_pics/'+member.uniqname+'.'+ext
+        fs.rename(prof_pic.path,__dirname+'/../../public/'+url, function (err) {
+            member.prof_pic_url = url
+            member.save(function (err) {
+                if(err) throw err
+                if (cb) return cb(member)
+            })
+        })
     })
-    member.prof_pic_url = url
-    member.save(function (err) {
-        if(err) throw err
-    }) 
 }
 
 memberSchema.statics.allMembers = function (cb) {
