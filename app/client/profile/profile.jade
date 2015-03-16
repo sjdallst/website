@@ -33,3 +33,41 @@ block content
                 p= member.biography
             else
                 p Biography will go here
+
+block content
+    .content
+        .firstWrapper
+            img.userImage(src=member.prof_pic_url)
+            .rectangleInfo.personal.boxEffect
+                h2 Personal
+                .info.describe
+                    p Uniqname
+                    p Year
+                    p Major
+                    p Gender
+                    p Hometown
+                .info.data
+                    p= member.uniqname
+                    p= member.year
+                    p= member.major
+                    p= member.gender
+                    p= member.hometown
+        .secondWrapper
+            .rectangleInfo.personal.boxEffect
+                h2 Biography
+                if(member.biography)
+                    p= member.biography
+                else
+                    p Biography will go here
+            .rectangleInfo.fraternity.boxEffect
+                h2 Fraternity
+                .info.describe
+                    p Pledge Class
+                    p Status
+                    p Role
+                    p Main Committee
+                .info.data
+                    p= member.pledge_class
+                    p= member.membership_status
+                    p= member.role
+                    p= member.main_committee
