@@ -58,6 +58,24 @@ memberSchema.methods.updatePreferences = function (prefs, cb) {
     })
 }
 
+var formidable = require('formidable')
+memberSchema.methods.uploadPic = function (req,cb) {
+    var member = this
+    var form = new formidable.IncomingForm()
+    form.parse(req, function(err, fields, files) {
+        if (err) throw err
+        prof_pic = files['pic']
+        var ext = prof_pic.type.substr(prof_pic.type.indexOf('/')+1)
+        var url = '/img/prof_pics/'+member.uniqname+'.'+ext
+        fs.rename(prof_pic.path,__dirname+'/../../public/'+url, function (err) {
+            member.prof_pic_url = url
+            member.save(function (err) {
+                if(err) throw err
+                if (cb) return cb(member)
+            })
+        })
+    })
+}
 
 memberSchema.statics.allMembers = function (cb) {
     var user = this;

@@ -5,6 +5,7 @@ block content
 		each member in members
 			.memberBox(data-click=member._id)
 				.memberBoxFirst
+					img(src=member.prof_pic_url)
 					p= member.first_name + " " + member.last_name
 				.memberBoxMore(data-toggle=member._id)
 					.member-one-third.member-frat-info

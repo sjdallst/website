@@ -8,7 +8,8 @@ module.exports = function (app) { // async initialization
     app.use(session({ 
         secret: 'justinLikesTenticles', // salt the cookies
         store: new store({              // place on 2'x2' mongostore baking sheet
-            db: 'ktpweb'                // bake on high for 30 minutes
+            db: 'ktpweb',                // bake on high for 30 minutes
+            auto_reconnect: true
         }) 
     }))
     app.use(passport.initialize()) // initialize passport

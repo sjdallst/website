@@ -1,5 +1,4 @@
 var member = require(__dirname+'/../model/member')
-// var mongoose = require('mongoose')
 module.exports = function (app) { 
 
     app.get('/profile', function (req, res) {
@@ -12,6 +11,13 @@ module.exports = function (app) {
 
     app.post('/profile/update', function (req, res) {
         req.user.updatePreferences(req.body, function (user) {
+            return res.render('profile/profile', {member:user})
+        })
+    })
+
+
+    app.post('/profile/uploadPic', function (req, res) {
+        req.user.uploadPic(req, function (user) {
             return res.render('profile/profile', {member:user})
         })
     })
