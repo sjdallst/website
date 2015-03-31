@@ -16,7 +16,6 @@ var pledgeTaskSchema = mongoose.Schema({
 
 
 pledgeTaskSchema.statics.allTasks = function (cb) {
-	console.log(this)
     this.find({}, function (err, tasks) { 
         if (err) throw err
         if (tasks) {
