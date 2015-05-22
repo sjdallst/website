@@ -33,8 +33,11 @@ var formidable = require('formidable'),
     fs = require('fs')
 
 server.get('/application', function (req,res) {
-    var end = new Date(2015, 0, 24)
-    if(Date.now() > end.getTime()) res.send('Application closed'); 
+    var begin = new Date(2015, 8, 13)
+    var end = new Date(2015, 8, 26);
+    if (Date.now() < begin.getTime() || Date.now() > end.getTime()) {
+        res.send('KTP F15 Application Closed'); 
+    }
     else res.sendfile('public/application.html');
 });
 
