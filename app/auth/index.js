@@ -9,7 +9,7 @@ module.exports = function (app) { // async initialization
         secret: 'justinLikesTenticles', // salt the cookies
         store: new store({              // place on 2'x2' mongostore baking sheet
             db: 'ktpweb',                // bake on high for 30 minutes
-            auto_reconnect: true
+            mongoose_connection: require('node-restful').mongoose.connection
         }) 
     }))
     app.use(passport.initialize()) // initialize passport
