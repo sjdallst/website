@@ -156,20 +156,25 @@
     padding-bottom: 2em;
 }
 
-#rush ul {
-    margin-left: 2em;
+#rush .event {
+    margin-bottom: 1em;
 }
 
-#rush li {
-    display: list-item;
-    list-style: square;
-    line-height: none;
-    margin: 0;
-    text-indent: 15px;
+#rush .event h2 {
+    margin-bottom: 0.2em;
 }
 
-#rush li span {
-    margin-left: -20px;
+#rush ul.event_detail {
+    font-style: italic;
+    font-size: 0.8em;
+    margin-bottom: 0.5em;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+#rush ul.event_detail li {
+    list-style-type: none;
+    margin-left: 0;
 }
 
 #rush p i {
