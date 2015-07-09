@@ -222,8 +222,25 @@ p.home_square {
     background-color: yellow;
 }
 
+#rush .event {
+    margin-bottom: 1em;
+}
 
+#rush .event h2 {
+    margin-bottom: 0.2em;
+}
 
+#rush ul.event_detail {
+    font-style: italic;
+    font-size: 0.8em;
+    margin-bottom: 0.5em;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+#rush ul.event_detail li {
+    list-style-type: none;
+}
 
 
 
