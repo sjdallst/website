@@ -1,41 +1,7 @@
-#buzzword-carousel{
-	width:17em;
-	font-size:1.7em;
-	padding-top:0.7em;
-	padding-left:1.7em;
-	text-transform:uppercase;
-	letter-spacing:0.07em;
-}
-#modal-button{
-	border:none;
-	border-radius:none;
-	background-color:#458FFF;
-	color:#ffffff;
-	text-align:center;
-	letter-spacing:0.05em;
-}
-#interest-form{text-align:justify;}
-#myModal{
-	padding: 10%; 
-	overflow:hidden;
-}
-#interest-form{text-align:justify;}
-.submitbutton{
-	padding:0.5em;
-	color:#FFFFFF;
-	border:none;
-	background-color:#458FFF;
-	font-size:1.2em;
-	letter-spacing:0.11em;
-	text-transform:uppercase;
-	border-radius:0.3em;
-}
-
-
 #rush {
     text-align: center;
-    font-family: 'Lato', sans-serif;
-    height: auto;
+    /*font-family: 'Lato', sans-serif;*/
+    /*height: auto;*/
 }
 
 #googleCalLink {
@@ -164,17 +130,10 @@
     margin-bottom: 0.2em;
 }
 
-#rush ul.event_detail {
+#rush .event_detail {
     font-style: italic;
     font-size: 0.8em;
     margin-bottom: 0.5em;
-    padding-left: 0;
-    margin-left: 0;
-}
-
-#rush ul.event_detail li {
-    list-style-type: none;
-    margin-left: 0;
 }
 
 #rush p i {
@@ -304,20 +263,10 @@
         text-align: center;
     }
 
-    #calendar_list > ul > li {
-        list-style-type: none;
-    }
-
     .image {
         font-size: 4em;
         padding-top: 3em!important;
     }
-
-    #image_4 {
-        padding-top: 2.5em;
-    }
-
-
 }
 
 @media only screen and (max-width : 900px) {
