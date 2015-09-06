@@ -15,7 +15,7 @@
 }
 
 #picture-slideshow img{
-    background-size: cover;
+    background-size: contain;
     width: 100%;
 	height: 500px;
     margin: 0 auto;
@@ -61,7 +61,7 @@
 
 #image_4 {
     float: right;
-    padding-top: 1.5em;
+    padding-top: 2.5em;
     padding-left: 20px;
     background-color: #00F32A;
     opacity: 0.75;
