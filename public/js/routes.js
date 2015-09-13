@@ -21,10 +21,14 @@ page();
 
 $('.nav-link').click(function (evt) {
 		var section = evt.target.textContent.toLowerCase();
+		if (section == 'apply') {
+			window.location.href = 'application.html'
+			return
+		}
 		showPage(section.toLowerCase());
 		if (section == 'home') {
 			section = ''; 
-		} 
+		}
 			
 		window.history.pushState(section,section,'/'+section);
 		$('.nav-link').removeClass('nav-link-selected');
