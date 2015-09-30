@@ -1,5 +1,7 @@
 module.exports = function (app) { // handling requests sent to kappathetapi.com/app
 
+    require(__dirname+'/forgotpassword')(app)
+
     app.use(function auth (req, res, next) {
         if (req.isAuthenticated()) return next(); // if user is authenticated in the session, carry on
         else return res.redirect('/app/login'); // if they aren't redirect them to the home page
