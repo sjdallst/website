@@ -22,7 +22,7 @@ page();
 $('.nav-link').click(function (evt) {
 		var section = evt.target.textContent.toLowerCase();
 		if (section == 'apply') {
-			window.location.href = 'application.html'
+			window.location.href = 'http://goo.gl/forms/CTrkymVdkQ'
 			return
 		}
 		showPage(section.toLowerCase());
