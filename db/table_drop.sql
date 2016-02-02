@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2016-02-01 23:52:50.551
+-- Last modification date: 2016-02-02 18:56:49.045
 
 
 USE ktp;
@@ -25,6 +25,7 @@ ALTER TABLE Member DROP FOREIGN KEY Member_MemberRole;
 ALTER TABLE Member DROP FOREIGN KEY Member_MemberStatus;
 ALTER TABLE Member DROP FOREIGN KEY Member_Photo;
 ALTER TABLE Member DROP FOREIGN KEY Member_PledgeClass;
+ALTER TABLE PledgeClass DROP FOREIGN KEY PledgeClass_Semester;
 ALTER TABLE PledgeMeeting DROP FOREIGN KEY PledgeMeeting_Active;
 ALTER TABLE PledgeMeeting DROP FOREIGN KEY PledgeMeeting_Photo;
 ALTER TABLE PledgeMeeting DROP FOREIGN KEY PledgeMeeting_Pledge;
@@ -35,6 +36,7 @@ ALTER TABLE ProjectMember DROP FOREIGN KEY ProjectMember_Project;
 ALTER TABLE Requirement DROP FOREIGN KEY Requirement_Member;
 ALTER TABLE RusheeAttendance DROP FOREIGN KEY RusheeAttendance_Event;
 ALTER TABLE RusheeAttendance DROP FOREIGN KEY RusheeAttendance_Rushee;
+ALTER TABLE Semester DROP FOREIGN KEY Semester_Term;
 
 -- tables
 -- Table Amenity
@@ -93,6 +95,8 @@ DROP TABLE Rushee;
 DROP TABLE RusheeAttendance;
 -- Table Semester
 DROP TABLE Semester;
+-- Table Term
+DROP TABLE Term;
 
 
 

@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2016-02-01 23:52:50.551
+-- Last modification date: 2016-02-02 18:56:49.045
 
 
 USE ktp;
@@ -171,7 +171,9 @@ CREATE TABLE Photo (
 CREATE TABLE PledgeClass (
     id int  NOT NULL  AUTO_INCREMENT,
     name varchar(30)  NOT NULL,
+    semester_id int  NOT NULL,
     UNIQUE INDEX PledgeClass_ak_1 (name),
+    UNIQUE INDEX PledgeClass_ak_2 (semester_id),
     CONSTRAINT PledgeClass_pk PRIMARY KEY (id)
 );
 
@@ -189,7 +191,7 @@ CREATE TABLE PledgeTask (
     id int  NOT NULL,
     name varchar(40)  NOT NULL,
     description text  NULL,
-    num_participants int  NOT NULL  DEFAULT 1,
+    req_participants int  NOT NULL  DEFAULT 1,
     points int  NOT NULL  DEFAULT 0,
     is_repeatable bool  NOT NULL  DEFAULT false,
     is_required bool  NOT NULL  DEFAULT false,
@@ -254,9 +256,17 @@ CREATE TABLE RusheeAttendance (
 CREATE TABLE Semester (
     id int  NOT NULL  AUTO_INCREMENT,
     year int  NOT NULL,
-    term char(6)  NOT NULL,
-    UNIQUE INDEX Semester_ak_1 (year,term),
+    term_id int  NOT NULL,
+    UNIQUE INDEX Semester_ak_1 (year,term_id),
     CONSTRAINT Semester_pk PRIMARY KEY (id)
+);
+
+-- Table Term
+CREATE TABLE Term (
+    id int  NOT NULL  AUTO_INCREMENT,
+    name char(6)  NOT NULL,
+    UNIQUE INDEX Term_ak_1 (name),
+    CONSTRAINT Term_pk PRIMARY KEY (id)
 );
 
 
@@ -371,6 +381,12 @@ ALTER TABLE Member ADD CONSTRAINT Member_PledgeClass FOREIGN KEY Member_PledgeCl
     REFERENCES PledgeClass (id)
     ON DELETE SET NULL
     ON UPDATE CASCADE;
+-- Reference:  PledgeClass_Semester (table: PledgeClass)
+
+ALTER TABLE PledgeClass ADD CONSTRAINT PledgeClass_Semester FOREIGN KEY PledgeClass_Semester (semester_id)
+    REFERENCES Semester (id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE;
 -- Reference:  PledgeMeeting_Active (table: PledgeMeeting)
 
 ALTER TABLE PledgeMeeting ADD CONSTRAINT PledgeMeeting_Active FOREIGN KEY PledgeMeeting_Active (active_member_id)
@@ -427,6 +443,12 @@ ALTER TABLE RusheeAttendance ADD CONSTRAINT RusheeAttendance_Event FOREIGN KEY R
 
 ALTER TABLE RusheeAttendance ADD CONSTRAINT RusheeAttendance_Rushee FOREIGN KEY RusheeAttendance_Rushee (rushee_id)
     REFERENCES Rushee (id);
+-- Reference:  Semester_Term (table: Semester)
+
+ALTER TABLE Semester ADD CONSTRAINT Semester_Term FOREIGN KEY Semester_Term (term_id)
+    REFERENCES Term (id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE;
 
 
 
