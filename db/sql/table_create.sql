@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2016-02-02 18:56:49.045
+-- Last modification date: 2016-02-04 18:35:36.892
 
 
 USE ktp;
@@ -93,11 +93,13 @@ CREATE TABLE Member (
     pledge_class_id int  NULL,
     member_status_id int  NULL,
     member_role_id int  NULL,
+    big_id int  NULL,
     family_id int  NULL,
     photo_id int  NULL,
     phone_number char(10)  NULL,
     email varchar(40)  NOT NULL,
-    pwd_hash varchar(40)  NOT NULL,
+    pwd_hash char(64)  NOT NULL,
+    pwd_salt char(64)  NOT NULL,
     CONSTRAINT Member_pk PRIMARY KEY (id)
 );
 
@@ -274,6 +276,10 @@ CREATE TABLE Term (
 
 
 -- foreign keys
+-- Reference:  Big_Little (table: Member)
+
+ALTER TABLE Member ADD CONSTRAINT Big_Little FOREIGN KEY Big_Little (big_id)
+    REFERENCES Member (id);
 -- Reference:  CommitteeMember_Committee (table: CommitteeMember)
 
 ALTER TABLE CommitteeMember ADD CONSTRAINT CommitteeMember_Committee FOREIGN KEY CommitteeMember_Committee (committee_id)

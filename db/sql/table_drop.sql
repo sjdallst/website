@@ -1,11 +1,12 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2016-02-02 18:56:49.045
+-- Last modification date: 2016-02-04 18:35:36.892
 
 
 USE ktp;
 
 
 -- foreign keys
+ALTER TABLE Member DROP FOREIGN KEY Big_Little;
 ALTER TABLE CommitteeMember DROP FOREIGN KEY CommitteeMember_Committee;
 ALTER TABLE CommitteeMember DROP FOREIGN KEY CommitteeMember_Member;
 ALTER TABLE EventAmenity DROP FOREIGN KEY EventAmenity_Amenity;
