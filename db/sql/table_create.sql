@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2016-02-04 18:35:36.892
+-- Last modification date: 2016-02-10 00:01:28.63
 
 
 USE ktp;
@@ -19,6 +19,7 @@ CREATE TABLE Amenity (
 CREATE TABLE Committee (
     id int  NOT NULL  AUTO_INCREMENT,
     name varchar(40)  NOT NULL,
+    description text  NULL,
     UNIQUE INDEX Committee_ak_1 (name),
     CONSTRAINT Committee_pk PRIMARY KEY (id)
 );
@@ -458,4 +459,13 @@ ALTER TABLE Semester ADD CONSTRAINT Semester_Term FOREIGN KEY Semester_Term (ter
 
 
 
+
+DELIMITER $$
+
+CREATE TRIGGER after_member_insert AFTER INSERT ON Member FOR EACH ROW
+BEGIN
+    INSERT INTO MemberProfile (member_id) VALUES (NEW.id);
+END$$
+
+DELIMITER ;
 -- End of file.
