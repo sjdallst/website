@@ -246,7 +246,7 @@ INSERT INTO Major (name) VALUES ('Psychology');
 INSERT INTO Major (name) VALUES ('Public Policy');
 INSERT INTO Major (name) VALUES ('Pure Mathematics');
 INSERT INTO Major (name) VALUES ('RC Individual Major Program');
-INSERT INTO Major (name) VALUES ('Romance Languages and Literature');
+INSERT INTO Major (name) VALUES ('Romance Languages and Literatures');
 INSERT INTO Major (name) VALUES ('Russian');
 INSERT INTO Major (name) VALUES ('Russian, East European, and Eurasian Studies');
 INSERT INTO Major (name) VALUES ('Screen Arts and Cultures');
