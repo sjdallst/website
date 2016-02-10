@@ -1,4 +1,8 @@
-// MySQL database configuration
+/*
+ * db.js
+ *
+ * Configuration options for MySQL database connection
+ */
 
 module.exports = {
   host          : 'localhost',
