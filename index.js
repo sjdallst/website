@@ -47,6 +47,12 @@ app.use(passport.initialize());
 app.use(passport.session());
 require('./config/auth').init();
 
+// Send authenticated user (if any) to res.locals (for use in templates)
+app.use(function(req, res, next) {
+    res.locals.user = req.user;
+    next();
+});
+
 // Register app routes
 app.use(require('./app'));
 
