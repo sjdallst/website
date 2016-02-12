@@ -1,11 +1,32 @@
 /*
- * member.js
+ * Member.js
  *
  * Model for a KTP Member
  */
 
 var db = require('../db');
 var hash = require('../utils/hash');
+
+
+/*
+ * Returns the member object associated with the given member id
+ * Includes Status and Role information
+ *
+ * cb called as cb(err, member)
+ */
+exports.findById = function(id, cb) {
+    db.query(
+        'SELECT Member.*, MemberStatus.name AS status, MemberRole.name AS role FROM Member ' +
+        'JOIN MemberStatus ON Member.member_status_id = MemberStatus.id ' +
+        'JOIN MemberRole ON Member.member_role_id = MemberRole.id ' +
+        'WHERE Member.id = ?',
+        [id],
+        function(err, members) {
+            if (err) console.error(err);
+            cb(err, members[0]);
+        }
+    );
+};
 
 /*
  * Creates a new member with the given member object
@@ -15,7 +36,6 @@ var hash = require('../utils/hash');
  *      first_name: string,
  *      last_name:  string,
  *      email: string,
- *      password: string,
  *      grad_year: int,
  *      pledge_class_id: int,
  *      member_status_id: int,
@@ -26,6 +46,7 @@ var hash = require('../utils/hash');
  */
 exports.create = function(member, cb) {
     var salt = hash.salt();
+    var password = 'ktp' + member.last_name.replace(/\s+/g, '').toLowerCase();
 
     try {
         db.query(
@@ -36,7 +57,7 @@ exports.create = function(member, cb) {
                 member.first_name,
                 member.last_name,
                 member.email,
-                hash(member.password, salt),
+                hash(password, salt),
                 salt,
                 member.grad_year,
                 member.pledge_class_id,
@@ -75,25 +96,4 @@ exports.authenticate = function(email, password, cb) {
         return cb(null, false, {message: 'Incorrect password'});
     });
 };
-
-/*
- * Returns the member object associated with the given member id
- * Includes Status and Role information
- *
- * cb called as cb(err, member)
- */
-exports.findById = function(id, cb) {
-    console.log('find by id: ' + id);
-    db.query(
-        'SELECT Member.*, MemberStatus.name AS status, MemberRole.name AS role FROM Member ' +
-        'JOIN MemberStatus ON Member.member_status_id = MemberStatus.id ' +
-        'JOIN MemberRole ON Member.member_role_id = MemberRole.id ' +
-        'WHERE Member.id = ?',
-        [id],
-        function(err, members) {
-            if (err) console.error(err);
-            cb(err, members[0]);
-        }
-    );
-}
 
