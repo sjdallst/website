@@ -1,0 +1,7 @@
+.input-group {
+    margin-bottom: 10px;
+}
+
+.input-group .input-group-addon {
+    min-width: 60px;
+}
