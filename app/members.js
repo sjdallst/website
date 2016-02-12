@@ -7,13 +7,36 @@
 var express = require('express');
 var router  = express.Router();
 
-var Member = require('../models/member');
+var async = require('async');
+
+var Member = require('../models/Member');
+var PledgeClass = require('../models/PledgeClass');
+var MemberStatus = require('../models/MemberStatus');
+var MemberRole = require('../models/MemberRole');
 
 /*
  * Serves create member page
  */
 router.get('/create', function(req, res) {
-    res.send('Create a member!');
+    async.parallel({
+        pledge_classes: function(cb) {
+            PledgeClass.getAll(cb);
+        },
+        member_statuses: function(cb) {
+            MemberStatus.getAll(cb);
+        },
+        member_roles: function(cb) {
+            MemberRole.getAll(cb);
+        }
+    },
+    function(err, results) {
+        if (err) {
+            console.error(err);
+            res.redirect('/500');
+        }
+
+        res.render('member-create', results);
+    });
 });
 
 /*

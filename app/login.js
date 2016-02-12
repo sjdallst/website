@@ -13,7 +13,8 @@ var passport = require('passport');
  * Serves login page
  */
 router.get('/', function(req, res) {
-    res.send('Please login');
+    // res.send('Please login');
+    res.render('member-login');
 });
 
 /*
@@ -21,11 +22,31 @@ router.get('/', function(req, res) {
  * Redirects to home page on success
  * Redirects to login page on failure
  */
-router.post('/', passport.authenticate('local', {
-        successRedirect: '/',
-        failureRedirect: './',
-        failureFlash: true
-    })
-);
+
+router.post('/', function(req, res) {
+    passport.authenticate('local', function(err, user, info) {
+        if (err || !user) {
+            return res.render('member-login', {
+                alert_error: 'Invalid email/password'
+            });
+        }
+
+        req.login(user, function(err) {
+            if (err) {
+                return res.render('member-login', {
+                    alert_error: 'There was a problem logging you in. Please try again later'
+                })
+            }
+
+            return res.redirect('/');
+        });
+    })(req, res);
+});
+
+// router.post('/', passport.authenticate('local', {
+//         successRedirect: '/',
+//         failureRedirect: '../login'
+//     })
+// );
 
 module.exports = router;

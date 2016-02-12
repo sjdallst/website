@@ -16,16 +16,16 @@ INSERT INTO Family (name) VALUES ('Johnsons');
 
 -- Load MemberStatus table
 INSERT INTO MemberStatus (name) VALUES ('Active');
+INSERT INTO MemberStatus (name) VALUES ('Pledge');
+INSERT INTO MemberStatus (name) VALUES ('Eboard');
 INSERT INTO MemberStatus (name) VALUES ('Inactive');
 INSERT INTO MemberStatus (name) VALUES ('Probation');
-INSERT INTO MemberStatus (name) VALUES ('Eboard');
-INSERT INTO MemberStatus (name) VALUES ('Pledge');
 INSERT INTO MemberStatus (name) VALUES ('Alumnus');
 
 -- Load MemberRole table
 INSERT INTO MemberRole (name) VALUES ('Member');
-INSERT INTO MemberRole (name) VALUES ('Alumnus');
 INSERT INTO MemberRole (name) VALUES ('Pledge');
+INSERT INTO MemberRole (name) VALUES ('Alumnus');
 INSERT INTO MemberRole (name) VALUES ('President');
 INSERT INTO MemberRole (name) VALUES ('Vice President');
 INSERT INTO MemberRole (name) VALUES ('Treasurer');

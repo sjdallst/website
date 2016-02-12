@@ -11,7 +11,7 @@ var router = express.Router();
  * Serves home page
  */
 router.get('/', function(req, res) {
-    res.send('Hello from KTP!');
+    res.render('home');
 });
 
 module.exports = router;
