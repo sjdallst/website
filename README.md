@@ -14,6 +14,7 @@ git checkout rebuild-w16
 ```
 npm install
 sudo npm install -g bower
+sudo npm install -g grunt-cli
 bower install
 ```
 ### Database Setup
@@ -46,4 +47,7 @@ If changes are made to the database structure, simply drop the existing tables a
 ```
 source db/sql/table_drop.sql
 ```
-
+### Start Server
+```
+grunt
+```
