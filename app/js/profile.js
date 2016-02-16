@@ -78,7 +78,7 @@ router.post('/edit', function(req, res) {
     Member.edit(req.body, function(err) {
         if (err) {
             console.error(err);
-            return res.redirect('/edit?alert=error');
+            return res.redirect('./edit?alert=error');
         }
 
         res.redirect('./edit?alert=success');

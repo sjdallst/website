@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2016-02-10 00:01:28.63
+-- Last modification date: 2016-02-16 18:28:37.433
 
 
 USE ktp;
@@ -128,11 +128,11 @@ CREATE TABLE MemberMinor (
 -- Table MemberProfile
 CREATE TABLE MemberProfile (
     member_id int  NOT NULL,
-    bio text  NULL,
-    linkedin varchar(30)  NULL,
-    facebook varchar(30)  NULL,
-    twitter varchar(30)  NULL,
-    website varchar(200)  NULL,
+    bio text  NOT NULL,
+    linkedin varchar(30)  NOT NULL  DEFAULT '',
+    facebook varchar(30)  NOT NULL  DEFAULT '',
+    twitter varchar(30)  NOT NULL  DEFAULT '',
+    website varchar(200)  NOT NULL  DEFAULT '',
     CONSTRAINT MemberProfile_pk PRIMARY KEY (member_id)
 );
 
@@ -464,7 +464,7 @@ DELIMITER $$
 
 CREATE TRIGGER after_member_insert AFTER INSERT ON Member FOR EACH ROW
 BEGIN
-    INSERT INTO MemberProfile (member_id) VALUES (NEW.id);
+    INSERT INTO MemberProfile (member_id, bio) VALUES (NEW.id, '');
 END$$
 
 DELIMITER ;

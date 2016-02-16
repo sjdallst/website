@@ -14,6 +14,8 @@ var PledgeClass = require('../../models/PledgeClass');
 var MemberStatus = require('../../models/MemberStatus');
 var MemberRole = require('../../models/MemberRole');
 
+var alerts = require('../values/alerts');
+
 /*
  * Serves create member page
  */
@@ -37,7 +39,7 @@ router.get('/create', function(req, res) {
 
         switch (req.query.alert) {
             case 'error':
-                results.alert_error = errorMemberCreate;
+                results.alert_error = alerts.errorMemberCreate;
                 break;
         }
 
