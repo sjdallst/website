@@ -56,7 +56,7 @@ app.use(function(req, res, next) {
 });
 
 // Register app routes
-app.use(require('./app/js'));
+app.use(require('./app/routes'));
 
 // Start listening for requests
 var port = process.env.NODE_ENV == 'production' ? 80 : dev_port;
