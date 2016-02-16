@@ -44,6 +44,9 @@ router.get('/edit', function(req, res) {
         },
         member_roles: function(cb) {
             MemberRole.getAll(cb);
+        },
+        user: function(cb) {
+            Member.findFullById(req.user.id, cb);
         }
     },
     function(err, results) {
@@ -60,7 +63,6 @@ router.get('/edit', function(req, res) {
                 results.alert_success = alerts.successProfileEdit;
         }
 
-        results.user = req.user;
         res.render('member-edit', results);
     });
 });

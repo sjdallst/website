@@ -20,10 +20,19 @@ body {
 
     .input-group-addon {
         min-width: 60px;
+        vertical-align: top;
+
+        img {
+            max-height: 90%;
+        }
+    }
+
+    textarea {
+        min-height: 100px;
     }
 }
 
-.bg-navy{
+.bg-navy {
     background-color: $primary-color-navy;
     color: white;
 }

@@ -7,7 +7,12 @@ body {
 .input-group {
   margin-bottom: 10px; }
   .input-group .input-group-addon {
-    min-width: 60px; }
+    min-width: 60px;
+    vertical-align: top; }
+    .input-group .input-group-addon img {
+      max-height: 90%; }
+  .input-group textarea {
+    min-height: 100px; }
 
 .bg-navy {
   background-color: #1D3F59;

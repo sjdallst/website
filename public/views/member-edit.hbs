@@ -17,6 +17,7 @@
             <span class="input-group-addon">Y</span>
             <input type="number" class="form-control" placeholder="Graduation Year" name="grad_year" min="2012" max="9999" value="{{user.grad_year}}" required/>
         </div>
+        {{!-- {{#ifeq user.status 'Eboard'}} --}} {{!-- Only Eboard should edit fraternity info --}}
         <div class="input-group input-group-lg">
             <span class="input-group-addon">PC</span>
             <select class="form-control" name="pledge_class_id">
@@ -40,6 +41,27 @@
                 <option value="{{id}}" {{#ifeq ../user.member_role_id id}}selected{{/ifeq}}>{{name}}</option>
                 {{/each}}
             </select>
+        </div>
+        {{!-- {{/ifeq}} --}}
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon"><img alt="Linkedin" src="/static/img/logos/linkedin-logo-blue.png"/></span>
+            <input type="text" class="form-control" placeholder="Linkedin Username" name="linkedin" value="{{user.linkedin}}"/>
+        </div>
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon"><img alt="Facebook" src="/static/img/logos/fb-logo-blue-lg.png"/></span>
+            <input type="text" class="form-control" placeholder="Facebook Username" name="facebook" value="{{user.facebook}}"/>
+        </div>
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon"><img alt="Twitter" src="/static/img/logos/twitter-logo-blue.png"/></span>
+            <input type="text" class="form-control" placeholder="Twitter Username" name="twitter" value="{{user.twitter}}"/>
+        </div>
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon">🌐</span>
+            <input type="text" class="form-control" placeholder="Website Url" name="website" value="{{user.website}}"/>
+        </div>
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon">B</span>
+            <textarea class="form-control" placeholder="Bio" rows="5" name="bio" value="{{user.bio}}"></textarea>
         </div>
         <div class="input-group input-group-lg">
             <input type="submit" class="btn btn-primary" value="Save"/>

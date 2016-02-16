@@ -7,6 +7,8 @@
 var db = require('../db');
 var hash = require('../utils/hash');
 
+var async = require('async');
+
 
 /*
  * Returns the member object associated with the given member id
@@ -17,6 +19,32 @@ var hash = require('../utils/hash');
 exports.findById = function(id, cb) {
     db.query(
         'SELECT Member.*, MemberStatus.name AS status, MemberRole.name AS role FROM Member ' +
+        'JOIN MemberStatus ON Member.member_status_id = MemberStatus.id ' +
+        'JOIN MemberRole ON Member.member_role_id = MemberRole.id ' +
+        'WHERE Member.id = ?',
+        [id],
+        function(err, members) {
+            if (err) console.error(err);
+            cb(err, members[0]);
+        }
+    );
+};
+
+/*
+ * Returns the member object associated with the given member id
+ * Includes full Pledge Class, Status, Role, and Profile information
+ *
+ * cb called as cb(err, member)
+ */
+exports.findFullById = function(id, cb) {
+    db.query(
+        'SELECT Member.*, MemberProfile.*, ' +
+               'PledgeClass.name AS pledge_class, ' +
+               'MemberStatus.name AS status, ' +
+               'MemberRole.name AS role ' +
+        'FROM Member ' +
+        'JOIN MemberProfile ON Member.id = MemberProfile.member_id ' +
+        'JOIN PledgeClass ON Member.pledge_class_id = PledgeClass.id ' +
         'JOIN MemberStatus ON Member.member_status_id = MemberStatus.id ' +
         'JOIN MemberRole ON Member.member_role_id = MemberRole.id ' +
         'WHERE Member.id = ?',
@@ -45,6 +73,7 @@ exports.findById = function(id, cb) {
  * cb called as cb(err)
  */
 exports.create = function(member, cb) {
+    // add check for eboard status
     var salt = hash.salt();
     var password = 'ktp' + member.last_name.replace(/\s+/g, '').toLowerCase();
 
@@ -89,25 +118,51 @@ exports.create = function(member, cb) {
  * }
  */
 exports.edit = function(member, cb) {
+    // add check for eboard status to edit fraternity info
     try {
-        db.query(
-            'UPDATE Member ' +
-            'SET first_name = ?, last_name = ?, email = ?, grad_year = ?, pledge_class_id = ?, member_status_id = ?, member_role_id = ? ' +
-            'WHERE id = ?',
-            [
-                member.first_name,
-                member.last_name,
-                member.email,
-                member.grad_year,
-                member.pledge_class_id,
-                member.member_status_id,
-                member.member_role_id,
-                member.id
-            ],
-            function(err) {
-                cb(err);
+        async.parallel({
+            member: function(cb) {
+                db.query(
+                    'UPDATE Member ' +
+                    'SET first_name = ?, last_name = ?, email = ?, grad_year = ?, pledge_class_id = ?, member_status_id = ?, member_role_id = ? ' +
+                    'WHERE id = ?',
+                    [
+                        member.first_name,
+                        member.last_name,
+                        member.email,
+                        member.grad_year,
+                        member.pledge_class_id,
+                        member.member_status_id,
+                        member.member_role_id,
+                        member.id
+                    ],
+                    function(err) {
+                        cb(err);
+                    }
+                );
+            },
+            profile: function(cb) {
+                db.query(
+                    'UPDATE MemberProfile ' +
+                    'SET bio = ?, linkedin = ?, facebook = ?, twitter = ?, website = ?' +
+                    'WHERE member_id = ?',
+                    [
+                        member.bio,
+                        member.linkedin,
+                        member.facebook,
+                        member.twitter,
+                        member.website,
+                        member.id
+                    ],
+                    function(err) {
+                        cb(err);
+                    }
+                );
             }
-        );
+        },
+        function(err) {
+            cb(err);
+        });
     } catch (err) {
         cb(err);
     }
