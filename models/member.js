@@ -64,9 +64,71 @@ exports.create = function(member, cb) {
                 member.member_status_id,
                 member.member_role_id
             ],
-            function(err, result) {
+            function(err) {
                 cb(err);
-        });
+            }
+        );
+    } catch (err) {
+        cb(err);
+    }
+};
+
+/*
+ * Edits an existing member's information
+ *
+ * member is an object with the following structure:
+ * {
+ *      id: int,
+ *      first_name: string,
+ *      last_name: string,
+ *      email: string,
+ *      grad_year: int,
+ *      pledge_class_id: int,
+ *      member_status_id: int,
+ *      member_role_id: int
+ * }
+ */
+exports.edit = function(member, cb) {
+    try {
+        db.query(
+            'UPDATE Member ' +
+            'SET first_name = ?, last_name = ?, email = ?, grad_year = ?, pledge_class_id = ?, member_status_id = ?, member_role_id = ? ' +
+            'WHERE id = ?',
+            [
+                member.first_name,
+                member.last_name,
+                member.email,
+                member.grad_year,
+                member.pledge_class_id,
+                member.member_status_id,
+                member.member_role_id,
+                member.id
+            ],
+            function(err) {
+                cb(err);
+            }
+        );
+    } catch (err) {
+        cb(err);
+    }
+};
+
+exports.changePassword = function(id, password, cb) {
+    var salt = hash.salt();
+    try {
+        db.query(
+            'UPDATE Member ' +
+            'SET pwd_hash = ?, pwd_salt = ?' +
+            'WHERE id = ?',
+            [
+                hash(password, salt),
+                salt,
+                id
+            ],
+            function(err) {
+                cb(err);
+            }
+        );
     } catch (err) {
         cb(err);
     }

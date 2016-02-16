@@ -12,4 +12,4 @@ module.exports = function(password, salt) {
  */
 module.exports.salt = function() {
     return crypto.createHash('sha256').update(Date.now().toString()).digest('hex');
-}
+};

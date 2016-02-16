@@ -5,7 +5,7 @@
  * PassportJS (http://passportjs.org)
  */
 
-var passport = require('passport')
+var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var Member = require('../models/member');
 
@@ -28,4 +28,4 @@ exports.init = function() {
     });
 
     passport.deserializeUser(Member.findById);
-}
+};

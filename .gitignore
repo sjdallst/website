@@ -1,3 +1,7 @@
-.DS_Store
+# Package dependencies
 node_modules
 public/packages
+
+# Temporary files
+.DS_Store
+.sass-cache

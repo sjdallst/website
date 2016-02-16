@@ -9,10 +9,10 @@ var router  = express.Router();
 
 var async = require('async');
 
-var Member = require('../models/Member');
-var PledgeClass = require('../models/PledgeClass');
-var MemberStatus = require('../models/MemberStatus');
-var MemberRole = require('../models/MemberRole');
+var Member = require('../../models/Member');
+var PledgeClass = require('../../models/PledgeClass');
+var MemberStatus = require('../../models/MemberStatus');
+var MemberRole = require('../../models/MemberRole');
 
 /*
  * Serves create member page
@@ -35,6 +35,12 @@ router.get('/create', function(req, res) {
             res.redirect('/500');
         }
 
+        switch (req.query.alert) {
+            case 'error':
+                results.alert_error = errorMemberCreate;
+                break;
+        }
+
         res.render('member-create', results);
     });
 });
@@ -46,9 +52,12 @@ router.get('/create', function(req, res) {
  */
 router.post('/create', function(req, res) {
     Member.create(req.body, function(err) {
-        if (err) console.error(err);
+        if (err) {
+            console.error(err);
+            return res.redirect('./create?alert=error');
+        }
 
-        res.redirect('./create');
+        res.render('member-create-confirm', req.body);
     });
 });
 

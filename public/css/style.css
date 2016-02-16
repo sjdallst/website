@@ -1,7 +1,14 @@
-.input-group {
-    margin-bottom: 10px;
-}
+body {
+  padding-top: 70px; }
 
-.input-group .input-group-addon {
-    min-width: 60px;
-}
+.monospace {
+  font-family: Courier, monospace; }
+
+.input-group {
+  margin-bottom: 10px; }
+  .input-group .input-group-addon {
+    min-width: 60px; }
+
+.bg-navy {
+  background-color: #1D3F59;
+  color: white; }

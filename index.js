@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 require('use-strict');
 
 var express     = require('express');
@@ -20,11 +20,13 @@ db.connect();
 
 // Register Handlebars template engine
 var hbs = require('express-handlebars');
+var hbs_helpers = require('./utils/handlebars-helpers');
 app.engine('.hbs', hbs({
         defaultLayout: 'base',
         extname: '.hbs',
         layoutsDir: './public/views/layouts',
-        partialsDir: './public/views/partials'
+        partialsDir: './public/views/partials',
+        helpers: hbs_helpers
     })
 );
 app.set('view engine', '.hbs');
@@ -54,7 +56,7 @@ app.use(function(req, res, next) {
 });
 
 // Register app routes
-app.use(require('./app'));
+app.use(require('./app/js'));
 
 // Start listening for requests
 var port = process.env.NODE_ENV == 'production' ? 80 : dev_port;
