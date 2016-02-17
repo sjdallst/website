@@ -13,7 +13,7 @@ router.use('/', require('./error'));
  * Redirect all unhandled requests to 404
  * This should be the last route listed
  */
-router.get('*', function(req, res) {
+router.all('*', function(req, res) {
     res.redirect('/404');
 });
 

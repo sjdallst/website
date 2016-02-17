@@ -9,6 +9,9 @@ var hash = require('../utils/hash');
 
 var async = require('async');
 
+var Photo = require('./Photo');
+var files = require('./files');
+
 
 /*
  * Returns the member object associated with the given member id
@@ -18,9 +21,10 @@ var async = require('async');
  */
 exports.findById = function(id, cb) {
     db.query(
-        'SELECT Member.*, MemberStatus.name AS status, MemberRole.name AS role FROM Member ' +
-        'JOIN MemberStatus ON Member.member_status_id = MemberStatus.id ' +
-        'JOIN MemberRole ON Member.member_role_id = MemberRole.id ' +
+        'SELECT Member.*, MemberStatus.name AS status, MemberRole.name AS role ' +
+        'FROM Member ' +
+        'LEFT JOIN MemberStatus ON Member.member_status_id = MemberStatus.id ' +
+        'LEFT JOIN MemberRole ON Member.member_role_id = MemberRole.id ' +
         'WHERE Member.id = ?',
         [id],
         function(err, members) {
@@ -32,7 +36,7 @@ exports.findById = function(id, cb) {
 
 /*
  * Returns the member object associated with the given member id
- * Includes full Pledge Class, Status, Role, and Profile information
+ * Includes Pledge Class, Status, Role, Profile, Photo
  *
  * cb called as cb(err, member)
  */
@@ -41,12 +45,14 @@ exports.findFullById = function(id, cb) {
         'SELECT Member.*, MemberProfile.*, ' +
                'PledgeClass.name AS pledge_class, ' +
                'MemberStatus.name AS status, ' +
-               'MemberRole.name AS role ' +
+               'MemberRole.name AS role, ' +
+               'Photo.filename AS photo_filename ' +
         'FROM Member ' +
-        'JOIN MemberProfile ON Member.id = MemberProfile.member_id ' +
-        'JOIN PledgeClass ON Member.pledge_class_id = PledgeClass.id ' +
-        'JOIN MemberStatus ON Member.member_status_id = MemberStatus.id ' +
-        'JOIN MemberRole ON Member.member_role_id = MemberRole.id ' +
+        'LEFT JOIN MemberProfile ON Member.id = MemberProfile.member_id ' +
+        'LEFT JOIN PledgeClass ON Member.pledge_class_id = PledgeClass.id ' +
+        'LEFT JOIN MemberStatus ON Member.member_status_id = MemberStatus.id ' +
+        'LEFT JOIN MemberRole ON Member.member_role_id = MemberRole.id ' +
+        'LEFT JOIN Photo ON Member.photo_id = Photo.id ' +
         'WHERE Member.id = ?',
         [id],
         function(err, members) {
@@ -168,6 +174,45 @@ exports.edit = function(member, cb) {
     }
 };
 
+/*
+ * Edits an existing member's profile photo
+ *
+ * cb called as cb(err)
+ */
+exports.editPhoto = function(id, filename, cb) {
+    Photo.add(filename, function(err, photo_id) {
+        db.query(
+            'SELECT Photo.* FROM Member ' +
+            'JOIN Photo ON Member.photo_id = Photo.id ' +
+            'WHERE Member.id = ?;' +
+
+            'DELETE Photo FROM Photo ' +
+            'JOIN Member ON Member.photo_id = Photo.id ' +
+            'WHERE Photo.id = Member.photo_id AND Member.id = ?;' +
+
+            'UPDATE Member SET photo_id = ? WHERE Member.id = ?',
+            [id, id, photo_id, id],
+            function(err, results) {
+                if (err) return cb(err);
+
+                console.log(results);
+                if (results[0].length) {
+                    files.deletePhoto(results[0][0].filename, function(err) {
+                        cb(err);
+                    });
+                } else {
+                    cb(null);
+                }
+            }
+        );
+    });
+};
+
+/*
+ * Changes an existing member's password
+ *
+ * cb called as cb(err)
+ */
 exports.changePassword = function(id, password, cb) {
     var salt = hash.salt();
     try {

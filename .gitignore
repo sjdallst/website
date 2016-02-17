@@ -5,3 +5,7 @@ public/packages
 # Temporary files
 .DS_Store
 .sass-cache
+
+# Data
+public/img
+!public/img/logos

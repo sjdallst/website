@@ -17,6 +17,8 @@ var MemberRole = require('../../models/MemberRole');
 
 var alerts = require('../values/alerts');
 
+var files = require('../../config/files');
+
 /*
  * Serves profile page
  */
@@ -81,6 +83,25 @@ router.post('/edit', function(req, res) {
         if (err) {
             console.error(err);
             return res.redirect('./edit?alert=error');
+        }
+
+        res.redirect('./edit?alert=success');
+    });
+});
+
+router.post('/photo', files.uploadImg.single('photo'), function(req, res) {
+    if (!req.user) {
+        return redirect.toLogin(res);
+    }
+
+    if (!req.file) {
+        res.redirect('./edit?alert=success');
+    }
+
+    Member.editPhoto(req.user.id, req.file.filename, function(err) {
+        if (err) {
+            console.error(err);
+            return res.redirect('/500');
         }
 
         res.redirect('./edit?alert=success');

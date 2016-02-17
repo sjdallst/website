@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2016-02-16 18:28:37.433
+-- Last modification date: 2016-02-17 20:23:53.832
 
 
 USE ktp;
@@ -163,7 +163,7 @@ CREATE TABLE Minor (
 -- Table Photo
 CREATE TABLE Photo (
     id int  NOT NULL  AUTO_INCREMENT,
-    filename int  NOT NULL,
+    filename varchar(50)  NOT NULL,
     upload_time timestamp  NOT NULL  DEFAULT CURRENT_TIMESTAMP,
     caption text  NULL,
     UNIQUE INDEX Photo_ak_1 (filename),

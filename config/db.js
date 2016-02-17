@@ -8,5 +8,6 @@ module.exports = {
   host          : 'localhost',
   user          : 'ktp',
   password      : 'dollabillz',
-  database      : 'ktp'
+  database      : 'ktp',
+  multipleStatements: true
 };

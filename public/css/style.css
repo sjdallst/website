@@ -10,9 +10,12 @@ body {
     min-width: 60px;
     vertical-align: top; }
     .input-group .input-group-addon img {
-      max-height: 90%; }
+      max-height: 90%;
+      max-width: 90%; }
   .input-group textarea {
     min-height: 100px; }
+  .input-group img {
+    max-width: 80%; }
 
 .bg-navy {
   background-color: #1D3F59;
