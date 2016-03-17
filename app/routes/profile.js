@@ -23,6 +23,18 @@ var files = require('../../config/files');
  * Serves profile page
  */
 router.get('/', function(req, res) {
+    if(req.query && req.query.user) {
+        Member.findFullById(req.query.user, function(err, member) {
+            if(err) {
+                console.error(err);
+                res.send("Try again");
+            } else {
+                res.send(member);
+            }
+        });
+        return;
+    }
+
     if (!req.user) {
         return redirect.toLogin(res);
     }
