@@ -19,19 +19,39 @@ var alerts = require('../values/alerts');
 
 var files = require('../../config/files');
 
+/*Namespace for functions specific to profile*/
+var profileFuncs = function() {
+    /*sends a json version of member to the user*/
+    function sendMember(res, err, member) {
+        if(err) {
+            /*an error was raised when searching for member, log to console*/
+            console.error(err); 
+            return
+        } 
+
+        if(!member) {
+            /*the member the user queried for does not exist*/
+            res.send("Try again");
+            return
+        } 
+
+        /*send the member to the user*/
+        res.send(member);
+    }
+
+    return {
+        sendMember:sendMember
+    }
+
+}();
+
 /*
  * Serves profile page
  */
 router.get('/', function(req, res) {
     if(req.query && req.query.user) {
-        Member.findFullById(req.query.user, function(err, member) {
-            if(err) {
-                console.error(err);
-                res.send("Try again");
-            } else {
-                res.send(member);
-            }
-        });
+        var sendMember = profileFuncs.sendMember.bind(null, res)
+        Member.findFullById(req.query.user, sendMember);
         return;
     }
 
