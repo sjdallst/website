@@ -19,48 +19,25 @@ var alerts = require('../values/alerts');
 
 var files = require('../../config/files');
 
-/*Namespace for functions specific to profile*/
-var profileFuncs = function() {
-    /*sends a json version of member to the user*/
-    function sendMember(res, err, member) {
-        if(err) {
-            /*an error was raised when searching for member, log to console*/
-            console.error(err); 
-            return
-        } 
-
-        if(!member) {
-            /*the member the user queried for does not exist*/
-            res.send("Try again");
-            return
-        } 
-
-        
-        /*send the member to the user*/
-        res.render('member-profile', member);
-    }
-
-    return {
-        sendMember:sendMember
-    }
-
-}();
-
 /*
  * Serves profile page
  */
 router.get('/', function(req, res) {
+    /*Create method to pass to findFullById and serve the page*/
     var sendMember = profileFuncs.sendMember.bind(null, res)
 
-    if(req.query && req.query.user) {   
+    if(req.query && req.query.user) {
+        /*Serve member if a query with a "user" field has been given*/   
         Member.findFullById(req.query.user, sendMember);
         return;
     }
 
     if (!req.user) {
+        /*Redirect to login if there is no query and the user is not logged in*/
         return redirect.toLogin(res);
     }
     
+    /*Otherwise serve the user their profile page*/
     Member.findFullById(req.user.id, sendMember);
 });
 
@@ -196,5 +173,32 @@ router.post('/password', function(req, res) {
         });
     });
 });
+
+/*Namespace for functions specific to profile*/
+var profileFuncs = function() {
+    /*sends a json version of member to the user*/
+    function sendMember(res, err, member) {
+        if(err) {
+            /*an error was raised when searching for member, log to console*/
+            console.error(err); 
+            return
+        } 
+
+        if(!member) {
+            /*the member the user queried for does not exist*/
+            res.render("404", {});
+            return
+        } 
+
+        
+        /*send the member to the user*/
+        res.render('member-profile', member);
+    }
+
+    return {
+        sendMember:sendMember
+    }
+
+}();
 
 module.exports = router;

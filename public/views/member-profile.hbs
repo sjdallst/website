@@ -1,9 +1,20 @@
 <div class = "container">
-	<span class="label label-default">{{first_name}} {{last_name}}</span>
-    <h3>Profile Picture</h3>
-    <div class="input-group input-group-lg">
-        {{#if photo_filename}}
-        <img alt="Profile Picture" src="/static/img/{{photo_filename}}"/>
-        {{/if}}
+	<div class="row">
+		<div class="page-header">
+			<h1>{{first_name}} {{last_name}} <small>{{pledge_class}}</small></h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-3">
+		    <div class="input-group input-group-lg">
+		        {{#if photo_filename}}
+		        	<img alt="Profile Picture" src="/static/img/{{photo_filename}}"/>
+		        {{/if}}
+		    </div>
+	    </div>
+	    <div class="col-md-9">
+	    	<h2>Class of {{grad_year}}</h2>
+	    	<h2>{{status}}</h2>
+	    </div>
     </div>
 </div>
