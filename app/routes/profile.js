@@ -35,8 +35,9 @@ var profileFuncs = function() {
             return
         } 
 
+        
         /*send the member to the user*/
-        res.send(member);
+        res.render('member-profile', member);
     }
 
     return {
@@ -49,8 +50,9 @@ var profileFuncs = function() {
  * Serves profile page
  */
 router.get('/', function(req, res) {
-    if(req.query && req.query.user) {
-        var sendMember = profileFuncs.sendMember.bind(null, res)
+    var sendMember = profileFuncs.sendMember.bind(null, res)
+
+    if(req.query && req.query.user) {   
         Member.findFullById(req.query.user, sendMember);
         return;
     }
@@ -58,7 +60,8 @@ router.get('/', function(req, res) {
     if (!req.user) {
         return redirect.toLogin(res);
     }
-    res.send(req.user);
+    
+    Member.findFullById(req.user.id, sendMember);
 });
 
 /*

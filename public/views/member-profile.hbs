@@ -1,0 +1,9 @@
+<div class = "container">
+	<span class="label label-default">{{first_name}} {{last_name}}</span>
+    <h3>Profile Picture</h3>
+    <div class="input-group input-group-lg">
+        {{#if photo_filename}}
+        <img alt="Profile Picture" src="/static/img/{{photo_filename}}"/>
+        {{/if}}
+    </div>
+</div>
