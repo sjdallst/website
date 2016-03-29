@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2016-03-29 23:23:42.479
+-- Last modification date: 2016-03-29 23:36:19.261
 
 
 USE ktp;
@@ -17,7 +17,7 @@ CREATE TABLE Amenity (
 
 -- Table AttendanceCategory
 CREATE TABLE AttendanceCategory (
-    id int  NOT NULL,
+    id int  NOT NULL  AUTO_INCREMENT,
     name varchar(20)  NOT NULL,
     CONSTRAINT AttendanceCategory_pk PRIMARY KEY (id)
 );
@@ -288,7 +288,8 @@ CREATE TABLE Term (
 -- Reference:  AttendanceCategory_MemberAttendance (table: MemberAttendance)
 
 ALTER TABLE MemberAttendance ADD CONSTRAINT AttendanceCategory_MemberAttendance FOREIGN KEY AttendanceCategory_MemberAttendance (attendance_category_id)
-    REFERENCES AttendanceCategory (id);
+    REFERENCES AttendanceCategory (id)
+    ON UPDATE CASCADE;
 -- Reference:  Big_Little (table: Member)
 
 ALTER TABLE Member ADD CONSTRAINT Big_Little FOREIGN KEY Big_Little (big_id)
