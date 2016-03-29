@@ -131,6 +131,11 @@ INSERT INTO EventCategory (name) VALUES ('Community Service');
 INSERT INTO EventCategory (name) VALUES ('Family');
 INSERT INTO EventCategory (name) VALUES ('External');
 
+-- Load AttendanceCategory table
+INSERT INTO AttendanceCategory (name) VALUES ('Present');
+INSERT INTO AttendanceCategory (name) VALUES ('Excused');
+INSERT INTO AttendanceCategory (name) VALUES ('Unexcused');
+
 -- Load Major table
 INSERT INTO Major (name) VALUES ('Actuarial Mathematics');
 INSERT INTO Major (name) VALUES ('Aerospace Engineering');

@@ -1,11 +1,12 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2016-02-04 18:35:36.892
+-- Last modification date: 2016-03-29 23:23:42.479
 
 
 USE ktp;
 
 
 -- foreign keys
+ALTER TABLE MemberAttendance DROP FOREIGN KEY AttendanceCategory_MemberAttendance;
 ALTER TABLE Member DROP FOREIGN KEY Big_Little;
 ALTER TABLE CommitteeMember DROP FOREIGN KEY CommitteeMember_Committee;
 ALTER TABLE CommitteeMember DROP FOREIGN KEY CommitteeMember_Member;
@@ -42,6 +43,8 @@ ALTER TABLE Semester DROP FOREIGN KEY Semester_Term;
 -- tables
 -- Table Amenity
 DROP TABLE Amenity;
+-- Table AttendanceCategory
+DROP TABLE AttendanceCategory;
 -- Table Committee
 DROP TABLE Committee;
 -- Table CommitteeMember

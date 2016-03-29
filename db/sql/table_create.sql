@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2016-02-17 20:23:53.832
+-- Last modification date: 2016-03-29 23:23:42.479
 
 
 USE ktp;
@@ -13,6 +13,13 @@ CREATE TABLE Amenity (
     name varchar(20)  NOT NULL,
     UNIQUE INDEX Amenity_ak_1 (name),
     CONSTRAINT Amenity_pk PRIMARY KEY (id)
+);
+
+-- Table AttendanceCategory
+CREATE TABLE AttendanceCategory (
+    id int  NOT NULL,
+    name varchar(20)  NOT NULL,
+    CONSTRAINT AttendanceCategory_pk PRIMARY KEY (id)
 );
 
 -- Table Committee
@@ -108,6 +115,7 @@ CREATE TABLE Member (
 CREATE TABLE MemberAttendance (
     event_id int  NOT NULL,
     member_id int  NOT NULL,
+    attendance_category_id int  NOT NULL,
     CONSTRAINT MemberAttendance_pk PRIMARY KEY (event_id,member_id)
 );
 
@@ -163,7 +171,7 @@ CREATE TABLE Minor (
 -- Table Photo
 CREATE TABLE Photo (
     id int  NOT NULL  AUTO_INCREMENT,
-    filename varchar(50)  NOT NULL,
+    filename varchar(70)  NOT NULL,
     upload_time timestamp  NOT NULL  DEFAULT CURRENT_TIMESTAMP,
     caption text  NULL,
     UNIQUE INDEX Photo_ak_1 (filename),
@@ -277,6 +285,10 @@ CREATE TABLE Term (
 
 
 -- foreign keys
+-- Reference:  AttendanceCategory_MemberAttendance (table: MemberAttendance)
+
+ALTER TABLE MemberAttendance ADD CONSTRAINT AttendanceCategory_MemberAttendance FOREIGN KEY AttendanceCategory_MemberAttendance (attendance_category_id)
+    REFERENCES AttendanceCategory (id);
 -- Reference:  Big_Little (table: Member)
 
 ALTER TABLE Member ADD CONSTRAINT Big_Little FOREIGN KEY Big_Little (big_id)
