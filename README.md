@@ -13,12 +13,12 @@ git checkout rebuild-w16
 ### Install Dependencies
 ```
 npm install
-sudo npm install -g bower
-sudo npm install -g grunt-cli
+[sudo] npm install -g bower
+[sudo] npm install -g grunt-cli
 bower install
 ```
 ### Database Setup
-Start MySQL server in System Preferences -> MySQL, or with `mysqld`.  
+Start MySQL server in System Preferences -> MySQL, or with `mysqld`. **Perform all following commands from the root directory of this repository.**  
 
 First login as root (enter the password you copied down).
 ```

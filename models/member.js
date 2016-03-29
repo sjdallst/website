@@ -259,3 +259,46 @@ exports.authenticate = function(email, password, cb) {
     });
 };
 
+/*
+ * Returns all members who are currently active (including e-board)
+ * Includes role information
+ *
+ * cb called as cb(err, members) returning array of Members
+ */
+exports.findActives = function(cb) {
+    // Select all Members properties of Members whose status_id is Active
+    db.query(
+        'SELECT Member.*, MemberStatus.name AS status, MemberRole.name AS role ' +
+        'FROM Member ' +
+        'LEFT JOIN MemberStatus ON Member.member_status_id = MemberStatus.id ' +
+        'LEFT JOIN MemberRole ON Member.member_role_id = MemberRole.id ' +
+        'WHERE MemberStatus.name = "Active" OR MemberStatus.name = "Eboard" ' + 
+        'ORDER BY first_name ASC',
+        function(err, members) {
+            if(err) console.error(err);
+            cb(err, members);
+        }
+    );
+};
+
+/*
+ * Returns all members who are Alumni
+ * Includes role information
+ *
+ * cb called as cb(err, members) returning array of Members
+*/
+exports.findAlumni = function(cb) {
+    // Select all Members properties of Members whose status_id is Active
+    db.query(
+        'SELECT Member.*, MemberStatus.name AS status, MemberRole.name AS role ' + 
+        'FROM Member ' + 
+        'LEFT JOIN MemberStatus ON Member.member_status_id = MemberStatus.id ' +
+        'LEFT JOIN MemberRole ON Member.member_role_id = MemberRole.id ' +
+        'WHERE MemberStatus.name = "Alumnus" ' +
+        'ORDER BY first_name ASC',
+        function(err, members) {
+            if(err) console.error(err);
+            cb(err, members);
+        }
+    );
+};
