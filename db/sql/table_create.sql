@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2016-03-29 23:36:19.261
+-- Last modification date: 2016-03-30 00:24:36.249
 
 
 USE ktp;
@@ -43,8 +43,8 @@ CREATE TABLE Event (
     id int  NOT NULL  AUTO_INCREMENT,
     title varchar(50)  NOT NULL,
     description text  NULL,
-    start_time time  NOT NULL,
-    end_time time  NULL,
+    start_time timestamp  NOT NULL,
+    end_time timestamp  NULL,
     location varchar(100)  NOT NULL,
     event_category_id int  NULL,
     pro_dev_credits int  NOT NULL  DEFAULT 0,
