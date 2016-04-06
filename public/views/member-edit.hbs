@@ -1,0 +1,88 @@
+<div class="container">
+    <div class="row">
+        <form method="POST" class="col-md-8 col-xs-12">
+            <h3>Edit Profile</h3>
+            <div class="input-group input-group-lg">
+                <span class="input-group-addon">F</span>
+                <input type="text" class="form-control" placeholder="First Name" name="first_name" value="{{user.first_name}}" required/>
+            </div>
+            <div class="input-group input-group-lg">
+                <span class="input-group-addon">L</span>
+                <input type="text" class="form-control" placeholder="Last Name" name="last_name" value="{{user.last_name}}" required/>
+            </div>
+            <div class="input-group input-group-lg">
+                <span class="input-group-addon">@</span>
+                <input type="email" class="form-control" placeholder="Email" name="email" value="{{user.email}}" required/>
+            </div>
+            <div class="input-group input-group-lg">
+                <span class="input-group-addon">Y</span>
+                <input type="number" class="form-control" placeholder="Graduation Year" name="grad_year" min="2012" max="9999" value="{{user.grad_year}}" required/>
+            </div>
+            {{!-- {{#ifeq user.status 'Eboard'}} --}} {{!-- Only Eboard should edit fraternity info --}}
+            <div class="input-group input-group-lg">
+                <span class="input-group-addon">PC</span>
+                <select class="form-control" name="pledge_class_id">
+                    {{#each pledge_classes}}
+                    <option value="{{id}}" {{#ifeq ../user.pledge_class_id id}}selected{{/ifeq}}>{{name}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <div class="input-group input-group-lg">
+                <span class="input-group-addon">S</span>
+                <select class="form-control" name="member_status_id">
+                    {{#each member_statuses}}
+                    <option value="{{id}}" {{#ifeq ../user.member_status_id id}}selected{{/ifeq}}>{{name}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <div class="input-group input-group-lg">
+                <span class="input-group-addon">R</span>
+                <select class="form-control" name="member_role_id">
+                    {{#each member_roles}}
+                    <option value="{{id}}" {{#ifeq ../user.member_role_id id}}selected{{/ifeq}}>{{name}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            {{!-- {{/ifeq}} --}}
+            <div class="input-group input-group-lg">
+                <span class="input-group-addon"><img alt="Linkedin" src="/static/img/logos/linkedin-logo-blue.png"/></span>
+                <input type="text" class="form-control" placeholder="Linkedin Username" name="linkedin" value="{{user.linkedin}}"/>
+            </div>
+            <div class="input-group input-group-lg">
+                <span class="input-group-addon"><img alt="Facebook" src="/static/img/logos/fb-logo-blue-lg.png"/></span>
+                <input type="text" class="form-control" placeholder="Facebook Username" name="facebook" value="{{user.facebook}}"/>
+            </div>
+            <div class="input-group input-group-lg">
+                <span class="input-group-addon"><img alt="Twitter" src="/static/img/logos/twitter-logo-blue.png"/></span>
+                <input type="text" class="form-control" placeholder="Twitter Username" name="twitter" value="{{user.twitter}}"/>
+            </div>
+            <div class="input-group input-group-lg">
+                <span class="input-group-addon">🌐</span>
+                <input type="text" class="form-control" placeholder="Website Url" name="website" value="{{user.website}}"/>
+            </div>
+            <div class="input-group input-group-lg">
+                <span class="input-group-addon">B</span>
+                <textarea class="form-control" placeholder="Bio" rows="5" name="bio" value="{{user.bio}}"></textarea>
+            </div>
+            <div class="input-group input-group-lg">
+                <input type="submit" class="btn btn-primary" value="Save"/>
+            </div>
+        </form>
+
+        <form method="POST" action="photo" class="col-md-4 col-xs-12" enctype="multipart/form-data">
+            <h3>Update Profile Picture</h3>
+            <div class="input-group input-group-lg">
+                {{#if user.photo_filename}}
+                <img alt="Profile Picture" src="/static/img/{{user.photo_filename}}"/>
+                {{/if}}
+            </div>
+            <div class="input-group input-group-lg">
+                <span class="input-group-addon">👤</span>
+                <input class="form-control" type="file" name="photo" accept="image/*"/>
+            </div>
+            <div class="input-group input-group-lg">
+                <input type="submit" class="btn btn-primary" value="Save"/>
+            </div>
+        </form>
+    </div>
+</div>

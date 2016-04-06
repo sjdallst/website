@@ -1,0 +1,43 @@
+$primary-color-navy:        #1D3F59;
+$primary-color-green:       #6FC381;
+$primary-color-purple:      #BE90D4;
+$primary-color-red:         #FA5C57;
+$primary-color-yellow:      #FCB606;
+$primary-color-lightblue:   #59ABE3;
+
+$navbar-height: 50px;
+
+body {
+    padding-top: $navbar-height + 20px;
+}
+
+.monospace {
+    font-family: Courier, monospace;
+}
+
+.input-group {
+    margin-bottom: 10px;
+
+    .input-group-addon {
+        min-width: 60px;
+        vertical-align: top;
+
+        img {
+            max-height: 90%;
+            max-width: 90%;
+        }
+    }
+
+    textarea {
+        min-height: 100px;
+    }
+
+    img {
+        max-width: 80%;
+    }
+}
+
+.bg-navy {
+    background-color: $primary-color-navy;
+    color: white;
+}

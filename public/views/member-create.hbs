@@ -1,0 +1,48 @@
+<div class="container">
+    <form method="POST">
+        <h3>Add a Member</h3>
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon">F</span>
+            <input type="text" class="form-control" placeholder="First Name" name="first_name" required autofocus/>
+        </div>
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon">L</span>
+            <input type="text" class="form-control" placeholder="Last Name" name="last_name" required/>
+        </div>
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon">@</span>
+            <input type="email" class="form-control" placeholder="Email" name="email" required/>
+        </div>
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon">Y</span>
+            <input type="number" class="form-control" placeholder="Graduation Year" name="grad_year" min="2012" max="9999" required/>
+        </div>
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon">PC</span>
+            <select class="form-control" name="pledge_class_id">
+                {{#each pledge_classes}}
+                <option value="{{id}}">{{name}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon">S</span>
+            <select class="form-control" name="member_status_id">
+                {{#each member_statuses}}
+                <option value="{{id}}">{{name}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon">R</span>
+            <select class="form-control" name="member_role_id">
+                {{#each member_roles}}
+                <option value="{{id}}">{{name}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <div class="input-group input-group-lg">
+            <input type="submit" class="btn btn-primary" value="Add"/>
+        </div>
+    </form>
+</div>

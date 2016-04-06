@@ -1,42 +1,53 @@
-Get started  
-===========  
-git clone https://github.com/ktp-dev/website.git  
-  
-turn up  
-  
-KTP WEBSITE FRAMEWORK  
-=====================  
-  
-Lightweight and flexible web development.  
-Public files to present the front-end.  
-Server code to host the back-end.  
+## Getting Started
+### Install Required Software
+* <a href="https://git-scm.com/downloads" target="_blank">Git</a>
+* <a href="https://nodejs.org/en/download/" target="_blank">Node.js</a>
+* <a href="http://dev.mysql.com/downloads/mysql/" target="_blank">MySQL</a> **Important:** Make sure to copy down your root password during installation
 
-File structure:   
-:files used to generate website  
-public/  
-	constitution/		-we the people  
-	css/				-stylesheets  
-	js/					-scripts  
-		/routes.js 		---single-page section transitions  
-	img/				-image files (actual files omitted)  
-	lib/  				-static frameworks and externally developed files  
-		js/				---scripts (mostly jquery)  
-		css/ 			---styles (not bootstrap)  
-	index.html 			-main page of website  
-  
-:web server files  
-package.json 		-file describing project and node dependencies  
-app.js 				-node.js express application  
-gruntfile.js 		-automated javascript
+### Clone Repository
+```
+git clone https://github.com/ktp-dev/website.git
+cd website
+git checkout rebuild-w16
+```
+### Install Dependencies
+```
+npm install
+[sudo] npm install -g bower
+[sudo] npm install -g grunt-cli
+bower install
+```
+### Database Setup
+Start MySQL server in System Preferences -> MySQL, or with `mysqld`. **Perform all following commands from the root directory of this repository.**  
 
-HOW TO CONTRIBUTE  
-=================  
-  
-You can test and run the majority of front end by clicking and dragging public/index.html into a browser nav bar.  
-Feel free to make any changes and additions to the git. Be sure to update README whenever you are making a change that requires explanation.  
-Please comment sections of non-trivial code.  
-  
-NODE.JS  
-=======  
-Server-side javascript, used to serve our content.  
-Download the latest version at http://nodejs.org/download/
+First login as root (enter the password you copied down).
+```
+mysql -u root -p
+```
+You will need to change your root password from the default.
+```
+ALTER USER 'root'@'localhost' IDENTIFIED BY '[new password]';
+```
+Create ktp user and database.
+```
+source db/sql/setup.sql
+quit
+```
+Next login as ktp (password is in `setup.sql`).
+```
+mysql -u ktp -p
+```
+Create and load tables.
+```
+source db/sql/table_create.sql
+source db/sql/table_load.sql
+```
+### Database Updates
+If changes are made to the database structure, simply drop the existing tables and repeat the load steps above.
+```
+source db/sql/table_drop.sql
+```
+### Start Server
+```
+grunt
+```
