@@ -1,0 +1,24 @@
+.footer {
+    background-color: #676767;
+    border-top: 30px solid #676767;
+    #footer-social-icons {
+        border-bottom: 50px solid #676767;
+    }
+    #footer-links {
+        a {
+            color: #A5A5A5;
+            line-height: 200%;
+        }
+        h4 {
+            color: white;
+            font-size: 20px;
+        }
+    }
+    #credits {
+        text-align: right;
+        color: #A5A5A5;
+        h4 {
+            color: #A5A5A5;
+        }
+    }
+}

@@ -1,5 +1,5 @@
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
@@ -8,9 +8,9 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">
+            {{!-- <a class="navbar-brand" href="/">
                 <img alt="ΚΘΠ" src="/static/img/logos/ktp-logo-lg.png" height="25"/>
-            </a>
+            </a> --}}
             {{#if user}}
             <p class="navbar-text"><a class="navbar-link" href="/profile">Hi, {{user.first_name}}!</a></p>
             {{/if}}
@@ -18,19 +18,20 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar-collapse">
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav">
                 <li><a href="/">Home</a></li>
                 {{#if user}}
                 <li><a href="/profile">Profile</a></li>
                 {{else}}
                 <li><a href="/members">Members</a></li>
-                <li><a href="/rush">Rush</a></li>
                 <li><a href="/contact">Contact</a></li>
                 {{/if}}
+            </ul>
+            <ul class="nav navbar-nav pull-right">
                 {{#if user}}
                 <li><a href="/logout">Logout</a></li>
                 {{else}}
-                <li><a href="/login">Login</a></li>
+                <li class="pull-right"><a class="pull-right" href="/login">Login</a></li>
                 {{/if}}
             </ul>
         </div><!-- /.navbar-collapse -->
