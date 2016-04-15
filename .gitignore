@@ -9,3 +9,6 @@ public/packages
 # Data
 public/img
 !public/img/logos
+
+# Generated files
+public/css
