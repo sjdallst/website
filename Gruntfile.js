@@ -31,7 +31,8 @@ module.exports = function(grunt) {
                 'index.js'
             ],
             options: {
-                node: true
+                node: true,
+                esversion: 6
             }
         },
         watch: {
