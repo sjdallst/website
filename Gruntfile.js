@@ -31,7 +31,8 @@ module.exports = function(grunt) {
                 'index.js'
             ],
             options: {
-                node: true
+                node: true,
+                esversion: 6
             }
         },
         watch: {
@@ -46,7 +47,7 @@ module.exports = function(grunt) {
         },
         concurrent: {
             target: {
-                tasks: ['watch', 'nodemon'],
+                tasks: ['build', 'watch', 'nodemon'],
                 options: {
                     logConcurrentOutput: true
                 }
@@ -61,4 +62,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-concurrent');
 
     grunt.registerTask('default', ['concurrent:target']);
+    grunt.registerTask('build', ['sass', 'jshint']);
 };

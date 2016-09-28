@@ -13,12 +13,13 @@ git checkout rebuild-w16
 ### Install Dependencies
 ```
 npm install
-sudo npm install -g bower
-sudo npm install -g grunt-cli
+[sudo] npm install -g bower
+[sudo] npm install -g grunt-cli
 bower install
+[sudo] gem install sass
 ```
 ### Database Setup
-Start MySQL server in System Preferences -> MySQL, or with `mysqld`.  
+Start MySQL server in System Preferences -> MySQL, or with `mysqld`. **Perform all following commands from the root directory of this repository.**  
 
 First login as root (enter the password you copied down).
 ```
@@ -43,10 +44,11 @@ source db/sql/table_create.sql
 source db/sql/table_load.sql
 ```
 ### Database Updates
-If changes are made to the database structure, simply drop the existing tables and repeat the load steps above.
+If changes are made to the database structure, simply drop the existing tables
 ```
 source db/sql/table_drop.sql
 ```
+and repeat the load steps above.
 ### Start Server
 ```
 grunt
